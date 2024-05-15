@@ -161,7 +161,7 @@ const onChangeProvincialSelect = (evt) => {
                 ["Infirmière ou infirmier autorisés", "Registered Nurse"],
                 ["Infirmières et infirmiers psychiatriques autorisés", "Registered Psychiatric Nurse"], 
                 ["Travailleuse sociale ou travailleur social", "Social Worker"],
-                ["Speech and Hearing Health Professional", "Orthophoniste"],
+                ["Orthophoniste", "Speech and Hearing Health Professional"],
                 ["Praticienne en médecine traditionnelle chinoise", "Traditional Chinese Medicine Practitioner"],
                 ["None of the above", "None of the above"]
             ];
