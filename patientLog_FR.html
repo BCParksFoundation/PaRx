@@ -1,0 +1,107 @@
+
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">  
+<form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00DHu000001gP6N" method="POST">
+    
+    <input type=hidden name="orgid" value="00DHu000001gP6N">
+    <input type=hidden name="retURL" value="https://parkprescriptions.webflow.io/en/log-your-parx-success-copy">
+    
+    <select  id="00NHu00000RWnJ2" name="00NHu00000RWnJ2" title="Form Type" hidden>
+    <option value="PatientLog" selected>PatientLog</option>
+    </select>
+    <label class="field-label" for="00NHu00000LLlW1">Full Name</label>
+    <div class="name-boxes w-row">
+        <div class="name-box left w-col w-col-6">
+            <input class="text-field w-input" id="00NHu00000LLlW1" maxlength="255" name="00NHu00000LLlW1" size="20" type="text" placeholder="First Name" required/>
+            <span class="error" aria-live="polite"></span>
+        </div>
+        <div class="name-box right w-col w-col-6">
+            <input class="text-field w-input" maxlength="256" name="Last-Name" data-name="Last Name" placeholder="Last Name" type="text" id="Last-Name-2" required>
+            <span class="error" aria-live="polite"></span>
+        </div>
+    </div>
+    
+    
+    <label class="field-label" for="00NHu00000RV7Gh">Email</label>
+    <input id="00NHu00000RV7Gh" class="text-field w-input" maxlength="80" name="00NHu00000RV7Gh" size="20" type="email" />
+  
+    <label class="field-label"> For your prescription to be verified, the following three fields must match the prescription your healthcare provider submits.</label>
+    <div class="w-row">
+        <div class="form-column left w-col w-col-4">
+            <input id="00NHu00000RWnId" name="00NHu00000RWnId" class="text-field w-input" maxlength="8" placeholder="AA-AA123" type="text" required>
+            <div class="box-subtitle">Unique Provider Code</div>
+        </div>
+        <div class="form-column middle w-col w-col-4">
+            <input id="00NHu00000RWnIi" name="00NHu00000RWnIi" class="text-field w-input" maxlength="256" placeholder="YY/MM/DD" type="date" required>
+            <div class="box-subtitle">Prescription Date</div>
+        </div>
+        <div class="form-column right w-col w-col-4">
+            <input id="00NHu00000RWnIn" name="00NHu00000RWnIn" class="text-field w-input" maxlength="2" placeholder="AA" type="text" pattern="[a-zA-Z0-9]*" required>
+            <div class="box-subtitle">Patient's first and last initials </div>
+        </div>
+    </div>
+    
+    <br><br>
+    
+    <label class="w-checkbox checkbox-field" for="00NHu00000RWnIs">
+        <input id="00NHu00000RWnIs" class="w-checkbox-input checkbox discoveryPass" name="00NHu00000RWnIs" type="checkbox" value="1" />I was prescribed a Parks Canada Discovery Pass.<br>
+    </label>
+
+    <fieldset id="discoveryPassAddress" class="w-hidden">
+        <label class="field-label" for="00NHu00000LLlVX">If you were prescribed a Parks Canada Discovery Pass, please provide your mailing address so we can send your Pass to you:</label>
+        <div class="_3-boxes w-row">
+            <div class="form-column left w-col w-col-3">
+                <input id="00NHu00000LLlVX" class="text-field w-input" maxlength="255" name="00NHu00000LLlVX" size="20" type="text" placeholder="Street Address" />
+            </div>
+            <div class="form-column middle w-col w-col-3">
+                <input id="00NHu00000LLlVc" class="text-field w-input" maxlength="255" name="00NHu00000LLlVc" size="20" type="text" placeholder="City" />
+            </div>
+            <div class="form-column middle w-col w-col-3">
+                <input id="00NHu00000LLlVh" class="text-field w-input" maxlength="255" name="00NHu00000LLlVh" size="20" type="text" placeholder="Postal Code" />
+            </div>
+            <div class="form-column right w-col w-col-3">
+                <select id="00NHu00000LLlWB" class="drop-down-field w-select"  name="00NHu00000LLlWB" title="Province" ><option value="">Province</option>
+                    <option value="AB">AB</option>
+                    <option value="BC">BC</option>
+                    <option value="MB">MB</option>
+                    <option value="NB">NB</option>
+                    <option value="NL">NL</option>
+                    <option value="NS">NS</option>
+                    <option value="NT">NT</option>
+                    <option value="NU">NU</option>
+                    <option value="ON">ON</option>
+                    <option value="PE">PE</option>
+                    <option value="QC">QC</option>
+                    <option value="SK">SK</option>
+                    <option value="YT">YT</option>
+                    <option value="None of the above">None of the above</option>
+                    </select>
+            </div>
+        </div>
+    </fieldset>
+
+    <label class="field-label" for="00NHu00000LLptY">How did you hear about us?</label>
+    <select class="drop-down-field w-select referralSelect" title="How did you hear about us?"><option value="">--None--</option>
+        <option value="Licensing college or other healthcare organization">Organisme de réglementation ou autre organisme de soins de santé</option>
+        <option value="News (TV, radio, magazine)">Actualités (télévision, radio, magazine)</option>
+        <option value="Patient">Patient</option>
+        <option value="Seminar or presentation">Séminaire ou présentation</option>
+        <option value="Social media">Médias sociaux</option>
+        <option value="Word of mouth (coworker, family, friend)">Bouche à oreille (collègue, famille, ami)</option>
+        <option value="Other">Autre</option>
+    </select>
+    <input class="text-field w-input w-hidden" id="00NHu00000LLptY" maxlength="255" name="00NHu00000LLptY" size="20" type="text" placeholder="Other (please specify)"/>
+
+    <label class="w-checkbox checkbox-field" for="00NHu00000LLptT">
+        <input id="00NHu00000LLptT" class="w-checkbox-input checkbox" name="00NHu00000LLptT" type="checkbox" value="1" checked />
+        <span for="Newsletter-Sign-Up" class="checkbox-label w-form-label"> By checking this box, you agree to sign up for PaRx communications and updates:</span>
+    </label>
+    <label class="field-label" for="00NHu00000P8gbF">Preferred language</label>
+    <select id="00NHu00000P8gbF" class="drop-down-field w-select" name="00NHu00000P8gbF" title="Language"><option value="English">Anglais</option>
+    <option value="French">Français</option>
+    </select>
+
+    <input class="navigation-button form w-button" type="submit" id="patientLogSubmit" value="Send">
+</form>
+
+<script src="./home.js"></script>
+<link rel="stylesheet" href="home.css">

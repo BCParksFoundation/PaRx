@@ -1,0 +1,46 @@
+
+    
+    <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00DHu000001gP6N" method="POST">
+    
+    <input type=hidden name="orgid" value="00DHu000001gP6N">
+    <input type=hidden name="retURL" value="https://parkprescriptions.webflow.io/en/log-your-parx-success-copy">
+    
+    <select  id="00NHu00000RWnJ2" name="00NHu00000RWnJ2" title="Form Type" hidden>
+        <option value="PrescriberLog" selected>PrescriberLog</option>
+    </select>
+    
+    <select id="00NHu00000P8gbF" name="00NHu00000P8gbF" title="Language" hidden>
+        <option value="English" selected>English</option>
+    </select>
+    
+    <label class="field-label">My PaRx code is: </label>
+    <div class="w-row">
+        <div class="form-column left w-col w-col-4">
+            <input id="00NHu00000RWnId" name="00NHu00000RWnId" class="text-field w-input" maxlength="8" placeholder="AA-AA123" type="text" required>
+            <div class="box-subtitle">Unique Provider Code</div>
+        </div>
+        <div class="form-column middle w-col w-col-4">
+            <input id="00NHu00000RWnIi" name="00NHu00000RWnIi" class="text-field w-input" maxlength="256" placeholder="YY/MM/DD" type="date" required>
+            <div class="box-subtitle">Prescription Date</div>
+        </div>
+        <div class="form-column right w-col w-col-4">
+            <input id="00NHu00000RWnIn" name="00NHu00000RWnIn" class="text-field w-input" maxlength="2" placeholder="AA" type="text" pattern="[a-zA-Z0-9]*" required>
+            <div class="box-subtitle">Patient's first and last initials </div>
+        </div>
+    </div>
+    <h3 class="sub-heading"><strong>Don't have a PaRx code? Tell your health-care provider about PaRx to see if they'll consider registering in our program.</strong></h3>
+
+    <label class="w-checkbox checkbox-field" for="00NHu00000RWnIs">
+        <input id="00NHu00000RWnIs" class="w-checkbox-input checkbox" name="00NHu00000RWnIs" type="checkbox" value="1" checked />
+        <span for="00NHu00000RWnIs" class="field-label w-form-label">
+            <strong>I am prescribing a Parks Canada Discovery Pass.<br>‍</strong>Prescribers can prescribe 1 pass per month, and should prioritize patients who live close to Parks Canada administered sites, and for whom the cost of a pass would be a barrier to nature access. Find more details about the pass prescription process <a href="/en/how-it-works" target="_blank"><strong>here</strong></a>.</span>
+    </label>
+    <label class="w-checkbox checkbox-field"><span for="CMN-2" class="field-label w-form-label"><strong>Important update regarding Canadian Museum of Nature Passes.<br>‍</strong>You no longer need to check the “I am prescribing/was prescribed a Canadian Museum of Nature Pass” when you Log Your PaRx to prescribe your patient/be prescribed a Canadian Museum of Nature Pass. Patients simply need to present their PaRx prescription and matching ID at the museum’s Admission Desk. Learn more <a href="https://www.parkprescriptions.ca/en/partner-offers"><strong>here</strong></a>.</span></label>
+    <label class="field-label" for="00NHu00000RV7Gh">Email:</label>
+    <input id="00NHu00000RV7Gh" class="text-field w-input" maxlength="80" name="00NHu00000RV7Gh" size="20" type="email" required/>
+    
+    <input class="navigation-button form w-button" type="submit" id="prescriberLogSubmit" value="Send">
+
+    </form>
+
+    <link rel="stylesheet" href="home.css">
