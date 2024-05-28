@@ -1,4 +1,5 @@
 
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">  
 <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST", class="prescriber-form">
     <input type=hidden name="orgid" value="00DHu000001gP6N">
     <input type=hidden name="retURL" value="https://parkprescriptions.webflow.io/en/log-your-parx-success-copy">
@@ -7,29 +8,29 @@
         <option value="Register" selected>Register</option>
     </select>
 
-    <label class="field-label" for="00NHu00000LLlW1">Full Name</label>
+    <label class="field-label" for="00NHu00000LLlW1">Nom complet</label>
     <div class="name-boxes w-row">
         <div class="name-box left w-col w-col-6">
-            <input class="text-field w-input" id="00NHu00000LLlW1" maxlength="255" name="00NHu00000LLlW1" size="20" type="text" placeholder="First Name" required/>
+            <input class="text-field w-input" id="00NHu00000LLlW1" maxlength="255" name="00NHu00000LLlW1" size="20" type="text" placeholder="Prénom" required/>
             <span class="error" aria-live="polite"></span>
         </div>
         <div class="name-box right w-col w-col-6">
-            <input class="text-field w-input" maxlength="256" name="Last-Name" data-name="Last Name" placeholder="Last Name" type="text" id="Last-Name-2" required>
+            <input class="text-field w-input" maxlength="256" name="00NHu00000LLlW6" data-name="Last Name" placeholder="Nom de famille" type="text" id="00NHu00000LLlW6" required>
             <span class="error" aria-live="polite"></span>
         </div>
     </div>
     
     
-    <label class="field-label" for="00NHu00000RV7Gh">Email</label>
+    <label class="field-label" for="00NHu00000RV7Gh">Adresse courriel</label>
     <input id="00NHu00000RV7Gh" class="text-field w-input" maxlength="80" name="00NHu00000RV7Gh" size="20" type="email" required/>
     
-    <label class="field-label" for="00NHu00000LLlVX">Practice Address</label>
+    <label class="field-label" for="00NHu00000LLlVX">Adresse de votre lieu de pratique</label>
     <div class="_3-boxes w-row">
         <div class="form-column left w-col w-col-4">
-            <input id="00NHu00000LLlVX" class="text-field w-input" maxlength="255" name="00NHu00000LLlVX" size="20" type="text" placeholder="Street Address"/>
+            <input id="00NHu00000LLlVX" class="text-field w-input" maxlength="255" name="00NHu00000LLlVX" size="20" type="text" placeholder="Adresse postale"/>
         </div>
         <div class="form-column middle w-col w-col-4">
-            <input id="00NHu00000LLlVc" class="text-field w-input" maxlength="255" name="00NHu00000LLlVc" size="20" type="text" placeholder="City"/>
+            <input id="00NHu00000LLlVc" class="text-field w-input" maxlength="255" name="00NHu00000LLlVc" size="20" type="text" placeholder="Ville"/>
         </div>
         <div class="form-column right w-col w-col-4">
             <select id="00NHu00000LLlWB" class="drop-down-field w-select"  name="00NHu00000LLlWB" title="Province" required><option value="">Province</option>
@@ -46,7 +47,7 @@
                 <option value="QC">QC</option>
                 <option value="SK">SK</option>
                 <option value="YT">YT</option>
-                <option value="None of the above">None of the above</option>
+                <option value="None of the above">Aucun de ces éléments</option>
                 </select>
         </div>
     </div>
@@ -58,38 +59,40 @@
         </div>
         
         <div class="name-box right w-col w-col-6">
-            <label class="field-label" for="00NHu00000LLsJs">Licensing Body</label>
+            <label class="field-label" for="00NHu00000LLsJs">Organisme de réglementation</label>
             <select id="00NHu00000LLsJs" class="drop-down-field w-select" name="00NHu00000LLsJs" list="licensingBodiesList" title="Licensing Body New"></select>
         </div>
     </div>
     
-    <label class="field-label" for="00NHu00000LLptO">Licence Number</label>
+    <label class="field-label" for="00NHu00000LLptO">Numéro de licence</label>
     <input id="00NHu00000LLptO" class="text-field w-input" maxlength="255" name="00NHu00000LLptO" size="20" type="text" />
     
-    <label class="field-label" for="00NHu00000LLptY">How did you hear about us?</label>
-    <select class="drop-down-field w-select referralSelect" title="How did you hear about us?"><option value="">--None--</option>
-        <option value="Licensing college or other healthcare organization">Organisme de réglementation ou autre organisme de soins de santé</option>
-        <option value="News (TV, radio, magazine)">Actualités (télévision, radio, magazine)</option>
+    <label class="field-label" for="00NHu00000LLptY">Comment avez-vous entendu parler de Prescri-Nature?</label>
+    <select class="drop-down-field w-select referralSelect" title="How did you hear about us?"><option value="">--Aucun--</option>
+        <option value="Google/internet search">Recherche sur Google/internet</option>
+    <option value="Media coverage (e.g. TV, radio, podcast, online article)">Couverture médiatique (TV, radio, podcast, article en ligne)</option>
         <option value="Patient">Patient</option>
+        <option value="Professional network (e.g. Newsletter from your regulatory college or provincial association)">Réseau professionnel (par exemple, bulletin d'information de l'ordre des médecins ou de l'association provinciale)</option>
         <option value="Seminar or presentation">Séminaire ou présentation</option>
         <option value="Social media">Médias sociaux</option>
-        <option value="Word of mouth (coworker, family, friend)">Bouche à oreille (collègue, famille, ami)</option>
+        <option value="University">Université</option>
+        <option value="Word of mouth (e.g. Coworker, family, friend)">Bouche à oreille (Collègue, famille, ami)</option>
         <option value="Other">Autre</option>
     </select>
-    <input class="text-field w-input w-hidden" id="00NHu00000LLptY" maxlength="255" name="00NHu00000LLptY" size="20" type="text" placeholder="Other (please specify)"/>
+    <input class="text-field w-input w-hidden" id="00NHu00000LLptY" maxlength="255" name="00NHu00000LLptY" size="20" type="text" placeholder="Autre (veuillez préciser ci-dessous)"/>
 
     <label class="w-checkbox checkbox-field" for="00NHu00000LLptT">
         <input id="00NHu00000LLptT" class="w-checkbox-input checkbox" name="00NHu00000LLptT" type="checkbox" value="1" checked />
-        <span for="00NHu00000LLptT" class="checkbox-label w-form-label"> By checking this box, you agree to sign up for PaRx communications and updates</span>
+        <span for="00NHu00000LLptT" class="checkbox-label w-form-label"> En cochant cette case, vous acceptez de recevoir les communications et les mises àjour de Prescri-Nature</span>
     </label>
     
-    <label class="field-label" for="00NHu00000P8gbF">Preferred language</label>
+    <label class="field-label" for="00NHu00000P8gbF">Langue préférée</label>
     <select id="00NHu00000P8gbF" class="drop-down-field w-select" name="00NHu00000P8gbF" title="Language">
         <option value="English">Anglais</option>
         <option value="French">Français</option>
     </select>
 
-    <input class="navigation-button form w-button" type="submit" id="RegisterSubmit" value="Send me my PaRx">
+    <input class="navigation-button form w-button" type="submit" id="RegisterSubmit" value="S'inscrire comme prescripteur Prescri-Nature">
 </form>
 
 <script src="./home_FR.js"></script>
