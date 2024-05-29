@@ -79,7 +79,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Dental Technician or Technologist",
                 "Dentist",
                 "Denturist",
-                "Dietician",
+                "Dietitian",
                 "Hearing Aid Practitioner",
                 "Licensed Practical Nurse",
                 "Medical Laboratory Technologist",
@@ -87,6 +87,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Midwife",
                 "Naturopathic Doctor",
                 "Nurse Practitioner",
+                "Nutritionist",
                 "Occupational Therapist",
                 "Optician",
                 "Optometrist",
@@ -102,7 +103,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Registered Psychiatric Nurse",
                 "Respiratory Therapist",
                 "Social Worker",
-                "Speech Language Pathologist",
+                "Speech-Language Pathologist",
                 "None of the above"];
             break;
         case "BC": 
@@ -124,7 +125,7 @@ const onChangeProvincialSelect = (evt) => {
                 "College of Psychologists of British Columbia", 
                 "College of Speech and Hearing Health Professionals of British Columbia", 
                 "College of Traditional Chinese Medicine Practitioners and Acupuncturists of British Columbia",
-                "Emergency Medical Assistants Licensing Board",
+                "BC Emergency Medical Assistants Licensing Board",
                 "Canadian Therapeutic Recreation Association",
                 "None of the above"];
              professionsOptionsList = ["Acupuncturist",
@@ -136,7 +137,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Dental Therapist",
                 "Dentist",
                 "Denturist",
-                "Dietician",
+                "Dietitian",
                 "Hearing Aid Practitioner",
                 "Licensed Practical Nurse",
                 "Massage Therapist",
@@ -194,7 +195,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Dental Hygienist",
                 "Dentist",
                 "Denturist",
-                "Dietician",
+                "Dietitian",
                 "Licensed Practical Nurse",
                 "Medical Laboratory Technologist",
                 "Midwife",
@@ -214,7 +215,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Registered Psychiatric Nurse",
                 "Respiratory Therapist",
                 "Social Worker",
-                "Speech Language Pathologist",
+                "Speech-Language Pathologist",
                 "None of the above"];
             break;
          case "NB": 
@@ -254,7 +255,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Dental Technician or Technologist",
                 "Dentist",
                 "Denturist",
-                "Dietician",
+                "Dietitian",
                 "Licensed Practical Nurse",
                 "Massage Therapist",
                 "Medical Laboratory Technologist",
@@ -275,7 +276,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Registered Nurse",
                 "Respiratory Therapist",
                 "Social Worker",
-                "Speech Language Pathologist",
+                "Speech-Language Pathologist",
                 "None of the above"];
             break;
           case "NS": 
@@ -300,7 +301,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Nova Scotia College of Respiratory Therapists",
                 "Nova Scotia College of Social Workers",
                 "Nova Scotia Dental Technicians Association",
-                "Nova Scotia Dietetic Association",
+                "Nova Scotia College of Dietitians and Nutritionists",
                 "Provincial Dental Board of Nova Scotia",
                 "Canadian Therapeutic Recreation Association",
                 "None of the above"];
@@ -311,13 +312,14 @@ const onChangeProvincialSelect = (evt) => {
                 "Dental Technician or Technologist",
                 "Dentist",
                 "Denturist",
-                "Dietician",
+                "Dietitian",
                 "Licensed Practical Nurse",
                 "Medical Laboratory Technologist",
                 "Medical Radiation Technologist",
                 "Midwife",
                 "Naturopathic Doctor",
                 "Nurse Practitioner",
+                "Nutritionist",
                 "Occupational Therapist",
                 "Optician",
                 "Optometrist",
@@ -365,7 +367,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Dental Hygienist",
                 "Dentist",
                 "Denturist",
-                "Dietician",
+                "Dietitian",
                 "Licensed Practical Nurse",
                 "Massage Therapist",
                 "Medical Laboratory Technologist",
@@ -382,13 +384,13 @@ const onChangeProvincialSelect = (evt) => {
                 "Registered Nurse",
                 "Respiratory Therapist",
                 "Social Worker",
-                "Speech Language Pathologist",
+                "Speech-Language Pathologist",
                 "Traditional Chinese Medicine Practitioner",
                 "None of the above"];
             break;
         case "PE": 
             licensingArrayProvinceSpecifiedList = ["College of Allied Health Professionals of Prince Edward Island",
-                "College of Counselling Therapy of Prince Edward Island",
+                "College of Counselling Therapy PEI",
                 "College of Dental Hygienists of Prince Edward Island",
                 "College of Dietitians of Prince Edward Island",
                 "College of Licensed Practical Nurses of Prince Edward Island",
@@ -405,7 +407,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Prince Edward Island Occupational Therapists Registration Board",
                 "Prince Edward Island Psychologists Registration Board",
                 "Prince Edward Island Social Work Registration Board",
-                "Registered Nurses of Prince Edward Island",
+                "College of Registered Nurses and Midwives of Prince Edward Island",
                 "Canadian Therapeutic Recreation Association",
                 "None of the above"];
              professionsOptionsList = ["Chiropractor",
@@ -413,7 +415,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Dental Hygienist",
                 "Dentist",
                 "Denturist",
-                "Dietician",
+                "Dietitian",
                 "Licensed Practical Nurse",
                 "Massage Therapist",
                 "Medical Laboratory Technologist",
@@ -474,7 +476,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Dental Therapist",
                 "Dentist",
                 "Denturist",
-                "Dietician",
+                "Dietitian",
                 "Hearing Aid Practitioner",
                 "Licensed Practical Nurse",
                 "Medical Laboratory Technologist",
@@ -496,7 +498,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Registered Psychiatric Nurse",
                 "Respiratory Therapist",
                 "Social Worker",
-                "Speech Language Pathologist",
+                "Speech-Language Pathologist",
                 "None of the above"];
             break;
           case "ON": 
@@ -537,7 +539,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Dental Technician or Technologist",
                 "Dentist",
                 "Denturist",
-                "Dietician",
+                "Dietitian",
                 "Homeopath",
                 "Kinesiologist",
                 "Licensed Practical Nurse",
@@ -561,7 +563,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Registered Nurse",
                 "Respiratory Therapist",
                 "Social Worker",
-                "Speech Language Pathologist",
+                "Speech-Language Pathologist",
                 "Traditional Chinese Medicine Practitioner",
                 "None of the above"];
             break;
@@ -582,7 +584,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Ordre des infirmières et infirmiers du Québec",
                 `Ordre des opticiens d'ordonnances du Québec`,
                 "Ordre des optométristes du Québec",
-                "Ordre des orthophonistes et audiologists du Québec",
+                "Ordre des orthophonistes et audiologistes du Québec",
                 "Ordre des pharmaciens du Québec",
                 "Ordre des podiatres du Québec",
                 "Ordre des psychoéducateurs et psychoéducatrices du Québec",
@@ -603,7 +605,8 @@ const onChangeProvincialSelect = (evt) => {
                 "Dental Technician or Technologist",
                 "Dentist",
                 "Denturist",
-                "Dietician",
+                "Dietitian",
+                "Dietitian-Nutritionist",
                 "Guidance Counsellor",
                 "Hearing Aid Practitioner",
                 "Kinesiologist",
@@ -611,15 +614,17 @@ const onChangeProvincialSelect = (evt) => {
                 "Medical Laboratory Technologist",
                 "Medical Radiation Technologist",
                 "Midwife",
+                "Nutritionist",
                 "Nurse Practitioner",
                 "Nursing Assistant",
                 "Occupational Therapist",
                 "Optician",
                 "Optometrist",
                 "Pharmacist",
+                "Psychoeducator",
                 "Physician",
                 "Physiotherapist",
-                "Physiotherapist Technologist",
+                "Physiotherapy Technologist",
                 "Podiatrist",
                 "Psychologist",
                 "Psychotherapist or Counselling Therapist",
@@ -629,7 +634,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Respiratory Therapist",
                 "Sexologist",
                 "Social Worker",
-                "Speech Language Pathologist",
+                "Speech-Language Pathologist",
                 "None of the above"];
             break;
         case "YT" :

@@ -35,9 +35,6 @@ const onChangeProvincialSelect = (evt) => {
     licensingBodySelect.innerHTML = "";
     professionsSelect.innerHTML = "";
     switch(evt.target.value) {
-        case "None of the above" :
-            alert(noneOfAboveMessage);
-            break;
         case "AB": 
             licensingArrayProvinceSpecifiedList = ["Alberta College of Combined Laboratory and X-Ray Technologists",
                 "Alberta College of Medical Diagnostic and Therapeutic Technologists",
@@ -71,7 +68,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Canadian Therapeutic Recreation Association",
                 "None of the above"];
              professionsOptionsList = [
-                ["Acupunctrice ou acupuncceur", "Acupuncturist"],
+                ["Acupunctrice ou acupuncteur", "Acupuncturist"],
                 ["Audiologiste", "Audiologist"],
                 ["Chiropractrice ou chiropracteur", "Chiropractor"],
                 ["Technologue ou technicienne de laboratoire et de radiologie combinée", "Combined Laboratory and X-Ray Technologist"],
@@ -80,7 +77,7 @@ const onChangeProvincialSelect = (evt) => {
                 ["Technicienne ou technicien dentaire", "Dental Technician or Technologist"],
                 ["Dentiste", "Dentist"], 
                 ["Denturologiste", "Denturist"],
-                ["Diététiste", "Dietician"],
+                ["Diététiste", "Dietitian"],
                 ["Conseillère ou conseiller d'orientation", "Hearing Aid Practitioner"],
                 ["Infirmière or infirmier auxiliaire", "Licensed Practical Nurse"],
                 ["Technologue de laboratoire médical", "Medical Laboratory Technologist"],
@@ -88,6 +85,7 @@ const onChangeProvincialSelect = (evt) => {
                 ["Sage-femme", "Midwife"],
                 ["Médecin naturopathe", "Naturopathic Doctor"],
                 ["Infirmière practicienne ou infirmier praticien", "Nurse Practitioner"],
+                ["Nutritionniste", "Nutritionist"],
                 ["Ergothérapeute", "Occupational Therapist"],
                 ["Opticienne ou opticien", "Optician"],
                 ["Optométristes", "Optometrist"],
@@ -103,8 +101,8 @@ const onChangeProvincialSelect = (evt) => {
                 ["Infirmières et infirmiers psychiatriques autorisés", "Registered Psychiatric Nurse"],
                 ["Inhalothérapeute", "Respiratory Therapist"],
                 ["Travailleuse sociale ou travailleur social", "Social Worker"],
-                ["Orthophoniste", "Speech Language Pathologist"],
-                ["None of the above", "None of the above"]
+                ["Orthophoniste", "Speech-Language Pathologist"],
+                ["Aucun de ces éléments", "None of the above"]
             ];
             break;
         case "BC": 
@@ -126,11 +124,11 @@ const onChangeProvincialSelect = (evt) => {
                 "College of Psychologists of British Columbia", 
                 "College of Speech and Hearing Health Professionals of British Columbia", 
                 "College of Traditional Chinese Medicine Practitioners and Acupuncturists of British Columbia",
-                "Emergency Medical Assistants Licensing Board",
+                "BC Emergency Medical Assistants Licensing Board",
                 "Canadian Therapeutic Recreation Association",
                 "None of the above"];
              professionsOptionsList = [
-                ["Acupunctrice ou acupuncceur", "Acupuncturist"],
+                ["Acupunctrice ou acupuncteur", "Acupuncturist"],
                 ["Audiologiste", "Audiologist"],
                 ["Chiropractrice ou chiropracteur", "Chiropractor"],
                 ["Assistante ou assistant dentaire", "Dental Assistant"],
@@ -139,7 +137,7 @@ const onChangeProvincialSelect = (evt) => {
                 ["Thérapeute dentaire", "Dental Therapist"],
                 ["Dentiste", "Dentist"],
                 ["Denturologiste", "Denturist"],
-                ["Diététiste", "Dietician"],
+                ["Diététiste", "Dietitian"],
                 ["Conseillère ou conseiller d'orientation", "Hearing Aid Practitioner"],
                 ["Infirmière or infirmier auxiliaire", "Licensed Practical Nurse"],
                 ["Massothérapeute", "Massage Therapist"],
@@ -163,7 +161,7 @@ const onChangeProvincialSelect = (evt) => {
                 ["Travailleuse sociale ou travailleur social", "Social Worker"],
                 ["Orthophoniste", "Speech and Hearing Health Professional"],
                 ["Praticienne en médecine traditionnelle chinoise", "Traditional Chinese Medicine Practitioner"],
-                ["None of the above", "None of the above"]
+                ["Aucun de ces éléments", "None of the above"]
             ];
             break;
         case "MB": 
@@ -198,7 +196,7 @@ const onChangeProvincialSelect = (evt) => {
                 ["Hygiéniste dentaire", "Dental Hygienist"],
                 ["Dentiste", "Dentist"],
                 ["Denturologiste", "Denturist"],
-                ["Diététiste", "Dietician"],
+                ["Diététiste", "Dietitian"],
                 ["Infirmière or infirmier auxiliaire", "Licensed Practical Nurse"],
                 ["Technologue de laboratoire médical", "Medical Laboratory Technologist"],
                 ["Sage-femme", "Midwife"],
@@ -218,8 +216,8 @@ const onChangeProvincialSelect = (evt) => {
                 ["Infirmières et infirmiers psychiatriques autorisés", "Registered Psychiatric Nurse"],
                 ["Inhalothérapeute", "Respiratory Therapist"],
                 ["Travailleuse sociale ou travailleur social", "Social Worker"],
-                ["Orthophoniste", "Speech Language Pathologist"],
-                ["None of the above", "None of the above"]
+                ["Orthophoniste", "Speech-Language Pathologist"],
+                ["Aucun de ces éléments", "None of the above"]
             ];
             break;
          case "NB": 
@@ -260,7 +258,7 @@ const onChangeProvincialSelect = (evt) => {
                 ["Technicienne ou technicien dentaire", "Dental Technician or Technologist"],
                 ["Dentiste", "Dentist"],
                 ["Denturologiste", "Denturist"],
-                ["Diététiste", "Dietician"],
+                ["Diététiste", "Dietitian"],
                 ["Infirmière or infirmier auxiliaire", "Licensed Practical Nurse"],
                 ["Massothérapeute", "Message Therapist"],
                 ["Technologue de laboratoire médical", "Medical Laboratory Technologist"],
@@ -281,8 +279,8 @@ const onChangeProvincialSelect = (evt) => {
                 ["Infirmière ou infirmier autorisés", "Registered Nurse"], 
                 ["Inhalothérapeute", "Respiratory Therapist"],
                 ["Travailleuse sociale ou travailleur social", "Social Worker"],
-                ["Orthophoniste", "Speech Language Pathologist"],
-                ["None of the above", "None of the above"]
+                ["Orthophoniste", "Speech-Language Pathologist"],
+                ["Aucun de ces éléments", "None of the above"]
             ];
             break;
           case "NS": 
@@ -307,7 +305,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Nova Scotia College of Respiratory Therapists",
                 "Nova Scotia College of Social Workers",
                 "Nova Scotia Dental Technicians Association",
-                "Nova Scotia Dietetic Association",
+                "Nova Scotia College of Dietitians and Nutritionists",
                 "Provincial Dental Board of Nova Scotia",
                 "Canadian Therapeutic Recreation Association",
                 "None of the above"];
@@ -319,13 +317,14 @@ const onChangeProvincialSelect = (evt) => {
                 ["Technicienne ou technicien dentaire", "Dental Technician or Technologist"],
                 ["Dentiste", "Dentist"],
                 ["Denturologiste", "Denturist"],
-                ["Diététiste", "Dietician"],
+                ["Diététiste", "Dietitian"],
                 ["Infirmière or infirmier auxiliaire", "Licensed Practical Nurse"],
                 ["Technologue de laboratoire médical", "Medical Laboratory Technologist"],
                 ["Technologue en radiologie médicale", "Medical Radiation Technologist"],
                 ["Sage-femme", "Midwife"],
                 ["Médecin naturopathe", "Naturopathic Doctor"],
                 ["Infirmière practicienne ou infirmier praticien", "Nurse Practitioner"],
+                ["Nutritionniste", "Nutritionist"],
                 ["Ergothérapeute", "Occupational Therapist"],
                 ["Opticienne ou opticien", "Optician"],
                 ["Optométristes", "Optometrist"],
@@ -338,7 +337,7 @@ const onChangeProvincialSelect = (evt) => {
                 ["Infirmière ou infirmier autorisés", "Registered Nurse"],
                 ["Inhalothérapeute", "Respiratory Therapist"],
                 ["Travailleuse sociale ou travailleur social", "Social Worker"],
-                ["None of the above", "None of the above"]
+                ["Aucun de ces éléments", "None of the above"]
             ];
             break;
           case "NL": 
@@ -368,14 +367,14 @@ const onChangeProvincialSelect = (evt) => {
                 "Canadian Therapeutic Recreation Association",
                 "None of the above"];
              professionsOptionsList = [
-                ["Acupunctrice ou acupuncceur", "Acupuncturist"],
+                ["Acupunctrice ou acupuncteur", "Acupuncturist"],
                 ["Audiologiste", "Audiologist"],
                 ["Chiropractrice ou chiropracteur", "Chiropractor"],
                 ["Assistante ou assistant dentaire", "Dental Assistant"],
                 ["Hygiéniste dentaire", "Dental Hygienist"],
                 ["Dentiste", "Dentist"],
                 ["Denturologiste", "Denturist"],
-                ["Diététiste", "Dietician"],
+                ["Diététiste", "Dietitian"],
                 ["Infirmière or infirmier auxiliaire", "Licensed Practical Nurse"],
                 ["Massothérapeute", "Massage Therapist"],
                 ["Technologue de laboratoire médical", "Medical Laboratory Technologist"],
@@ -392,14 +391,14 @@ const onChangeProvincialSelect = (evt) => {
                 ["Infirmière ou infirmier autorisés", "Registered Nurse"],
                 ["Inhalothérapeute", "Respiratory Therapist"],
                 ["Travailleuse sociale ou travailleur social", "Social Worker"],
-                ["Orthophoniste", "Speech Language Pathologist"],
+                ["Orthophoniste", "Speech-Language Pathologist"],
                 ["Praticienne en médecine traditionnelle chinoise", "Traditional Chinese Medicine Practitioner"],
-                ["None of the above", "None of the above"]
+                ["Aucun de ces éléments", "None of the above"]
         ];
             break;
         case "PE": 
             licensingArrayProvinceSpecifiedList = ["College of Allied Health Professionals of Prince Edward Island",
-                "College of Counselling Therapy of Prince Edward Island",
+                "College of Counselling Therapy PEI",
                 "College of Dental Hygienists of Prince Edward Island",
                 "College of Dietitians of Prince Edward Island",
                 "College of Licensed Practical Nurses of Prince Edward Island",
@@ -416,7 +415,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Prince Edward Island Occupational Therapists Registration Board",
                 "Prince Edward Island Psychologists Registration Board",
                 "Prince Edward Island Social Work Registration Board",
-                "Registered Nurses of Prince Edward Island",
+                "College of Registered Nurses and Midwives of Prince Edward Island",
                 "Canadian Therapeutic Recreation Association",
                 "None of the above"];
              professionsOptionsList = [
@@ -425,7 +424,7 @@ const onChangeProvincialSelect = (evt) => {
                 ["Hygiéniste dentaire", "Dental Hygienist"],
                 ["Dentiste", "Dentist"], 
                 ["Denturologiste", "Denturist"],
-                ["Diététiste", "Dietician"],
+                ["Diététiste", "Dietitian"],
                 ["Infirmière or infirmier auxiliaire", "Licensed Practical Nurse"],
                 ["Massothérapeute", "Massage Therapist"],
                 ["Technologue de laboratoire médical", "Medical Laboratory Technologist"],
@@ -445,7 +444,7 @@ const onChangeProvincialSelect = (evt) => {
                 ["Infirmière ou infirmier autorisés", "Registered Nurse"],
                 ["Inhalothérapeute", "Resipiratory Therapist"],
                 ["Travailleuse sociale ou travailleur social", "Social Worker"],
-                ["None of the above", "None of the above"]
+                ["Aucun de ces éléments", "None of the above"]
             ];
             break;
           case "SK": 
@@ -478,7 +477,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Saskatchewan Society of Medical Laboratory Technologists",
                 "Saskatchewan Society of Occupational Therapists",
                 "Canadian Therapeutic Recreation Association",
-                "None of the above"];
+                "Aucun de ces éléments"];
              professionsOptionsList = [["Audiologiste", "Audiologist"],
                 ["Chiropractrice ou chiropracteur", "Chiropractor"],
                 ["Assistante ou assistant dentaire", "Dental Assistant"],
@@ -487,7 +486,7 @@ const onChangeProvincialSelect = (evt) => {
                 ["Thérapeute dentaire", "Dental Therapist"],
                 ["Dentiste", "Dentist"],
                 ["Denturologiste", "Denturist"],
-                ["Diététiste", "Dietician"],
+                ["Diététiste", "Dietitian"],
                 ["Conseillère ou conseiller d'orientation", "Guidance Counsellor"],
                 ["Infirmière or infirmier auxiliaire", "Licensed Practical Nurse"],
                 ["Technologue de laboratoire médical", "Medical Laboratory Technologist"],
@@ -509,8 +508,8 @@ const onChangeProvincialSelect = (evt) => {
                 ["Infirmières et infirmiers psychiatriques autorisés", "Registered Psychiatric Nurse"],
                 ["Inhalothérapeute", "Respiratory Therapist"],
                 ["Travailleuse sociale ou travailleur social", "Social Worker"],
-                ["Orthophoniste", "Speech Language Pathologist"],
-                ["None of the above", "None of the above"]];
+                ["Orthophoniste", "Speech-Language Pathologist"],
+                ["Aucun de ces éléments", "None of the above"]];
             break;
           case "ON": 
             licensingArrayProvinceSpecifiedList = ["College of Audiologists and Speech-Language Pathologists of Ontario",
@@ -543,14 +542,14 @@ const onChangeProvincialSelect = (evt) => {
                 "Royal College of Dental Surgeons of Ontario",
                 "Canadian Therapeutic Recreation Association",
                 "None of the above"];
-             professionsOptionsList = [["Acupuncturist", "Acupunctrice ou acupuncceur"],
+             professionsOptionsList = [["Acupunctrice ou acupuncteur", "Acupuncturist"],
                 ["Audiologiste", "Audiologist"],
                 ["Chiropractrice ou chiropracteur", "Chiropractor"],
                 ["Hygiéniste dentaire", "Dental Hygienist"],
                 ["Technicienne ou technicien dentaire", "Dental Technician or Technologist"],
                 ["Dentiste", "Dentist"], 
                 ["Denturologiste", "Denturist"],
-                ["Diététiste", "Dietician"],
+                ["Diététiste", "Dietitian"],
                 ["Homéopathe", "Homeopath"],
                 ["Kinésiologue", "Kinesiologist"],
                 ["Infirmière or infirmier auxiliaire", "Licensed Practical Nurse"],
@@ -574,9 +573,9 @@ const onChangeProvincialSelect = (evt) => {
                 ["Infirmière ou infirmier autorisés", "Registered Nurse"],
                 ["Inhalothérapeute", "Respiratory Therapist"],
                 ["Travailleuse sociale ou travailleur social", "Social Worker"],
-                ["Orthophoniste", "Speech Language Pathologist"],
+                ["Orthophoniste", "Speech-Language Pathologist"],
                 ["Praticienne en médecine traditionnelle chinoise", "Traditional Chinese Medicine Practitioner"],
-                ["None of the above", "None of the above"]];
+                ["Aucun de ces éléments", "None of the above"]];
             break;
         case "QC": 
             licensingArrayProvinceSpecifiedList = ["Association canadienne des loisirs thérapeutiques",
@@ -595,7 +594,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Ordre des infirmières et infirmiers du Québec",
                 `Ordre des opticiens d'ordonnances du Québec`,
                 "Ordre des optométristes du Québec",
-                "Ordre des orthophonistes et audiologists du Québec",
+                "Ordre des orthophonistes et audiologistes du Québec",
                 "Ordre des pharmaciens du Québec",
                 "Ordre des podiatres du Québec",
                 "Ordre des psychoéducateurs et psychoéducatrices du Québec",
@@ -610,14 +609,15 @@ const onChangeProvincialSelect = (evt) => {
                 "Ordre professionnel des technologistes médicaux du Québec",
                 "None of the above"];
              professionsOptionsList = [
-                ["Acupunctrice ou acupuncceur", "Acupuncturist"],
+                ["Acupunctrice ou acupuncteur", "Acupuncturist"],
                 ["Audiologiste", "Audiologist"],
                 ["Chiropractrice ou chiropracteur", "Chiropractor"],
                 ["Hygiéniste dentaire", "Dental Hygienist"],
                 ["Technicienne ou technicien dentaire", "Dental Technician or Technologist"],
                 ["Dentiste", "Dentist"],
                 ["Denturologiste", "Denturist"],
-                ["Diététiste", "Dietician"],
+                ["Diététiste", "Dietitian"],
+                ["Dietitian-Nutritionist", "Diététiste-nutritionniste"],
                 ["Conseillère ou conseiller d'orientation", "Guidance Counsellor"],
                 ["Audioprothésiste", "Hearing Aid Practitioner"],
                 ["Kinésiologue", "Kinesiologist"],
@@ -627,13 +627,15 @@ const onChangeProvincialSelect = (evt) => {
                 ["Sage-femme", "Midwife"],
                 ["Infirmière practicienne ou infirmier praticien", "Nurse Practitioner"],
                 ["Infirmière auxiliaire", "Nursing Assistant"],
+                ["Nutritionniste", "Nutritionist"],
                 ["Ergothérapeute", "Occupational Therapist"],
                 ["Opticienne ou opticien", "Optician"],
                 ["Optométristes", "Optometrist"],
                 ["Pharmacienne ou pharmacien", "Pharmacist"],
                 ["Médecin", "Physician"],
+                ["Psychoeducator", "Psychoéducatrice ou psychoéducateur"],
                 ["Physiothérapeute", "Physiotherapist"],
-                ["Technologue en physiothérapeute", "Physiotherapist Technologist"],
+                ["Technologue en physiothérapeute", "Physiotherapy Technologist"],
                 ["Podologue", "Podiatrist"],
                 ["Psychologue", "Psychologist"],
                 ["Psychothérapeute", "Psychotherapist or Counselling Therapist"],
@@ -643,8 +645,8 @@ const onChangeProvincialSelect = (evt) => {
                 ["Inhalothérapeute", "Respiratory Therapist"],
                 ["Sexologue", "Sexologist"],
                 ["Travailleuse sociale ou travailleur social", "Social Worker"],
-                ["Orthophoniste", "Speech Language Pathologist"],
-                ["None of the above", "None of the above"]
+                ["Orthophoniste", "Speech-Language Pathologist"],
+                ["Aucun de ces éléments", "None of the above"]
              ];
             break;
         case "YT" :
@@ -672,7 +674,7 @@ const onChangeProvincialSelect = (evt) => {
                 ["Loisirs thérapeute", "Recreation Therapist"],
                 ["Infirmière ou infirmier autorisés", "Registered Nurse"],
                 ["Infirmières et infirmiers psychiatriques autorisés", "Registered Psychiatric Nurse"],
-                ["None of the above", "None of the above"]
+                ["Aucun de ces éléments", "None of the above"]
              ];
             break;
         case "NT" :
@@ -697,7 +699,7 @@ const onChangeProvincialSelect = (evt) => {
                 ["Loisirs thérapeute", "Recreation Therapist"],
                 ["Infirmière ou infirmier autorisés", "Registered Nurse"],
                 ["Travailleuse sociale ou travailleur social", "Social Worker"],
-                ["None of the above", "None of the above"]
+                ["Aucun de ces éléments", "None of the above"]
              ];
             break;
         case "NU" :  
@@ -719,7 +721,7 @@ const onChangeProvincialSelect = (evt) => {
                 ["Médecin", "Physician"],
                 ["Loisirs thérapeute", "Recreation Therapist"],
                 ["Infirmière ou infirmier autorisés", "Registered Nurse"],
-                ["None of the above", "None of the above"]
+                ["Aucun de ces éléments", "None of the above"]
              ];
             break;
         case "":
