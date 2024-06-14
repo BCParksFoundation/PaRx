@@ -1,9 +1,10 @@
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
 
-    
-    <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00Dbm000003ouOf" method="POST">
+<form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00Dbm000003ouOf" method="POST">
     
     <input type=hidden name="orgid" value="00Dbm000003ouOf">
-    <input type=hidden name="retURL" value="https://parkprescriptions.webflow.io/en/log-your-parx-success-copy">
+    <input type=hidden name="retURL" value="www.parkprescriptions.ca/en/prescriber-log-your-parx-success">
+
     
     <select  id="00Nbm000001b20t" name="00Nbm000001b20t" title="Form Type" hidden>
         <option value="PrescriberLog" selected>PrescriberLog</option>
@@ -13,33 +14,35 @@
         <option value="English" selected>English</option>
     </select>
     
-    <label class="field-label">My PaRx code is: </label>
+    <label class="field-label">My patient's PaRx prescription is: </label>
     <div class="w-row">
         <div class="form-column left w-col w-col-4">
             <input id="00Nbm000001b21L" name="00Nbm000001b21L" class="text-field w-input" maxlength="8" placeholder="AA-AA123" type="text" required>
             <div class="box-subtitle">Unique Provider Code</div>
         </div>
         <div class="form-column middle w-col w-col-4">
-            <input id="00Nbm000001b21B" name="00Nbm000001b21B" class="text-field w-input" maxlength="256" placeholder="YY/MM/DD" type="date" required>
+        <span class="dateInput dateOnlyInput">
+            <input id="00Nbm000001b21B" name="00Nbm000001b21B" placeholder="DD/MM/YYYY" class="text-field w-input" type="date" required>
             <div class="box-subtitle">Prescription Date</div>
+        </span>
         </div>
         <div class="form-column right w-col w-col-4">
             <input id="00Nbm000001b20s" name="00Nbm000001b20s" class="text-field w-input" maxlength="2" placeholder="AA" type="text" pattern="[a-zA-Z0-9]*" required>
             <div class="box-subtitle">Patient's first and last initials </div>
         </div>
     </div>
-    <h3 class="sub-heading"><strong>Don't have a PaRx code? Tell your health-care provider about PaRx to see if they'll consider registering in our program.</strong></h3>
+    <h3 class="sub-heading"><strong>Don't have a unique provider code? Register to become a PaRx prescriber <a href="/en/get-started" target="_blank"><strong>here</strong></a>.</strong></h3>
 
-    <label class="w-checkbox checkbox-field" for="00Nbm000001b217">
-        <input id="00Nbm000001b217" class="w-checkbox-input checkbox" name="00Nbm000001b217" type="checkbox" value="1" checked />
+    <label class="w-checkbox checkbox-field" for="00NJQ000000iI6M">
+        <input id="00Nbm000001b217" class="w-checkbox-input checkbox" name="00Nbm000001b217" type="checkbox" value="1" />
         <span for="00Nbm000001b217" class="field-label w-form-label">
             <strong>I am prescribing a Parks Canada Discovery Pass.<br>‍</strong>Prescribers can prescribe 1 pass per month, and should prioritize patients who live close to Parks Canada administered sites, and for whom the cost of a pass would be a barrier to nature access. Find more details about the pass prescription process <a href="/en/how-it-works" target="_blank"><strong>here</strong></a>.</span>
     </label>
     <label class="field-label" for="00Nbm000001b21M">Email:</label>
-    <input id="00Nbm000001b21M" class="text-field w-input" maxlength="80" name="00Nbm000001b21M" size="20" type="email" required/>
+    <input id="00Nbm000001b21M" class="text-field w-input" maxlength="80" name="00Nbm000001b21M" size="20" type="email" required placeholder="Please enter the email you used to initially sign up to our program with"/>
     
-    <input class="navigation-button form w-button" type="submit" id="prescriberLogSubmit" value="Send">
+    <input class="navigation-button form w-button" type="submit" id="prescriberLogSubmit" value="Log my Patient's PaRx Prescription">
 
-    </form>
+</form>
 
     <link rel="stylesheet" href="home.css">
