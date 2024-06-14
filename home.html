@@ -1,38 +1,39 @@
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
 
-<form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST", class="prescriber-form">
-    <input type=hidden name="orgid" value="00DHu000001gP6N">
-    <input type=hidden name="retURL" value="https://parkprescriptions.webflow.io/en/log-your-parx-success-copy">
+<form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00Dbm000003ouOf" method="POST", class="prescriber-form">
+    <input type=hidden name="orgid" value="00Dbm000003ouOf">
+    <input type=hidden name="retURL" value="www.parkprescriptions.ca/en/register-as-a-prescriber-success">
     
-    <select  id="00NHu00000RWnJ2" name="00NHu00000RWnJ2" title="Form Type" hidden>
+    <select  id="00Nbm000001b20t" name="00Nbm000001b20t" title="Form Type" hidden>
         <option value="Register" selected>Register</option>
     </select>
 
-    <label class="field-label" for="00NHu00000LLlW1">Full Name</label>
+    <label class="field-label" for="00Nbm000001b20r">Full Name</label>
     <div class="name-boxes w-row">
         <div class="name-box left w-col w-col-6">
-            <input class="text-field w-input" id="00NHu00000LLlW1" maxlength="255" name="00NHu00000LLlW1" size="20" type="text" placeholder="First Name" required>
+            <input class="text-field w-input" id="00Nbm000001b20r" maxlength="255" name="00Nbm000001b20r" size="20" type="text" placeholder="First Name" required>
             <span class="error" aria-live="polite"></span>
         </div>
         <div class="name-box right w-col w-col-6">
-            <input class="text-field w-input" maxlength="256" name="00NHu00000LLlW6" data-name="Last Name" placeholder="Last Name" type="text" id="00NHu00000LLlW6" required>
+            <input class="text-field w-input" maxlength="256" name="00Nbm000001b20y" placeholder="Last Name" type="text" id="00Nbm000001b20y" required>
             <span class="error" aria-live="polite"></span>
         </div>
     </div>
     
     
-    <label class="field-label" for="00NHu00000RV7Gh">Email</label>
-    <input id="00NHu00000RV7Gh" class="text-field w-input" maxlength="80" name="00NHu00000RV7Gh" size="20" type="email" required/>
+    <label class="field-label" for="00Nbm000001b21M">Email</label>
+    <input id="00Nbm000001b21M" class="text-field w-input" maxlength="80" name="00Nbm000001b21M" size="20" type="email" required/>
     
-    <label class="field-label" for="00NHu00000LLlVX">Practice Address</label>
+    <label class="field-label" for="00Nbm000001b21I">Practice Address</label>
     <div class="_3-boxes w-row">
         <div class="form-column left w-col w-col-4">
-            <input id="00NHu00000LLlVX" class="text-field w-input" maxlength="255" name="00NHu00000LLlVX" size="20" type="text" placeholder="Street Address" />
+            <input id="00Nbm000001b21I" class="text-field w-input" maxlength="255" name="00Nbm000001b21I" size="20" type="text" placeholder="Street Address" />
         </div>
         <div class="form-column middle w-col w-col-4">
-            <input id="00NHu00000LLlVc" class="text-field w-input" maxlength="255" name="00NHu00000LLlVc" size="20" type="text" placeholder="City" />
+            <input id="00Nbm000001b20h" class="text-field w-input" maxlength="255" name="00Nbm000001b20h" size="20" type="text" placeholder="City" />
         </div>
         <div class="form-column right w-col w-col-4">
-            <select id="00NHu00000LLlWB" class="drop-down-field w-select"  name="00NHu00000LLlWB" title="Province" required><option value="">Province</option>
+            <select id="00Nbm000001b21G" class="drop-down-field w-select provinceSelect"  name="00Nbm000001b21G" title="Province" required><option value="">Province</option>
                 <option value="AB">AB</option>
                 <option value="BC">BC</option>
                 <option value="MB">MB</option>
@@ -53,42 +54,46 @@
     
     <div class="name-boxes w-row">
         <div class="name-box left w-col w-col-6">
-            <label class="field-label" for="00NHu00000LLlWG">Profession</label>
-            <select id="00NHu00000LLlWG" class="drop-down-field w-select" name="00NHu00000LLlWG" list="professionsList" title="Profession"></select>
+            <label class="field-label" for="00Nbm000001b21E">Profession</label>
+            <select id="00Nbm000001b21E" class="drop-down-field w-select professionsSelect" name="00Nbm000001b21E" list="professionsList" title="Profession"></select>
         </div>
         
         <div class="name-box right w-col w-col-6">
-            <label class="field-label" for="00NHu00000LLsJs">Licensing Body</label>
-            <select id="00NHu00000LLsJs" class="drop-down-field w-select" name="00NHu00000LLsJs" list="licensingBodiesList" title="Licensing Body New"></select>
+            <label class="field-label" for="00Nbm000001b212">Licensing Body</label>
+            <select id="00Nbm000001b212" class="drop-down-field w-select licensingBodySelect" name="00Nbm000001b212" list="licensingBodiesList" title="Licensing Body New"></select>
         </div>
     </div>
     
-    <label class="field-label" for="00NHu00000LLptO">Licence Number</label>
-    <input id="00NHu00000LLptO" class="text-field w-input" maxlength="255" name="00NHu00000LLptO" size="20" type="text" />
+    <label class="field-label" for="00Nbm000001b210">Licence Number</label>
+    <input id="00Nbm000001b210" class="text-field w-input" maxlength="255" name="00Nbm000001b210" size="20" type="text" />
     
-    <label class="field-label" for="00NHu00000LLptY">How did you hear about us?</label>
-    <select class="drop-down-field w-select referralSelect" title="How did you hear about us?"><option value="">--None--</option><option value="Licensing college or other healthcare organization">Licensing college or other healthcare organization</option>
-        <option value="News (TV, radio, magazine)">News (TV, radio, magazine)</option>
+    <label class="field-label" for="00Nbm000001b20u">How did you hear about us?</label>
+    <select id="00Nbm000001b20u" class="drop-down-field w-select referralSelect" title="How did you hear about us?" name="00Nbm000001b20u"><option value="">--None--</option>
+            <option value="Google/internet search">Google/internet search</option>
+    <option value="Media coverage (e.g. TV, radio, podcast, online article)">Media coverage (e.g. TV, radio, podcast, online article)</option>
         <option value="Patient">Patient</option>
+        <option value="Professional network (e.g. Newsletter from your regulatory college or provincial association)">Professional network (e.g. Newsletter from your regulatory college or provincial association)</option>
         <option value="Seminar or presentation">Seminar or presentation</option>
         <option value="Social media">Social media</option>
-        <option value="Word of mouth (coworker, family, friend)">Word of mouth (coworker, family, friend)</option>
+        <option value="University">University</option>
+        <option value="Word of mouth (e.g. Coworker, family, friend)">Word of mouth (e.g. Coworker, family, friend)</option>
         <option value="Other">Other</option>
-    </select>
-    <input class="text-field w-input w-hidden" id="00NHu00000LLptY" maxlength="255" name="00NHu00000LLptY" size="20" type="text" placeholder="Other (please specify)"/>
 
-    <label class="w-checkbox checkbox-field" for="00NHu00000LLptT">
-        <input id="00NHu00000LLptT" class="w-checkbox-input checkbox" name="00NHu00000LLptT" type="checkbox" value="1" checked />
-        <span for="00NHu00000LLptT" class="checkbox-label w-form-label"> By checking this box, you agree to sign up for PaRx communications and updates</span>
+    </select>
+    <input class="text-field w-input w-hidden" id="00Nbm000001b20v" maxlength="255" name="00Nbm000001b20v" size="20" type="text" placeholder="Other (please specify)"/>
+
+    <label class="w-checkbox checkbox-field" for="00Nbm000001b214">
+        <input id="00Nbm000001b214" class="w-checkbox-input checkbox" name="00Nbm000001b214" type="checkbox" value="1" checked />
+        <span for="00Nbm000001b214" class="checkbox-label w-form-label"> By checking this box, you agree to sign up for PaRx communications and updates</span>
     </label>
     
-    <label class="field-label" for="00NHu00000P8gbF">Preferred language</label>
-    <select id="00NHu00000P8gbF" class="drop-down-field w-select" name="00NHu00000P8gbF" title="Language">
+    <label class="field-label" for="00Nbm000001b20x">Preferred language</label>
+    <select id="00Nbm000001b20x" class="drop-down-field w-select" name="00Nbm000001b20x" title="Language">
         <option value="English">English</option>
         <option value="French">French</option>
     </select>
 
-    <input class="navigation-button form w-button" type="submit" id="RegisterSubmit" value="Send me my PaRx">
+    <input class="navigation-button form w-button" type="submit" id="RegisterSubmit" value="Register as a PaRx Prescriber">
 </form>
 
 <script src="./home.js"></script>
