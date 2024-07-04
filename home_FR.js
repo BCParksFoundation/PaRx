@@ -661,9 +661,7 @@ const onChangeProvincialSelect = (evt) => {
             break;
         case "YT" :
             licensingArrayProvinceSpecifiedList = ["Canadian Therapeutic Recreation Association",
-                "Government of Yukon, Yukon Department of Community Services",
-                "Professional Licensing and Regulatory Affairs, Yukon Government",
-                "Yukon Department of Community Services, Professional Licensing and Regulatory Affairs Branch",
+                "Government of Yukon, Professional Licensing",
                 "Yukon Medical Council",
                 "Yukon Registered Nurses Association",
                 "None of the above"];
