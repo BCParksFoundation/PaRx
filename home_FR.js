@@ -1,9 +1,8 @@
 
 
-
-var professionsSelect = document.getElementById("ProfessionsSelect");
-var provinceSelect = document.getElementById("provinceSelect");
-var licensingBodySelect = document.getElementById("licensingBodySelect");
+var professionsSelect = document.getElementsByClassName("professionsSelect")[0];
+var provinceSelect = document.getElementsByClassName("provinceSelect")[0];
+var licensingBodySelect = document.getElementsByClassName("licensingBodySelect")[0];
 var referralSelectors = document.getElementsByClassName("referralSelect");
 var discoveryPassValue = document.getElementsByClassName("discoveryPass")[0];
 
@@ -11,8 +10,8 @@ const addOptionsValueToProfessionsSelect = (professionsArray) => {
     var option = document.createElement("option");
     for (var i = 0; i < professionsArray.length; i++) {
         var option = document.createElement("option");
-        option.value = professionsArray[i][1];
-        option.text = professionsArray[i][0];
+        option.value = professionsArray[i];
+        option.text = professionsArray[i];
         professionsSelect.append(option);
     }
 }
