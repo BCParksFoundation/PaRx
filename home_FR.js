@@ -10,8 +10,8 @@ const addOptionsValueToProfessionsSelect = (professionsArray) => {
     var option = document.createElement("option");
     for (var i = 0; i < professionsArray.length; i++) {
         var option = document.createElement("option");
-        option.value = professionsArray[i];
-        option.text = professionsArray[i];
+        option.value = professionsArray[i][1];
+        option.text = professionsArray[i][0];
         professionsSelect.append(option);
     }
 }
