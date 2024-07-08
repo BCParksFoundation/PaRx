@@ -21,10 +21,11 @@
             <div class="box-subtitle">Unique Provider Code</div>
         </div>
         <div class="form-column middle w-col w-col-4">
-        <span class="dateInput dateOnlyInput">
-            <input id="00Nbm000001b21B" name="00Nbm000001b21B" placeholder="DD/MM/YYYY" class="text-field w-input" type="text" required>
-            <div class="box-subtitle">Prescription Date</div>
-        </span>
+            <span class="dateInput dateOnlyInput">
+                <input type="date" id="dateInput" class="text-field w-input" onchange="formatDate(this)" required>
+                <input id="00Nbm000001b21B" name="00Nbm000001b21B" placeholder="DD/MM/YYYY" class="text-field w-input" type="hidden" oninput="onTextInput()">
+                <div class="box-subtitle">Prescription Date</div>
+            </span>
         </div>
         <div class="form-column right w-col w-col-4">
             <input id="00Nbm000001b20s" name="00Nbm000001b20s" class="text-field w-input" maxlength="2" placeholder="AA" type="text" pattern="[a-zA-Z0-9]*" required>
@@ -45,4 +46,5 @@
 
 </form>
 
-    <link rel="stylesheet" href="home.css">
+<script src="./test.js"></script>
+<link rel="stylesheet" href="home.css">

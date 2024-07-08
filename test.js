@@ -759,8 +759,36 @@ Array.prototype.forEach.call(referralSelectors, referralSelection => {
     referralSelection.addEventListener("change", onChangeReferralSelect);
 });
 
-provinceSelect.addEventListener("change", onChangeProvincialSelect);
+provinceSelect?.addEventListener("change", onChangeProvincialSelect);
 
 if (discoveryPassValue) {
     discoveryPassValue.addEventListener("change", onChangeDiscoveryPass);
+}
+
+function formatDate(input) {
+    const date = new Date(input.value);
+    if (isNaN(date.getTime())) return; // If the date is invalid, do nothing
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    document.getElementById('00Nbm000001b21B').value = `${day}/${month}/${year}`;
+}
+
+function parseDate(dateString) {
+    const parts = dateString.split('/');
+    if (parts.length !== 3) return null;
+    const day = parseInt(parts[0], 10);
+    const month = parseInt(parts[1], 10) - 1;
+    const year = parseInt(parts[2], 10);
+    return new Date(year, month, day);
+}
+
+function onTextInput() {
+    const dateInputText = document.getElementById('00Nbm000001b21B');
+    const date = parseDate(dateInputText.value);
+    if (!date || isNaN(date.getTime())) return; // If the date is invalid, do nothing
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    document.getElementById('dateInput').value = `${year}-${month}-${day}`;
 }
