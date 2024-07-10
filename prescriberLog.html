@@ -1,4 +1,14 @@
-
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+    <script>
+        function formatDate(input) {
+            const date = new Date(input.value);
+            if (isNaN(date.getTime())) return; // If the date is invalid, do nothing
+            const day = String(date.getDate() +1 ).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const year = date.getFullYear();
+            document.getElementById('00NJQ000000iI6P').value = `${day}/${month}/${year}`;
+        }
+    </script>
     
     <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00D1U000000Da1s" method="POST">
     
@@ -22,7 +32,8 @@
         </div>
         <div class="form-column middle w-col w-col-4">
         <span class="dateInput dateOnlyInput">
-            <input id="00NJQ000000iI6P" name="00NJQ000000iI6P" placeholder="DD/MM/YYYY" class="text-field w-input" type="text" required>
+           <input type="date" id="dateInput" class="text-field w-input" placeholder="YYYY-MM-DD" onchange="formatDate(this)" required>
+            <input id="00NJQ000000iI6P" name="00NJQ000000iI6P" placeholder="YYYY-MM-DD" class="text-field w-input" type=hidden>
             <div class="box-subtitle">Prescription Date</div>
         </span>
         </div>
