@@ -3,10 +3,11 @@
         function formatDate(input) {
             const date = new Date(input.value);
             if (isNaN(date.getTime())) return; // If the date is invalid, do nothing
-            const day = String(date.getDate() +1 ).padStart(2, '0');
-            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate() + 1 ).padStart(2, '0');
+            const month = String(date.getMonth()).padStart(2, '0');
             const year = date.getFullYear();
-            document.getElementById('00NJQ000000iI6P').value = `${day}/${month}/${year}`;
+            const newDate = new Date(year, month, day).toLocaleDateString("en-UK");
+            document.getElementById('00NJQ000000mnRl').value = newDate;
         }
     </script>
     
@@ -16,41 +17,41 @@
     <input type=hidden name="retURL" value="www.parkprescriptions.ca/en/prescriber-log-your-parx-success">
 
     
-    <select  id="00NJQ000000iI6D" name="00NJQ000000iI6D" title="Form Type" hidden>
+    <select  id="00NJQ000000mnRZ" name="00NJQ000000mnRZ" title="Form Type" hidden>
         <option value="PrescriberLog" selected>PrescriberLog</option>
     </select>
     
-    <select id="00NJQ000000iI6G" name="00NJQ000000iI6G" title="Language" hidden>
+    <select id="00NJQ000000mnRc" name="00NJQ000000mnRc" title="Language" hidden>
         <option value="English" selected>English</option>
     </select>
     
     <label class="field-label">My patient's PaRx prescription is: </label>
     <div class="w-row">
         <div class="form-column left w-col w-col-4">
-            <input id="00NJQ000000iI6U" name="00NJQ000000iI6U" class="text-field w-input" maxlength="8" placeholder="AA-AA123" type="text" required>
+            <input id="00NJQ000000mnRq" name="00NJQ000000mnRq" class="text-field w-input" maxlength="8" placeholder="AA-AA123" type="text" required>
             <div class="box-subtitle">Unique Provider Code</div>
         </div>
         <div class="form-column middle w-col w-col-4">
         <span class="dateInput dateOnlyInput">
            <input type="date" id="dateInput" class="text-field w-input" placeholder="YYYY-MM-DD" onchange="formatDate(this)" required>
-            <input id="00NJQ000000iI6P" name="00NJQ000000iI6P" placeholder="YYYY-MM-DD" class="text-field w-input" type=hidden>
+            <input id="00NJQ000000mnRl" name="00NJQ000000mnRl" placeholder="YYYY-MM-DD" class="text-field w-input" type=hidden>
             <div class="box-subtitle">Prescription Date</div>
         </span>
         </div>
         <div class="form-column right w-col w-col-4">
-            <input id="00NJQ000000iI6C" name="00NJQ000000iI6C" class="text-field w-input" maxlength="2" placeholder="AA" type="text" pattern="[a-zA-Z0-9]*" required>
+            <input id="00NJQ000000mnRY" name="00NJQ000000mnRY" class="text-field w-input" maxlength="2" placeholder="AA" type="text" pattern="[a-zA-Z0-9]*" required>
             <div class="box-subtitle">Patient's first and last initials </div>
         </div>
     </div>
     <h3 class="sub-heading"><strong>Don't have a unique provider code? Register to become a PaRx prescriber <a href="/en/get-started" target="_blank"><strong>here</strong></a>.</strong></h3>
 
-    <label class="w-checkbox checkbox-field" for="00NJQ000000iI6M">
-        <input id="00NJQ000000iI6M" class="w-checkbox-input checkbox" name="00NJQ000000iI6M" type="checkbox" value="1" />
-        <span for="00NJQ000000iI6M" class="field-label w-form-label">
+    <label class="w-checkbox checkbox-field" for="00NJQ000000mnRi">
+        <input id="00NJQ000000mnRi" class="w-checkbox-input checkbox" name="00NJQ000000mnRi" type="checkbox" value="1" />
+        <span for="00NJQ000000mnRi" class="field-label w-form-label">
             <strong>I am prescribing a Parks Canada Discovery Pass.<br>‍</strong>Prescribers can prescribe 1 pass per month, and should prioritize patients who live close to Parks Canada administered sites, and for whom the cost of a pass would be a barrier to nature access. Find more details about the pass prescription process <a href="/en/how-it-works" target="_blank"><strong>here</strong></a>.</span>
     </label>
-    <label class="field-label" for="00NJQ000000iI6V">Email:</label>
-    <input id="00NJQ000000iI6V" class="text-field w-input" maxlength="80" name="00NJQ000000iI6V" size="20" type="email" required placeholder="Please enter the email you used to initially sign up to our program with"/>
+    <label class="field-label" for="00NJQ000000mnRr">Email:</label>
+    <input id="00NJQ000000mnRr" class="text-field w-input" maxlength="80" name="00NJQ000000mnRr" size="20" type="email" required placeholder="Please enter the email you used to initially sign up to our program with"/>
     
     <input class="navigation-button form w-button" type="submit" id="prescriberLogSubmit" value="Log my Patient's PaRx Prescription">
 
