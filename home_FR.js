@@ -754,7 +754,7 @@ const onChangeReferralSelect = (evt) => {
     }
     else {
         other.classList.add("w-hidden");
-        other.value = select.value;
+        other.value = "";
     }
 }
 
