@@ -578,7 +578,7 @@ const onChangeProvincialSelect = (evt) => {
                 ["Aucun de ces éléments", "None of the above"]];
             break;
         case "QC": 
-            licensingArrayProvinceSpecifiedList = ["Association canadienne des loisirs thérapeutiques",
+            licensingArrayProvinceSpecifiedList = [["Association canadienne des loisirs thérapeutiques","Canadian Therapeutic Recreation Association"],
                 "Collège des médecins du Québec",
                 "Fédération des kinésiologues du Québec",
                 "Ordre des Acupuncteurs du Québec",
