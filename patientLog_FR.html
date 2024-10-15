@@ -1,114 +1,114 @@
 <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">  
-    <!-- <script>
-           function formatDatePatient(input) {
-               const date = new Date(input.value);
-               if (isNaN(date.getTime())) return; // If the date is invalid, do nothing
-               const day = String(date.getDate() + 1).padStart(2, '0');
-               const month = String(date.getMonth() + 1).padStart(2, '0');
-               const year = date.getFullYear();
-               document.getElementsByClassName('dateinput2')[0].value = `${day}/${month}/${year}`;
-           }
-    </script> -->
-   <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00D1U000000Da1s" method="POST">
-       
-       <input type=hidden name="orgid" value="00D1U000000Da1s">
-       <input type=hidden name="retURL" value="http://www.prescri-nature.ca/patient-inscription-succes">
-       
-       <select  id="00NJQ000000iI6D" name="00NJQ000000iI6D" title="Form Type" hidden>
-       <option value="PatientLog" selected>PatientLog</option>
-       </select>
-       <label class="field-label" for="00Nbm000001b20r">Nom complet</label>
-       <div class="name-boxes w-row">
-           <div class="name-box left w-col w-col-6">
-               <input class="text-field w-input" id="00NJQ000000iI6B" maxlength="255" name="00NJQ000000iI6B" size="20" type="text" placeholder="Prénom" required/>
-               <span class="error" aria-live="polite"></span>
-           </div>
-           <div class="name-box right w-col w-col-6">
-               <input class="text-field w-input" maxlength="256" name="00NJQ000000iI6H" data-name="Last Name" placeholder="Nom de famille" type="text" id="00NJQ000000iI6H" required>
-               <span class="error" aria-live="polite"></span>
-           </div>
-       </div>
-       
-       
-       <label class="field-label" for="00NJQ000000iI6V">Adresse courriel</label>
-       <input id="00NJQ000000iI6V" class="text-field w-input" maxlength="80" name="00NJQ000000iI6V" size="20" type="email" />
-       
-       <label class="field-label"> Ma prescription Prescri-Nature est :</label>
-       <div class="w-row">
-           <div class="form-column left w-col w-col-4">
-               <input id="00NJQ000000iI6U" name="00NJQ000000iI6U" class="text-field w-input" maxlength="8" placeholder="AA-AA123" type="text" required>
-               <div class="box-subtitle">Code unique de prestataire</div>
-           </div>
-           <div class="form-column middle w-col w-col-4">
-                   <!-- <span class="dateInput dateOnlyInput"> -->
-                   <!-- <input type="date" id="dateInput2" placeholder="AAAA-MM-JJ" class="text-field w-input" onchange="formatDatePatient(this)" required> -->
-                   <input id="00NJQ000000iI6P" name="00NJQ000000iI6P" placeholder="AAAA-MM-JJ" class="text-field w-input dateinput2">
-                   <div class="box-subtitle">Date de prescription</div>
-           </div>
-           <div class="form-column right w-col w-col-4">
-               <input id="00NJQ000000iI6C" name="00NJQ000000iI6C" class="text-field w-input" maxlength="2" placeholder="AA" type="text" pattern="[a-zA-Z0-9]*" required>
-               <div class="box-subtitle">Initiales du patient</div>
-           </div>
-       </div>
-   <h3 class="sub-heading"><strong>Vous n'avez pas d'ordonnance Prescri-Nature ? Parlez de Prescri-Nature à votre professionnel de la santé pour qu'il envisage de s'inscrire à notre programme.</strong></h3>
-           <br>
-       <label class="w-checkbox checkbox-field" for="00NJQ000000iI6M">
-           <input id="00NJQ000000iI6M" class="w-checkbox-input checkbox discoveryPass" name="00NJQ000000iI6M" type="checkbox" value="1" />Une carte d’entrée Découverte m’a été prescrite.<br>
-       </label>
-   
-       <fieldset id="discoveryPassAddress" class="w-hidden">
-           <label class="field-label" for="00NJQ000000iI6T">Si une carte d'entrée Découverte de Parcs Canada vous a été prescrite, veuillez indiquer votre adresse postale afin que nous puissions vous l'envoyer par la poste :</label>
-           <div class="_3-boxes w-row">
-               <div class="form-column left w-col w-col-3">
-                   <input id="00NJQ000000iI6T" class="text-field w-input" maxlength="255" name="00NJQ000000iI6T" size="20" type="text" placeholder="Adresse postale" />
-               </div>
-               <div class="form-column middle w-col w-col-3">
-                   <input id="00NHu00000LLlVc" class="text-field w-input" maxlength="255" name="00NHu00000LLlVc" size="20" type="text" placeholder="Ville" />
-               </div>
-               <div class="form-column middle w-col w-col-3">
-                   <input id="00NJQ000000iI66" class="text-field w-input" maxlength="255" name="00NJQ000000iI66" size="20" type="text" placeholder="Code postal" />
-               </div>
-               <div class="form-column right w-col w-col-3">
-                   <select id="00NJQ000000iI6S" class="drop-down-field w-select"  name="00NJQ000000iI6S" title="Province" ><option value="">Province/Territoire</option>
-                       <option value="AB">AB</option>
-                       <option value="BC">BC</option>
-                       <option value="MB">MB</option>
-                       <option value="NB">NB</option>
-                       <option value="NL">NL</option>
-                       <option value="NS">NS</option>
-                       <option value="NT">NT</option>
-                       <option value="NU">NU</option>
-                       <option value="ON">ON</option>
-                       <option value="PE">PE</option>
-                       <option value="QC">QC</option>
-                       <option value="SK">SK</option>
-                       <option value="YT">YT</option>
-                       <option value="None of the above">Aucun de ces éléments</option>
-                   </select>
-               </div>
-           </div>
-       </fieldset>
-   
-       <label class="field-label" for="00NJQ000000iI6E">Comment avez-vous entendu parler de Prescri-Nature?</label>
-       <select id="00NJQ000000iI6E" name='00NJQ000000iI6E' class="drop-down-field w-select referralSelect" title="How did you hear about us?"><option value="">--Aucun --</option>
-               <option value="Google/internet search">Recherche sur Google/internet</option>
-           <option value="Healthcare provider">Professionnel de la santé</option>
-       <option value="Media coverage (e.g. TV, radio, podcast, online article)">Couverture médiatique (TV, radio, podcast, article en ligne)</option>
-           <option value="Social media">Médias sociaux</option>
-           <option value="Word of mouth (e.g. Coworker, family, friend)">Bouche à oreille (collègue, famille, ami)</option>
-           <option value="Other">Autre</option>
-       </select>
-       <input class="text-field w-input w-hidden" id="00NJQ000000iI6F" maxlength="255" name="00NJQ000000iI6F" size="20" type="text" placeholder="Autre (veuillez préciser ci-dessous)"/>
-   
-       <label class="w-checkbox checkbox-field" for="00NJQ000000iI6K">
-           <input id="00NJQ000000iI6K" class="w-checkbox-input checkbox" name="00NJQ000000iI6K" type="checkbox" value="1" checked />
-           <span for="Newsletter-Sign-Up" class="checkbox-label w-form-label"> En cochant cette case, vous acceptez de recevoir les communications et les mises àjour de Prescri-Nature.</span>
-       </label>
-       <label class="field-label" for="00NJQ000000iI6G">Langue préférée</label>
-       <select id="00NJQ000000iI6G" class="drop-down-field w-select" name="00NJQ000000iI6G" title="Language">
-           <option value="French">Français</option>
-           <option value="English">Anglais</option>
-       </select>
+  <script>
+      function formatDatePatient(input) {
+      	const date = new Date(input.value);
+      	if (isNaN(date.getTime())) return; // If the date is invalid, do nothing
+      	const day = String(date.getDate() + 1).padStart(2, '0');
+      	const month = String(date.getMonth() + 1).padStart(2, '0');
+      	const year = date.getFullYear();
+      	document.getElementsByClassName('dateinput2')[0].value = `${day}/${month}/${year}`;
+      }
+  </script>
+  <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00D1U000000Da1s" method="POST">
+
+    <input type=hidden name="orgid" value="00D1U000000Da1s">
+    <input type=hidden name="retURL" value="http://www.prescri-nature.ca/patient-inscription-succes">
+
+    <select  id="00NJQ000000mnRZ" name="00NJQ000000mnRZ" title="Form Type" hidden>
+      <option value="PatientLog" selected>PatientLog</option>
+    </select>
+    <label class="field-label" for="00NJQ000000mnRX">Nom complet</label>
+    <div class="name-boxes w-row">
+      <div class="name-box left w-col w-col-6">
+        <input class="text-field w-input" id="00NJQ000000mnRX" maxlength="255" name="00NJQ000000mnRX" size="20" type="text" placeholder="Prénom" required/>
+        <span class="error" aria-live="polite"></span>
+      </div>
+      <div class="name-box right w-col w-col-6">
+        <input class="text-field w-input" maxlength="256" name="00NJQ000000mnRd" data-name="Last Name" placeholder="Nom de famille" type="text" id="00NJQ000000mnRd" required>
+        <span class="error" aria-live="polite"></span>
+      </div>
+    </div>
+
+
+    <label class="field-label" for="00NJQ000000mnRr">Adresse courriel</label>
+    <input id="00NJQ000000mnRr" class="text-field w-input" maxlength="80" name="00NJQ000000mnRr" size="20" type="email" />
+
+    <label class="field-label"> Ma prescription Prescri-Nature est :</label>
+    <div class="w-row">
+      <div class="form-column left w-col w-col-4">
+        <input id="00NJQ000000mnRq" name="00NJQ000000mnRq" class="text-field w-input" maxlength="8" placeholder="AA-AA123" type="text" required>
+        <div class="box-subtitle">Code unique de prestataire</div>
+      </div>
+      <div class="form-column middle w-col w-col-4">
+      		<input type="text" id="dateInput2" placeholder="AAAA-MM-JJ" class="text-field w-input" 	onchange="formatDatePatient(this)" onfocus="(this.type='date')"
+      onblur="(this.type='text')" required>
+          <input id="00NJQ000000mnRl" name="00NJQ000000mnRl" placeholder="AAAA-MM-JJ" class="text-field w-input dateinput2" type=hidden>
+          <div class="box-subtitle">Date de prescription</div>
+      </div>
+      <div class="form-column right w-col w-col-4">
+        <input id="00NJQ000000mnRY" name="00NJQ000000mnRY" class="text-field w-input" maxlength="2" placeholder="AA" type="text" pattern="[a-zA-Z0-9]*" required>
+        <div class="box-subtitle">Initiales du patient</div>
+      </div>
+    </div>
+    <h3 class="sub-heading"><strong>Vous n'avez pas d'ordonnance Prescri-Nature ? Parlez de Prescri-Nature à votre professionnel de la santé pour qu'il envisage de s'inscrire à notre programme.</strong></h3>
+    <br>
+    <label class="w-checkbox checkbox-field" for="00NJQ000000mnRi">
+      <input id="00NJQ000000mnRi" class="w-checkbox-input checkbox discoveryPass" name="00NJQ000000mnRi" type="checkbox" value="1" />Une carte d’entrée Découverte m’a été prescrite.<br>
+    </label>
+
+    <fieldset id="discoveryPassAddress" class="w-hidden">
+      <label class="field-label" for="00NJQ000000mnRp">Si une carte d'entrée Découverte de Parcs Canada vous a été prescrite, veuillez indiquer votre adresse postale afin que nous puissions vous l'envoyer par la poste :</label>
+      <div class="_3-boxes w-row">
+        <div class="form-column left w-col w-col-3">
+          <input id="00NJQ000000mnRp" class="text-field w-input" maxlength="255" name="00NJQ000000mnRp" size="20" type="text" placeholder="Adresse postale" />
+        </div>
+        <div class="form-column middle w-col w-col-3">
+          <input id="00NJQ000000mnRS" class="text-field w-input" maxlength="255" name="00NJQ000000mnRS" size="20" type="text" placeholder="Ville" />
+        </div>
+        <div class="form-column middle w-col w-col-3">
+          <input id="00NJQ000000mnRj" class="text-field w-input" maxlength="255" name="00NJQ000000mnRj" size="20" type="text" placeholder="Code postal" />
+        </div>
+        <div class="form-column right w-col w-col-3">
+          <select id="00NJQ000000mnRo" class="drop-down-field w-select"  name="00NJQ000000mnRo" title="Province" ><option value="">Province/Territoire</option>
+            <option value="AB">AB</option>
+            <option value="BC">BC</option>
+            <option value="MB">MB</option>
+            <option value="NB">NB</option>
+            <option value="NL">NL</option>
+            <option value="NS">NS</option>
+            <option value="NT">NT</option>
+            <option value="NU">NU</option>
+            <option value="ON">ON</option>
+            <option value="PE">PE</option>
+            <option value="QC">QC</option>
+            <option value="SK">SK</option>
+            <option value="YT">YT</option>
+            <option value="None of the above">Aucun de ces éléments</option>
+          </select>
+        </div>
+      </div>
+    </fieldset>
+
+    <label class="field-label" for="00NJQ000000mnRa">Comment avez-vous entendu parler de Prescri-Nature?</label>
+    <select id="00NJQ000000mnRa" name='00NJQ000000mnRa' class="drop-down-field w-select referralSelect" title="How did you hear about us?"><option value="">--Aucun --</option>
+      <option value="Google/internet search">Recherche sur Google/internet</option>
+      <option value="Healthcare provider">Professionnel de la santé</option>
+      <option value="Media coverage">Couverture médiatique</option>
+      <option value="Social media">Médias sociaux</option>
+      <option value="Word of mouth">Bouche à oreille</option>
+      <option value="Other">Autre</option>
+    </select>
+    <input class="text-field w-input w-hidden" id="00NJQ000000mnRb" maxlength="255" name="00NJQ000000mnRb" size="20" type="text" placeholder="Autre (veuillez préciser ci-dessous)"/>
+
+    <label class="w-checkbox checkbox-field" for="00NJQ000000mnRg">
+      <input id="00NJQ000000mnRg" class="w-checkbox-input checkbox" name="00NJQ000000mnRg" type="checkbox" value="1" checked />
+      <span for="Newsletter-Sign-Up" class="checkbox-label w-form-label"> En cochant cette case, vous acceptez de recevoir les communications et les mises àjour de Prescri-Nature.</span>
+    </label>
+    <label class="field-label" for="00NJQ000000mnRc">Langue préférée</label>
+    <select id="00NJQ000000mnRc" class="drop-down-field w-select" name="00NJQ000000mnRc" title="Language">
+      <option value="French">Français</option>
+      <option value="English">Anglais</option>
+    </select>
    
        <input class="navigation-button form w-button" type="submit" id="patientLogSubmit" value="Inscrire mon prescription Prescri-Nature">
    </form>
