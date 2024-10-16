@@ -607,7 +607,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Ordre professionnel des inhalothérapeutes du Québec",
                 "Ordre professionnel des sexologues du Québec",
                 "Ordre professionnel des technologistes médicaux du Québec",
-                ["Aucun de ces éléments", "None of the above"];
+                "Aucun de ces éléments", "None of the above"];
              professionsOptionsList = [
                 ["Acupunctrice ou acupuncteur", "Acupuncturist"],
                 ["Audiologiste", "Audiologist"],
