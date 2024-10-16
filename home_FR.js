@@ -5,6 +5,7 @@ var provinceSelect = document.getElementsByClassName("provinceSelect")[0];
 var licensingBodySelect = document.getElementsByClassName("licensingBodySelect")[0];
 var referralSelectors = document.getElementsByClassName("referralSelect");
 var discoveryPassValue = document.getElementsByClassName("discoveryPass")[0];
+const licensingBody = document.getElementById("00NJQ000000mnRf");
 
 const addOptionsValueToProfessionsSelect = (professionsArray) => {
     var option = document.createElement("option");
@@ -23,6 +24,15 @@ const addOptionsValueToLicensingBodySelect = (licensingBodyArray) => {
         option.value = licensingBodyArray[i];
         option.text = licensingBodyArray[i];
         licensingBodySelect.append(option);
+    }
+}
+
+const onChangeLicensingBodySelect = (evt) => {
+    if (evt.target.value === "Association canadienne des loisirs thérapeutiques") {
+        licensingBody.value = "Canadian Therapeutic Recreation Association";
+    }
+    else {
+        licensingBody.value = evt.target.value;
     }
 }
 
@@ -578,7 +588,7 @@ const onChangeProvincialSelect = (evt) => {
                 ["Aucun de ces éléments", "None of the above"]];
             break;
         case "QC": 
-            licensingArrayProvinceSpecifiedList = [["Association canadienne des loisirs thérapeutiques","Canadian Therapeutic Recreation Association"],
+            licensingArrayProvinceSpecifiedList = ["Association canadienne des loisirs thérapeutiques",
                 "Collège des médecins du Québec",
                 "Fédération des kinésiologues du Québec",
                 "Ordre des Acupuncteurs du Québec",
@@ -739,6 +749,8 @@ const onClickSubmitRegister = () => {
     const street = document.getElementById("00NHu00000LLlVX");
     const city = document.getElementById("00NHu00000LLlVc");
     const province = document.getElementById("00NHu00000LLlWB");
+    const body = document.getElementById("00NJQ000000mnRf");
+    
 
     if(firstNameField.value === null) {
 
@@ -772,6 +784,8 @@ Array.prototype.forEach.call(referralSelectors, referralSelection => {
 });
 
 provinceSelect.addEventListener("change", onChangeProvincialSelect);
+
+licensingBodySelect.addEventListener("change", onChangeLicensingBodySelect);
 
 if (discoveryPassValue) {
     discoveryPassValue.addEventListener("change", onChangeDiscoveryPass);

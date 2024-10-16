@@ -6,6 +6,7 @@ var provinceSelect = document.getElementsByClassName("provinceSelect")[0];
 var licensingBodySelect = document.getElementsByClassName("licensingBodySelect")[0];
 var referralSelectors = document.getElementsByClassName("referralSelect");
 var discoveryPassValue = document.getElementsByClassName("discoveryPass")[0];
+const licensingBody = document.getElementById("00NJQ000000mnRf");
 
 const addOptionsValueToProfessionsSelect = (professionsArray) => {
     var option = document.createElement("option");
@@ -24,6 +25,15 @@ const addOptionsValueToLicensingBodySelect = (licensingBodyArray) => {
         option.value = licensingBodyArray[i];
         option.text = licensingBodyArray[i];
         licensingBodySelect.append(option);
+    }
+}
+
+const onChangeLicensingBodySelect = (evt) => {
+    if (evt.target.value == "Association canadienne des loisirs thérapeutiques") {
+        licensingBody.value = "Canadian Therapeutic Recreation Association";
+    }
+    else {
+        licensingBody.value = evt.target.value;
     }
 }
 
@@ -751,6 +761,8 @@ Array.prototype.forEach.call(referralSelectors, referralSelection => {
 });
 
 provinceSelect.addEventListener("change", onChangeProvincialSelect);
+
+licensingBodySelect.addEventListener("change", onChangeLicensingBodySelect);
 
 if (discoveryPassValue) {
     discoveryPassValue.addEventListener("change", onChangeDiscoveryPass);
