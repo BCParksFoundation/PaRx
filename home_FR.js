@@ -783,10 +783,8 @@ Array.prototype.forEach.call(referralSelectors, referralSelection => {
     referralSelection.addEventListener("change", onChangeReferralSelect);
 });
 
-provinceSelect.addEventListener("change", onChangeProvincialSelect);
+provinceSelect?.addEventListener("change", onChangeProvincialSelect);
 
-licensingBodySelect.addEventListener("change", onChangeLicensingBodySelect);
+licensingBodySelect?.addEventListener("change", onChangeLicensingBodySelect);
 
-if (discoveryPassValue) {
-    discoveryPassValue.addEventListener("change", onChangeDiscoveryPass);
-}
+discoveryPassValue?.addEventListener("change", onChangeDiscoveryPass);
