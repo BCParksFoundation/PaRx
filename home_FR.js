@@ -5,7 +5,7 @@ var provinceSelect = document.getElementsByClassName("provinceSelect")[0];
 var licensingBodySelect = document.getElementsByClassName("licensingBodySelect")[0];
 var referralSelectors = document.getElementsByClassName("referralSelect");
 var discoveryPassValue = document.getElementsByClassName("discoveryPass")[0];
-const licensingBody = document.getElementById("00NJQ000000mnRf");
+var licensingBody = document.getElementById("00NJQ000000mnRf");
 
 const addOptionsValueToProfessionsSelect = (professionsArray) => {
     var option = document.createElement("option");
@@ -27,12 +27,16 @@ const addOptionsValueToLicensingBodySelect = (licensingBodyArray) => {
     }
 }
 
-const onChangeLicensingBodySelect = (evt) => {
-    if (evt.target.value === "Association canadienne des loisirs thérapeutiques") {
+const onChangeLicensingBodySelect = () => {
+    licensingBody.value = licensingBodySelect.value;
+    if (licensingBodySelect.value == "Association canadienne des loisirs thérapeutiques") {
         licensingBody.value = "Canadian Therapeutic Recreation Association";
     }
+    else if (licensingBodySelect.value ==  "Aucun de ces éléments") {
+        licensingBody.value = "None of the above";
+    }
     else {
-        licensingBody.value = evt.target.value;
+        licensingBody.value = licensingBodySelect.value;
     }
 }
 
@@ -617,7 +621,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Ordre professionnel des inhalothérapeutes du Québec",
                 "Ordre professionnel des sexologues du Québec",
                 "Ordre professionnel des technologistes médicaux du Québec",
-                "Aucun de ces éléments", "None of the above"];
+                "Aucun de ces éléments"];
              professionsOptionsList = [
                 ["Acupunctrice ou acupuncteur", "Acupuncturist"],
                 ["Audiologiste", "Audiologist"],
@@ -739,7 +743,7 @@ const onChangeProvincialSelect = (evt) => {
     }
     addOptionsValueToProfessionsSelect(professionsOptionsList);
     addOptionsValueToLicensingBodySelect(licensingArrayProvinceSpecifiedList);
-    
+    onChangeLicensingBodySelect();
 }
 
 const onClickSubmitRegister = () => {
