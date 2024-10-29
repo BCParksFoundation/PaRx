@@ -650,7 +650,7 @@ const onChangeProvincialSelect = (evt) => {
                 ["Pharmacienne ou pharmacien", "Pharmacist"],
                 ["Physiothérapeute", "Physiotherapist"],
                 ["Podologue", "Podiatrist"],
-                ["Psychoeducator", "Psychoéducatrice ou psychoéducateur"],
+                ["Psychoéducatrice ou psychoéducateur", "Psychoeducator"],
                 ["Psychologue", "Psychologist"],
                 ["Psychothérapeute", "Psychotherapist or Counselling Therapist"],
                 ["Sage-femme", "Midwife"],
