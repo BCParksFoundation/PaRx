@@ -1,4 +1,9 @@
-<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">  
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
+    function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500); 
+</script>
+
 <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00D1U000000Da1s" method="POST", class="prescriber-form">
     <input type=hidden name="orgid" value="00D1U000000Da1s">
     <input type=hidden name="retURL" value="www.prescri-nature.ca/sinscrire-comme-prescripteur-succes">
@@ -91,6 +96,8 @@
         <option value="French">Français</option>
         <option value="English">Anglais</option>
     </select>
+
+    <div class="g-recaptcha" data-sitekey="6LcDuVoqAAAAAA9zw-rLykkAWVhRSDI70aYg8VNg"></div>
 
     <input class="navigation-button form w-button" type="submit" id="RegisterSubmit" value="S'inscrire comme prescripteur Prescri-Nature">
 </form>

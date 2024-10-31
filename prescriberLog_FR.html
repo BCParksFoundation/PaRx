@@ -1,23 +1,28 @@
 <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
-    <script>
-        function formatDate(input) {
-            const date = new Date(input.value);
-            if (isNaN(date.getTime())) return; // If the date is invalid, do nothing
-            const day = String(date.getDate() +1 ).padStart(2, '0');
-            const month = String(date.getMonth() + 1).padStart(2, '0');
-            const year = date.getFullYear();
-            document.getElementById('00NJQ000000mnRl').value = `${day}/${month}/${year}`;
-        }
-    </script>
-    <style>
-    	input[type="date"]:in-range::-webkit-datetime-edit-year-field, 
-      input[type="date"]:in-range::-webkit-datetime-edit-month-field, 
-      input[type="date"]:in-range::-webkit-datetime-edit-day-field, 
-      input[type="date"]:in-range::-webkit-datetime-edit-text 
-      { color: transparent; }
-    </style>
-<form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00D1U000000Da1s" method="POST">
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
+    function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500); 
+</script>
 
+<script>
+    function formatDate(input) {
+        const date = new Date(input.value);
+        if (isNaN(date.getTime())) return; // If the date is invalid, do nothing
+        const day = String(date.getDate() +1 ).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = date.getFullYear();
+        document.getElementById('00NJQ000000mnRl').value = `${day}/${month}/${year}`;
+    }
+</script>
+<style>
+    input[type="date"]:in-range::-webkit-datetime-edit-year-field, 
+    input[type="date"]:in-range::-webkit-datetime-edit-month-field, 
+    input[type="date"]:in-range::-webkit-datetime-edit-day-field, 
+    input[type="date"]:in-range::-webkit-datetime-edit-text 
+    { color: transparent; }
+</style>
+
+<form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00D1U000000Da1s" method="POST">
     <input type=hidden name="orgid" value="00D1U000000Da1s">
     <input type=hidden name="retURL" value="www.prescri-nature.ca/prescripteur-inscription-succes">
     
@@ -56,6 +61,8 @@
     </label>
     <label class="field-label" for="00NJQ000000mnRr">Adresse courriel:</label>
     <input id="00NJQ000000mnRr" class="text-field w-input" maxlength="80" name="00NJQ000000mnRr" size="20" type="email" required placeholder="Bien vouloir insérer votre adresse courriel ici."/>
+
+    <div class="g-recaptcha" data-sitekey="6LcDuVoqAAAAAA9zw-rLykkAWVhRSDI70aYg8VNg"></div>
     
     <input class="navigation-button form w-button" type="submit" id="prescriberLogSubmit" value="Inscrire la prescription de mon patient">
 </form>

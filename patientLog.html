@@ -1,24 +1,27 @@
-<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">  
- <script>
-        function formatDatePatient(input) {
-            const date = new Date(input.value);
-            if (isNaN(date.getTime())) return; // If the date is invalid, do nothing
-            const day = String(date.getDate() + 1 ).padStart(2, '0');
-            const month = String(date.getMonth()).padStart(2, '0');
-            const year = date.getFullYear();
-            const newDate = new Date(year, month, day).toLocaleDateString("en-UK");
-            document.getElementsByClassName('dateinput2')[0].value = newDate;
-        }
- </script>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8"> 
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
+    function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500); 
+</script>
+
+<script>
+    function formatDatePatient(input) {
+        const date = new Date(input.value);
+        if (isNaN(date.getTime())) return; // If the date is invalid, do nothing
+        const day = String(date.getDate() + 1 ).padStart(2, '0');
+        const month = String(date.getMonth()).padStart(2, '0');
+        const year = date.getFullYear();
+        const newDate = new Date(year, month, day).toLocaleDateString("en-UK");
+        document.getElementsByClassName('dateinput2')[0].value = newDate;
+    }
+</script>
 
 <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00D1U000000Da1s" method="POST">
-    
     <input type=hidden name="orgid" value="00D1U000000Da1s">
     <input type=hidden name="retURL" value="www.parkprescriptions.ca/en/patient-log-your-parx-success">
-
     
     <select  id="00NJQ000000mnRZ" name="00NJQ000000mnRZ" title="Form Type" hidden>
-    <option value="PatientLog" selected>PatientLog</option>
+        <option value="PatientLog" selected>PatientLog</option>
     </select>
     <label class="field-label" for="00NJQ000000mnRX">Full Name</label>
     <div class="name-boxes w-row">
@@ -31,7 +34,6 @@
             <span class="error" aria-live="polite"></span>
         </div>
     </div>
-    
     
     <label class="field-label" for="00NJQ000000mnRr">Email</label>
     <input id="00NJQ000000mnRr" class="text-field w-input" maxlength="80" name="00NJQ000000mnRr" size="20" type="email" />
@@ -54,17 +56,17 @@
     </div>
     <h3 class="sub-heading"><strong>Don't have a PaRx prescription? Tell your health-care provider about PaRx to see if they'll consider registering in our program.</strong></h3>
     <br>
-<label class="w-checkbox checkbox-field" for="00NJQ000000mnRV">
+    <label class="w-checkbox checkbox-field" for="00NJQ000000mnRV">
         <input id="00NJQ000000mnRV" class="w-checkbox-input checkbox" name="00NJQ000000mnRV" type="checkbox" value="1" />For BC residents: I'd like free minutes with Evo.<br>
     </label>
     
-<label class="w-checkbox checkbox-field" for="00NJQ000000p0ij">
+    <label class="w-checkbox checkbox-field" for="00NJQ000000p0ij">
         <input id="00NJQ000000p0ij" class="w-checkbox-input checkbox" name="00NJQ000000p0ij" type="checkbox" value="1" />For patients in cities where Lime is located: I’d like discounted trips with Lime.<br>
     </label>   
     <label class="w-checkbox checkbox-field" for="00NJQ000000mnRi">
         <input id="00NJQ000000mnRi" class="w-checkbox-input checkbox discoveryPass" name="00NJQ000000mnRi" type="checkbox" value="1" />I was prescribed a Parks Canada Discovery Pass.<br>
     </label>
-<br>
+    <br>
     <fieldset id="discoveryPassAddress" class="w-hidden">
         <label class="field-label" for="00NJQ000000iI6T">If you were prescribed a Parks Canada Discovery Pass, please provide your mailing address so we can send your Pass to you:</label>
         <div class="_3-boxes w-row">
@@ -106,7 +108,6 @@
         <option value="Social media">Social media</option>
         <option value="Word of mouth (e.g. Coworker, family, friend)">Word of mouth (e.g. Coworker, family, friend)</option>
         <option value="Other">Other</option>
-
     </select>
     <input class="text-field w-input w-hidden" id="00NJQ000000mnRb" maxlength="255" name="00NJQ000000mnRb" size="20" type="text" placeholder="Other (please specify)"/>
 
@@ -116,8 +117,9 @@
     </label>
     <label class="field-label" for="00NJQ000000mnRc">Preferred language</label>
     <select id="00NJQ000000mnRc" class="drop-down-field w-select" name="00NJQ000000mnRc" title="Language"><option value="English">English</option>
-    <option value="French">French</option>
+        <option value="French">French</option>
     </select>
+    <div class="g-recaptcha" data-sitekey="6LcDuVoqAAAAAA9zw-rLykkAWVhRSDI70aYg8VNg"></div>
 
     <input class="navigation-button form w-button" type="submit" id="patientLogSubmit" value="Log my PaRx Prescription">
 </form>

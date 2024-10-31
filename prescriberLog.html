@@ -1,21 +1,24 @@
 <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
-    <script>
-        function formatDate(input) {
-            const date = new Date(input.value);
-            if (isNaN(date.getTime())) return; // If the date is invalid, do nothing
-            const day = String(date.getDate() + 1 ).padStart(2, '0');
-            const month = String(date.getMonth()).padStart(2, '0');
-            const year = date.getFullYear();
-            const newDate = new Date(year, month, day).toLocaleDateString("en-UK");
-            document.getElementById('00NJQ000000mnRl').value = newDate;
-        }
-    </script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
+    function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500); 
+</script>
+
+<script>
+    function formatDate(input) {
+        const date = new Date(input.value);
+        if (isNaN(date.getTime())) return; // If the date is invalid, do nothing
+        const day = String(date.getDate() + 1 ).padStart(2, '0');
+        const month = String(date.getMonth()).padStart(2, '0');
+        const year = date.getFullYear();
+        const newDate = new Date(year, month, day).toLocaleDateString("en-UK");
+        document.getElementById('00NJQ000000mnRl').value = newDate;
+    }
+</script>
     
-    <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00D1U000000Da1s" method="POST">
-    
+<form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00D1U000000Da1s" method="POST">
     <input type=hidden name="orgid" value="00D1U000000Da1s">
     <input type=hidden name="retURL" value="www.parkprescriptions.ca/en/prescriber-log-your-parx-success">
-
     
     <select  id="00NJQ000000mnRZ" name="00NJQ000000mnRZ" title="Form Type" hidden>
         <option value="PrescriberLog" selected>PrescriberLog</option>
@@ -52,9 +55,10 @@
     </label>
     <label class="field-label" for="00NJQ000000mnRr">Email:</label>
     <input id="00NJQ000000mnRr" class="text-field w-input" maxlength="80" name="00NJQ000000mnRr" size="20" type="email" required placeholder="Please enter the email you used to initially sign up to our program with"/>
+
+    <div class="g-recaptcha" data-sitekey="6LcDuVoqAAAAAA9zw-rLykkAWVhRSDI70aYg8VNg"></div>
     
     <input class="navigation-button form w-button" type="submit" id="prescriberLogSubmit" value="Log my Patient's PaRx Prescription">
-
 </form>
 
-    <link rel="stylesheet" href="home.css">
+<link rel="stylesheet" href="home.css">
