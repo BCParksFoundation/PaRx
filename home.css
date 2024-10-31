@@ -123,6 +123,17 @@ html {
   button[disabled], html input[disabled] {
     cursor: default;
   }
+
+  html input[disabled] {
+    border-color: #eee;
+    color: #eee;
+  }
+
+  html input:hover {
+    background-color: #fff !important;
+    border-color: #eee !important;
+    color: #eee !important;
+  }
   
   button::-moz-focus-inner, input::-moz-focus-inner {
     border: 0;

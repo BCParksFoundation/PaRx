@@ -15,6 +15,13 @@
     }
 </script>
 
+<script>
+    function recaptchaCallbackPatient() {
+        var btnSubmit = document.getElementById("patientLogSubmit");
+        btnSubmit.removeAttribute("disabled");
+    }
+</script>
+
 <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00D1U000000Da1s" method="POST">
   <input type=hidden name='captcha_settings' value='{"keyname":"PaRx_FR","fallback":"true","orgId":"00D1U000000Da1s","ts":""}'>
   <input type=hidden name="orgid" value="00D1U000000Da1s">
@@ -116,7 +123,7 @@
     <option value="English">Anglais</option>
   </select>
 
-  <div class="g-recaptcha" data-sitekey="6LeBB3IqAAAAAMBv9Hxp--vTqRS8yRmNhO6kAnvT"></div>
+  <div class="g-recaptcha" data-sitekey="6LeBB3IqAAAAAMBv9Hxp--vTqRS8yRmNhO6kAnvT" data-callback="recaptchaCallbackPatient"></div>
   
   <input class="navigation-button form w-button" type="submit" id="patientLogSubmit" value="Inscrire mon prescription Prescri-Nature">
 </form>

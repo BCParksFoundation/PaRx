@@ -15,6 +15,14 @@
         document.getElementById('00NJQ000000mnRl').value = newDate;
     }
 </script>
+
+
+<script>
+    function recaptchaCallbackPrescriber() {
+        var btnSubmit = document.getElementById("prescriberLogSubmit");
+        btnSubmit.removeAttribute("disabled");
+    }
+</script>
     
 <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00D1U000000Da1s" method="POST">
     <input type=hidden name='captcha_settings' value='{"keyname":"PaRx","fallback":"true","orgId":"00D1U000000Da1s","ts":""}'>
@@ -57,7 +65,7 @@
     <label class="field-label" for="00NJQ000000mnRr">Email:</label>
     <input id="00NJQ000000mnRr" class="text-field w-input" maxlength="80" name="00NJQ000000mnRr" size="20" type="email" required placeholder="Please enter the email you used to initially sign up to our program with"/>
 
-    <div class="g-recaptcha" data-sitekey="6LcDuVoqAAAAAA9zw-rLykkAWVhRSDI70aYg8VNg"></div>
+    <div class="g-recaptcha" data-sitekey="6LcDuVoqAAAAAA9zw-rLykkAWVhRSDI70aYg8VNg" data-callback="recaptchaCallbackPrescriber"></div>
     
     <input class="navigation-button form w-button" type="submit" id="prescriberLogSubmit" value="Log my Patient's PaRx Prescription">
 </form>

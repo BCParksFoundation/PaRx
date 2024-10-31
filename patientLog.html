@@ -16,6 +16,13 @@
     }
 </script>
 
+<script>
+    function recaptchaCallbackPatient() {
+        var btnSubmit = document.getElementById("patientLogSubmit");
+        btnSubmit.removeAttribute("disabled");
+    }
+</script>
+
 <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00D1U000000Da1s" method="POST">
     <input type=hidden name='captcha_settings' value='{"keyname":"PaRx","fallback":"true","orgId":"00D1U000000Da1s","ts":""}'>
     <input type=hidden name="orgid" value="00D1U000000Da1s">
@@ -120,7 +127,7 @@
     <select id="00NJQ000000mnRc" class="drop-down-field w-select" name="00NJQ000000mnRc" title="Language"><option value="English">English</option>
         <option value="French">French</option>
     </select>
-    <div class="g-recaptcha" data-sitekey="6LcDuVoqAAAAAA9zw-rLykkAWVhRSDI70aYg8VNg"></div>
+    <div class="g-recaptcha" data-sitekey="6LcDuVoqAAAAAA9zw-rLykkAWVhRSDI70aYg8VNg" data-callback="recaptchaCallbackPatient"></div>
 
     <input class="navigation-button form w-button" type="submit" id="patientLogSubmit" value="Log my PaRx Prescription">
 </form>
