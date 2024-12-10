@@ -576,7 +576,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Social Worker",
                 "Speech-Language Pathologist",
                 "Traditional Chinese Medicine Practitioner",
-                "Aucun de ces éléments"];
+                "None of the above"];
             break;
         case "QC": 
             licensingArrayProvinceSpecifiedList = ["Association canadienne des loisirs thérapeutiques",
