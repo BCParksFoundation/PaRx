@@ -60,7 +60,6 @@ const onChangeProvincialSelect = (evt) => {
                 "Alberta College of Pharmacy",  
                 "Alberta College of Social Workers",  
                 "Alberta College of Speech-Language Pathologists and Audiologists",
-                "College and Association of Respiratory Therapists of Alberta",  
                 "College of Acupuncturists of Alberta",
                 "College of Alberta Dental Assistants",
                 "College of Alberta Denturists",  
@@ -81,6 +80,7 @@ const onChangeProvincialSelect = (evt) => {
                 "College of Registered Dental Hygienists of Alberta",  
                 "College of Registered Nurses of Alberta",  
                 "College of Registered Psychiatric Nurses of Alberta",
+                "College of Respiratory Therapists of Alberta", 
                 "Canadian Therapeutic Recreation Association",
                 "None of the above"];
              professionsOptionsList = ["Acupuncturist",
@@ -532,7 +532,7 @@ const onChangeProvincialSelect = (evt) => {
                 "College of Optometrists of Ontario",
                 "College of Physicians and Surgeons of Ontario",
                 "College of Physiotherapists of Ontario",
-                "College of Psychologists of Ontario",
+                "College of Psychologists and Behaviour Analysts of Ontario",
                 "College of Registered Psychotherapists and Registered Mental Health Therapists of Ontario",
                 "College of Respiratory Therapists in Ontario",
                 "College of Traditional Chinese Medicine Practitioners and Acupuncturists of Ontario",
@@ -544,6 +544,8 @@ const onChangeProvincialSelect = (evt) => {
                 "None of the above"];
              professionsOptionsList = ["Acupuncturist",
                 "Audiologist",
+                "Behaviour Analyst",
+                "Chiropodist",
                 "Chiropractor",
                 "Dental Hygienist",
                 "Dental Technician or Technologist",
@@ -674,6 +676,11 @@ const onChangeProvincialSelect = (evt) => {
             break;
         case "NT" :
             licensingArrayProvinceSpecifiedList = ["Canadian Therapeutic Recreation Association",
+                "College of Complementary Health Professionals of BC",
+                "College of Massage Therapy New Brunswick",                                   
+                "College of Massage Therapists Newfoundland",  
+                "College of Massage Therapists of Ontario",
+                "College of Massage Therapists of Prince Edward Island",
                 "Government of the Northwest Territories, Health and Social Services",
                 "Registered Nurses Association of the Northwest Territories and Nunavut",
                 "None of the above"];
@@ -682,6 +689,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Dentist",
                 "Denturist",
                 "Licensed Practical Nurse",
+                "Massage Therapist",
                 "Midwife",
                 "Naturopathic Doctor",
                 "Nurse Practitioner",
