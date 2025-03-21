@@ -611,7 +611,7 @@ const onChangeProvincialSelect = (evt) => {
                 ["Dentiste", "Dentist"],
                 ["Denturologiste", "Denturist"],
                 ["Diététiste", "Dietitian"],
-                ["Dietitian-Nutritionist", "Diététiste-nutritionniste"],
+                ["Diététiste-nutritionniste", "Dietitian-Nutritionist"],
                 ["Ergothérapeute", "Occupational Therapist"],
                 ["Hygiéniste dentaire", "Dental Hygienist"],
                 ["Infirmière ou infirmier auxiliaire", "Nursing Assistant"],
