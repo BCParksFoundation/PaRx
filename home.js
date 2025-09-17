@@ -680,13 +680,22 @@ const onChangeProvincialSelect = (evt) => {
                 "None of the above"];
             break;
         case "NT" :
-            licensingArrayProvinceSpecifiedList = ["Canadian Therapeutic Recreation Association",
+            licensingArrayProvinceSpecifiedList = ["Chiropractors' Association of Saskatchewan",
+                "College of Chiropractors of Alberta",  
+                "College of Chiropractors of Ontario",
+                "Canadian Therapeutic Recreation Association",
                 "College of Complementary Health Professionals of BC",
                 "College of Massage Therapy New Brunswick",                                   
                 "College of Massage Therapists Newfoundland",  
                 "College of Massage Therapists of Ontario",
                 "College of Massage Therapists of Prince Edward Island",
                 "Government of the Northwest Territories, Health and Social Services",
+                "Manitoba Chiropractors Association",
+                "New Brunswick Chiropractors' Association",
+                "Newfoundland and Labrador Chiropractic Board",
+                "Nova Scotia College of Chiropractors",
+                "Ordre des chiropraticiens du Québec",
+                "Prince Edward Island Chiropractic Association",
                 "Registered Nurses Association of the Northwest Territories and Nunavut",
                 "None of the above"];
              professionsOptionsList = ["Dental Hygienist",
