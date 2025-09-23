@@ -244,7 +244,7 @@ const onChangeProvincialSelect = (evt) => {
                 "New Brunswick Dental Society",
                 "New Brunswick Dental Technicians' Association",
                 "New Brunswick Denturists' Society",
-                "New Brunswick Pharmacists' Association",
+                "New Brunswick College of Pharmacists",
                 "New Brunswick Podiatry Association",
                 "New Brunswick Society of Cardiology Technologists",
                 "New Brunswick Society of Medical Laboratory Technologists",
