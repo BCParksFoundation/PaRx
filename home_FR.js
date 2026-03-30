@@ -263,7 +263,7 @@ const onChangeProvincialSelect = (evt) => {
                 ["Infirmière ou infirmier", "Nurse"],
                 ["Inhalothérapeute", "Respiratory Therapist"],
                 ["Loisirs thérapeute", "Recreation Therapist"],
-                ["Massothérapeute", "Message Therapist"],
+                ["Massothérapeute", "Massage Therapist"],
                 ["Médecin", "Physician"],
                 ["Opticienne ou opticien", "Optician"],
                 ["Optométristes", "Optometrist"],
