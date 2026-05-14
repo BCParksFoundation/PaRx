@@ -543,6 +543,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Canadian Therapeutic Recreation Association",
                 "None of the above"];
              professionsOptionsList = [
+                ["Adjoint au médecin", "Physician Assistant"],
                 ["Acupunctrice ou acupuncteur", "Acupuncturist"],
                 ["Analyste du comportement", "Behaviour Analyst"],
                 ["Audiologiste", "Audiologist"],
