@@ -575,6 +575,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Pharmacist",
                 "Pharmacy Technician",
                 "Physician",
+                "Physician Assistant",
                 "Physiotherapist",
                 "Podiatrist",
                 "Psychologist",
