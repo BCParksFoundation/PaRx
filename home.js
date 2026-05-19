@@ -8,8 +8,17 @@ var referralSelectors = document.getElementsByClassName("referralSelect");
 var discoveryPassValue = document.getElementsByClassName("discoveryPass")[0];
 var licensingBody = document.getElementById("00NJQ000000mnRf");
 
+const addPlaceholderOption = (select, text) => {
+    const option = document.createElement("option");
+    option.value = "";
+    option.text = text;
+    option.disabled = true;
+    option.selected = true;
+    select.append(option);
+}
+
 const addOptionsValueToProfessionsSelect = (professionsArray) => {
-    var option = document.createElement("option");
+    addPlaceholderOption(professionsSelect, "Select a profession");
     for (var i = 0; i < professionsArray.length; i++) {
         var option = document.createElement("option");
         option.value = professionsArray[i];
@@ -19,7 +28,8 @@ const addOptionsValueToProfessionsSelect = (professionsArray) => {
 }
 
 const addOptionsValueToLicensingBodySelect = (licensingBodyArray) => {
-    var option = document.createElement("option");
+    addPlaceholderOption(licensingBodySelect, "Select a licensing body");
+
     for (var i = 0; i < licensingBodyArray.length; i++) {
         var option = document.createElement("option");
         option.value = licensingBodyArray[i];
@@ -29,11 +39,15 @@ const addOptionsValueToLicensingBodySelect = (licensingBodyArray) => {
 }
 
 const onChangeLicensingBodySelect = () => {
-    licensingBody.value = licensingBodySelect.value;
+    if (!licensingBodySelect.value) {
+        licensingBody.value = "";
+        return;
+    }
+
     if (licensingBodySelect.value == "Association canadienne des loisirs thérapeutiques") {
         licensingBody.value = "Canadian Therapeutic Recreation Association";
     }
-    else if (licensingBodySelect.value ==  "Aucun de ces éléments") {
+    else if (licensingBodySelect.value == "Aucun de ces éléments") {
         licensingBody.value = "None of the above";
     }
     else {
@@ -751,7 +765,6 @@ const onChangeProvincialSelect = (evt) => {
     }
     addOptionsValueToProfessionsSelect(professionsOptionsList);
     addOptionsValueToLicensingBodySelect(licensingArrayProvinceSpecifiedList);
-    onChangeLicensingBodySelect();
 }
 
 const onChangeReferralSelect = (evt) => {
