@@ -1,5 +1,5 @@
-var professionsSelect = document.getElementsByClassName("professionsSelect")[0];
-var provinceSelect = document.getElementsByClassName("provinceSelect")[0];
+var professionsSelect = document.getElementById("00NJQ000000mnRn");
+var provinceSelect = document.getElementById("00NJQ000000mnRo");
 var licensingBodySelect = document.getElementsByClassName("licensingBodySelect")[0];
 var referralSelectors = document.getElementsByClassName("referralSelect");
 var discoveryPassValue = document.getElementsByClassName("discoveryPass")[0];
@@ -55,3 +55,192 @@ const onChangeLicensingBodySelect = () => {
         licensingBody.value = licensingBodySelect.value;
     }
 }
+
+const onChangeProvincialSelect = (evt) => {
+
+    let licensingArrayProvinceSpecifiedList = [];
+    let professionsOptionsList = [];
+
+    licensingBodySelect.innerHTML = "";
+    professionsSelect.innerHTML = "";
+
+    switch(evt.target.value) {
+
+        case "BC":
+
+            licensingArrayProvinceSpecifiedList = [
+                "BC Association of Clinical Counsellors",
+                "BC Podiatric Medical Association",
+                "British Columbia College of Nurses and Midwives",
+                "British Columbia College of Oral Health Professionals",
+                "British Columbia College of Social Workers",
+                "Canadian Counselling and Psychotherapy Association",
+                "College of Complementary Health Professionals of BC",
+                "College of Health and Care Professionals of BC",
+                "College of Pharmacists of British Columbia",
+                "College of Physicians and Surgeons of British Columbia",
+                "BC Emergency Medical Assistants Licensing Board",
+                "Canadian Therapeutic Recreation Association",
+                "None of the above"
+            ];
+
+            professionsOptionsList = [
+                ["Acupunctrice ou acupuncteur", "Acupuncturist"],
+                ["Assistante ou assistant dentaire", "Dental Assistant"],
+                ["Audiologiste", "Audiologist"],
+                ["Auxiliaire médical", "Paramedic"],
+                ["Chiropractrice ou chiropracteur", "Chiropractor"],
+                ["Conseillère ou conseiller d'orientation", "Hearing Aid Practitioner"],
+                ["Dentiste", "Dentist"],
+                ["Denturologiste", "Denturist"],
+                ["Diététiste", "Dietitian"],
+                ["Ergothérapeute", "Occupational Therapist"],
+                ["Hygiéniste dentaire", "Dental Hygienist"],
+                ["Infirmière ou infirmier", "Nurse"],
+                ["Loisirs thérapeute", "Recreation Therapist"],
+                ["Massothérapeute", "Massage Therapist"],
+                ["Médecin naturopathe", "Naturpathic Doctor"],
+                ["Médecin", "Physician"],
+                ["Opticienne ou opticien", "Optician"],
+                ["Optométristes", "Optometrist"],
+                ["Orthophoniste", "Speech and Hearing Health Professional"],
+                ["Pharmacienne ou pharmacien", "Pharmacist"],
+                ["Physiothérapeute", "Physiotherapist"],
+                ["Podologue", "Podiatrist"],
+                ["Praticienne en médecine traditionnelle chinoise", "Traditional Chinese Medicine Practitioner"],
+                ["Psychologue", "Psychologist"],
+                ["Psychothérapeute", "Psychotherapist or Counselling Therapist"],
+                ["Sage-femme", "Midwife"],
+                ["Technicienne ou technicien dentaire", "Dental Technician or Technologist"],
+                ["Technicienne ou technicien en pharmacie", "Pharmacy Technician"],
+                ["Thérapeute dentaire", "Dental Therapist"],
+                ["Travailleuse sociale ou travailleur social", "Social Worker"],
+                ["Aucun de ces éléments", "None of the above"]
+            ];
+
+        break;
+
+        case "AB":
+
+            licensingArrayProvinceSpecifiedList = [
+                "Alberta College of Combined Laboratory and X-Ray Technologists",
+                "Alberta College of Medical Diagnostic and Therapeutic Technologists",
+                "Alberta College of Occupational Therapists",
+                "Alberta College of Optometrists",
+                "Alberta College of Paramedics",
+                "Alberta College of Pharmacy",
+                "College of Physicians and Surgeons of Alberta",
+                "Canadian Therapeutic Recreation Association",
+                "None of the above"
+            ];
+
+            professionsOptionsList = [
+                ["Acupunctrice ou acupuncteur", "Acupuncturist"],
+                ["Audiologiste", "Audiologist"],
+                ["Dentiste", "Dentist"],
+                ["Médecin", "Physician"],
+                ["Physiothérapeute", "Physiotherapist"],
+                ["Psychologue", "Psychologist"],
+                ["Travailleuse sociale ou travailleur social", "Social Worker"],
+                ["Aucun de ces éléments", "None of the above"]
+            ];
+
+        break;
+
+        case "ON":
+
+            licensingArrayProvinceSpecifiedList = [
+                "College of Audiologists and Speech-Language Pathologists of Ontario",
+                "College of Chiropractors of Ontario",
+                "College of Physicians and Surgeons of Ontario",
+                "Ontario College of Pharmacists",
+                "Canadian Therapeutic Recreation Association",
+                "None of the above"
+            ];
+
+            professionsOptionsList = [
+                ["Acupunctrice ou acupuncteur", "Acupuncturist"],
+                ["Audiologiste", "Audiologist"],
+                ["Chiropractrice ou chiropracteur", "Chiropractor"],
+                ["Dentiste", "Dentist"],
+                ["Diététiste", "Dietitian"],
+                ["Médecin", "Physician"],
+                ["Pharmacienne ou pharmacien", "Pharmacist"],
+                ["Physiothérapeute", "Physiotherapist"],
+                ["Psychologue", "Psychologist"],
+                ["Travailleuse sociale ou travailleur social", "Social Worker"],
+                ["Aucun de ces éléments", "None of the above"]
+            ];
+
+        break;
+
+        case "QC":
+
+            licensingArrayProvinceSpecifiedList = [
+                "Association canadienne des loisirs thérapeutiques",
+                "Collège des médecins du Québec",
+                "Ordre des Acupuncteurs du Québec",
+                "Ordre des chiropraticiens du Québec",
+                "Ordre des pharmaciens du Québec",
+                "Ordre des psychologues du Québec",
+                "Aucun de ces éléments"
+            ];
+
+            professionsOptionsList = [
+                ["Acupunctrice ou acupuncteur", "Acupuncturist"],
+                ["Audiologiste", "Audiologist"],
+                ["Chiropractrice ou chiropracteur", "Chiropractor"],
+                ["Dentiste", "Dentist"],
+                ["Diététiste", "Dietitian"],
+                ["Médecin", "Physician"],
+                ["Pharmacienne ou pharmacien", "Pharmacist"],
+                ["Physiothérapeute", "Physiotherapist"],
+                ["Psychologue", "Psychologist"],
+                ["Travailleuse sociale ou travailleur social", "Social Worker"],
+                ["Aucun de ces éléments", "None of the above"]
+            ];
+
+        break;
+
+        default:
+        break;
+    }
+
+    addOptionsValueToProfessionsSelect(professionsOptionsList);
+    addOptionsValueToLicensingBodySelect(licensingArrayProvinceSpecifiedList);
+}
+
+const onChangeReferralSelect = (evt) => {
+    var select = evt.target;
+    var other = select.nextElementSibling;
+
+    if (select.value == "Other") {
+        other.value = "";
+        other.classList.remove("w-hidden");
+    }
+    else {
+        other.classList.add("w-hidden");
+        other.value = "";
+    }
+}
+
+const onChangeDiscoveryPass = (evt) => {
+
+    var discoveryPassAddress = document.getElementById("discoveryPassAddress");
+
+    if (discoveryPassValue?.checked) {
+        discoveryPassAddress?.classList.remove("w-hidden");
+    }
+    else {
+        discoveryPassAddress?.classList.add("w-hidden");
+    }
+}
+
+Array.prototype.forEach.call(referralSelectors, referralSelection => {
+    referralSelection.addEventListener("change", onChangeReferralSelect);
+});
+
+provinceSelect.addEventListener("change", onChangeProvincialSelect);
+licensingBodySelect.addEventListener("change", onChangeLicensingBodySelect);
+
+discoveryPassValue?.addEventListener("change", onChangeDiscoveryPass);
