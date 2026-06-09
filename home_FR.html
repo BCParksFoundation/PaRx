@@ -44,7 +44,7 @@
             <input id="00NJQ000000mnRp" class="text-field w-input" maxlength="255" name="00NJQ000000mnRp" size="20" type="text" placeholder="Adresse postale"/>
         </div>
         <div class="form-column middle w-col w-col-4">
-            <input id="00NJQ000000mnRS" class="text-field w-input" maxlength="255" name="00NJQ000000mnRS" size="20" type="text" placeholder="Ville"/>
+            <input id="00NJQ000000mnRS" class="text-field w-input" maxlength="255" name="00NJQ000000mnRS" size="20" type="text" placeholder="Ville" required/>
         </div>
         <div class="form-column right w-col w-col-4">
             <select id="00NJQ000000mnRo" class="drop-down-field w-select provinceSelect"  name="00NJQ000000mnRo" title="Province" required><option value="">Province/Territoire</option>
@@ -65,6 +65,10 @@
                 </select>
         </div>
     </div>
+
+    <div id="provinceRequiredMessage" class="province-required-message w-hidden">
+        Veuillez d’abord sélectionner votre province ou territoire. Votre profession et votre organisme de réglementation seront ensuite disponibles.
+    </div>
     
     <div class="name-boxes w-row">
         <div class="name-box left w-col w-col-6">
@@ -80,7 +84,7 @@
     </div>
     
     <label class="field-label" for="00NJQ000000mnRe">Numéro de licence</label>
-    <input id="00NJQ000000mnRe" class="text-field w-input" maxlength="255" name="00NJQ000000mnRe" size="20" type="text" />
+    <input id="00NJQ000000mnRe" class="text-field w-input" maxlength="255" name="00NJQ000000mnRe" size="20" type="text" required/>
     
     <label class="field-label" for="00NJQ000000mnRa">Comment avez-vous entendu parler de Prescri-Nature?</label>
     <select id="00NJQ000000mnRa" class="drop-down-field w-select referralSelect" title="How did you hear about us?" name="00NJQ000000mnRa"><option value="">--Aucun--</option>

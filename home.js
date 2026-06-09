@@ -1,12 +1,23 @@
-
-
-
 var professionsSelect = document.getElementsByClassName("professionsSelect")[0];
 var provinceSelect = document.getElementsByClassName("provinceSelect")[0];
 var licensingBodySelect = document.getElementsByClassName("licensingBodySelect")[0];
 var referralSelectors = document.getElementsByClassName("referralSelect");
 var discoveryPassValue = document.getElementsByClassName("discoveryPass")[0];
 var licensingBody = document.getElementById("00NJQ000000mnRf");
+
+var prescriberForm = document.querySelector(".prescriber-form");
+var cityInput = document.getElementById("00NJQ000000mnRS");
+var licenceNumberInput = document.getElementById("00NJQ000000mnRe");
+
+var provinceRequiredMessage = document.getElementById("provinceRequiredMessage");
+
+const showProvinceMessage = () => {
+    provinceRequiredMessage?.classList.remove("w-hidden");
+};
+
+const hideProvinceMessage = () => {
+    provinceRequiredMessage?.classList.add("w-hidden");
+};
 
 const addPlaceholderOption = (select, text) => {
     const option = document.createElement("option");
@@ -15,17 +26,36 @@ const addPlaceholderOption = (select, text) => {
     option.disabled = true;
     option.selected = true;
     select.append(option);
-}
+};
+
+const setDependentFieldsDisabled = (isDisabled) => {
+    if (isDisabled) {
+        professionsSelect.classList.add("is-disabled-select");
+        licensingBodySelect.classList.add("is-disabled-select");
+
+        professionsSelect.setAttribute("aria-disabled", "true");
+        licensingBodySelect.setAttribute("aria-disabled", "true");
+    } else {
+        professionsSelect.classList.remove("is-disabled-select");
+        licensingBodySelect.classList.remove("is-disabled-select");
+
+        professionsSelect.removeAttribute("aria-disabled");
+        licensingBodySelect.removeAttribute("aria-disabled");
+
+        hideProvinceMessage();
+    }
+};
 
 const addOptionsValueToProfessionsSelect = (professionsArray) => {
     addPlaceholderOption(professionsSelect, "Select a profession");
+
     for (var i = 0; i < professionsArray.length; i++) {
         var option = document.createElement("option");
         option.value = professionsArray[i];
         option.text = professionsArray[i];
         professionsSelect.append(option);
     }
-}
+};
 
 const addOptionsValueToLicensingBodySelect = (licensingBodyArray) => {
     addPlaceholderOption(licensingBodySelect, "Select a licensing body");
@@ -36,7 +66,7 @@ const addOptionsValueToLicensingBodySelect = (licensingBodyArray) => {
         option.text = licensingBodyArray[i];
         licensingBodySelect.append(option);
     }
-}
+};
 
 const onChangeLicensingBodySelect = () => {
     if (!licensingBodySelect.value) {
@@ -53,53 +83,55 @@ const onChangeLicensingBodySelect = () => {
     else {
         licensingBody.value = licensingBodySelect.value;
     }
-}
+};
 
 const onChangeProvincialSelect = (evt) => {
-    let noneOfAboveMessage = "Thank you for your interest in becoming a PaRx prescriber! Our program is currently available for licensed healthcare professionals governed by a regulatory body or college in Canada only, which varies from province to province. Please sign up for our newsletter to stay up to date on the latest news about PaRx!";
-    let notAvaliableMessage = "We haven't launched in your territory yet, but will be in touch with more information when we do.";
     let licensingArrayProvinceSpecifiedList = [];
     let professionsOptionsList = [];
+
     licensingBodySelect.innerHTML = "";
     professionsSelect.innerHTML = "";
+    licensingBody.value = "";
+
     switch(evt.target.value) {
-        case "None of the above" :
+        case "None of the above":
             break;
-        case "AB": 
+
+        case "AB":
             licensingArrayProvinceSpecifiedList = ["Alberta College of Combined Laboratory and X-Ray Technologists",
                 "Alberta College of Medical Diagnostic and Therapeutic Technologists",
-                "Alberta College of Occupational Therapists",  
-                "Alberta College of Optometrists",  
-                "Alberta College of Paramedics",  
-                "Alberta College of Pharmacy",  
-                "Alberta College of Social Workers",  
+                "Alberta College of Occupational Therapists",
+                "Alberta College of Optometrists",
+                "Alberta College of Paramedics",
+                "Alberta College of Pharmacy",
+                "Alberta College of Social Workers",
                 "Alberta College of Speech-Language Pathologists and Audiologists",
                 "Association of Counselling Therapy of Alberta",
                 "Canadian Counselling and Psychotherapy Association",
                 "College of Acupuncturists of Alberta",
                 "College of Alberta Dental Assistants",
-                "College of Alberta Denturists",  
-                "College of Alberta Psychologists",  
-                "College of Chiropractors of Alberta",  
+                "College of Alberta Denturists",
+                "College of Alberta Psychologists",
+                "College of Chiropractors of Alberta",
                 "College of Dental Surgeons of Alberta",
                 "College of Dental Technologists of Alberta",
-                "College of Dietitians of Alberta",  
-                "College of Hearing Aid Practitioners of Alberta",  
-                "College of Licensed Practical Nurses of Alberta",  
-                "College of Medical Laboratory Technologists of Alberta",  
-                "College of Midwives of Alberta",  
-                "College of Naturopathic Doctors of Alberta",  
-                "College of Opticians of Alberta",  
-                "College of Physicians and Surgeons of Alberta",  
+                "College of Dietitians of Alberta",
+                "College of Hearing Aid Practitioners of Alberta",
+                "College of Licensed Practical Nurses of Alberta",
+                "College of Medical Laboratory Technologists of Alberta",
+                "College of Midwives of Alberta",
+                "College of Naturopathic Doctors of Alberta",
+                "College of Opticians of Alberta",
+                "College of Physicians and Surgeons of Alberta",
                 "College of Physiotherapists of Alberta",
-                "College of Podiatric Physicians of Alberta",  
-                "College of Registered Dental Hygienists of Alberta",  
-                "College of Registered Nurses of Alberta",  
+                "College of Podiatric Physicians of Alberta",
+                "College of Registered Dental Hygienists of Alberta",
+                "College of Registered Nurses of Alberta",
                 "College of Registered Psychiatric Nurses of Alberta",
-                "College of Respiratory Therapists of Alberta", 
+                "College of Respiratory Therapists of Alberta",
                 "Canadian Therapeutic Recreation Association",
                 "None of the above"];
-             professionsOptionsList = ["Acupuncturist",
+            professionsOptionsList = ["Acupuncturist",
                 "Audiologist",
                 "Chiropractor",
                 "Combined Laboratory and X-Ray Technologist",
@@ -137,21 +169,22 @@ const onChangeProvincialSelect = (evt) => {
                 "Speech-Language Pathologist",
                 "None of the above"];
             break;
-        case "BC": 
+
+        case "BC":
             licensingArrayProvinceSpecifiedList = ["BC Association of Clinical Counsellors",
                 "BC Podiatric Medical Association",
-                "British Columbia College of Nurses and Midwives", 
-                "British Columbia College of Oral Health Professionals", 
-                "British Columbia College of Social Workers", 
+                "British Columbia College of Nurses and Midwives",
+                "British Columbia College of Oral Health Professionals",
+                "British Columbia College of Social Workers",
                 "Canadian Counselling and Psychotherapy Association",
                 "College of Complementary Health Professionals of BC",
-                "College of Health and Care Professionals of BC", 
-                "College of Pharmacists of British Columbia", 
-                "College of Physicians and Surgeons of British Columbia", 
+                "College of Health and Care Professionals of BC",
+                "College of Pharmacists of British Columbia",
+                "College of Physicians and Surgeons of British Columbia",
                 "BC Emergency Medical Assistants Licensing Board",
                 "Canadian Therapeutic Recreation Association",
                 "None of the above"];
-             professionsOptionsList = ["Acupuncturist",
+            professionsOptionsList = ["Acupuncturist",
                 "Audiologist",
                 "Chiropractor",
                 "Dental Assistant",
@@ -186,7 +219,8 @@ const onChangeProvincialSelect = (evt) => {
                 "Traditional Chinese Medicine Practitioner",
                 "None of the above"];
             break;
-        case "MB": 
+
+        case "MB":
             licensingArrayProvinceSpecifiedList = ["College of Audiologists and Speech-Language Pathologists of Manitoba",
                 "College of Dental Hygienists of Manitoba",
                 "College of Dietitians of Manitoba",
@@ -212,7 +246,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Psychological Association of Manitoba",
                 "Canadian Therapeutic Recreation Association",
                 "None of the above"];
-             professionsOptionsList = ["Audiologist",
+            professionsOptionsList = ["Audiologist",
                 "Chiropractor",
                 "Dental Assistant",
                 "Dental Hygienist",
@@ -243,11 +277,12 @@ const onChangeProvincialSelect = (evt) => {
                 "Speech-Language Pathologist",
                 "None of the above"];
             break;
-         case "NB": 
+
+        case "NB":
             licensingArrayProvinceSpecifiedList = ["Association of New Brunswick Licensed Practical Nurses",
                 "College of Counselling Therapists of New Brunswick",
                 "College of Massage Therapy New Brunswick",
-                "College of Osteopaths of New Brunswick",         
+                "College of Osteopaths of New Brunswick",
                 "College of Physicians and Surgeons of New Brunswick",
                 "College of Physiotherapists of New Brunswick",
                 "College of Psychologists of New Brunswick",
@@ -260,7 +295,7 @@ const onChangeProvincialSelect = (evt) => {
                 "New Brunswick Association of Social Workers",
                 "New Brunswick Chiropractors' Association",
                 "New Brunswick College of Dental Hygienists",
-                "New Brunswick College of Pharmacists",                       
+                "New Brunswick College of Pharmacists",
                 "New Brunswick Dental Society",
                 "New Brunswick Dental Technicians' Association",
                 "New Brunswick Denturists' Society",
@@ -273,7 +308,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Paramedic Association of New Brunswick",
                 "Canadian Therapeutic Recreation Association",
                 "None of the above"];
-             professionsOptionsList = ["Audiologist",
+            professionsOptionsList = ["Audiologist",
                 "Cardiology Technologist",
                 "Chiropractor",
                 "Dental Assistant",
@@ -308,7 +343,8 @@ const onChangeProvincialSelect = (evt) => {
                 "Speech-Language Pathologist",
                 "None of the above"];
             break;
-          case "NS": 
+
+        case "NS":
             licensingArrayProvinceSpecifiedList = ["College of Dental Hygienists of Nova Scotia",
                 "College of Occupational Therapists of Nova Scotia",
                 "College of Paramedics of Nova Scotia",
@@ -334,7 +370,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Provincial Dental Board of Nova Scotia",
                 "Canadian Therapeutic Recreation Association",
                 "None of the above"];
-             professionsOptionsList = ["Audiologist",
+            professionsOptionsList = ["Audiologist",
                 "Chiropractor",
                 "Dental Assistant",
                 "Dental Hygienist",
@@ -365,7 +401,8 @@ const onChangeProvincialSelect = (evt) => {
                 "Social Worker",
                 "None of the above"];
             break;
-          case "NL": 
+
+        case "NL":
             licensingArrayProvinceSpecifiedList = ["College of Audiology and Speech-Language Pathology of Newfoundland and Labrador",
                 "College of Licensed Practical Nurses of Newfoundland and Labrador",
                 "College of Massage Therapists Newfoundland",
@@ -391,7 +428,7 @@ const onChangeProvincialSelect = (evt) => {
                 "The Dispensing Opticians Board of Newfoundland and Labrador",
                 "Canadian Therapeutic Recreation Association",
                 "None of the above"];
-             professionsOptionsList = ["Acupuncturist",
+            professionsOptionsList = ["Acupuncturist",
                 "Audiologist",
                 "Chiropractor",
                 "Dental Assistant",
@@ -420,7 +457,8 @@ const onChangeProvincialSelect = (evt) => {
                 "Traditional Chinese Medicine Practitioner",
                 "None of the above"];
             break;
-        case "PE": 
+
+        case "PE":
             licensingArrayProvinceSpecifiedList = ["College of Allied Health Professionals of Prince Edward Island",
                 "College of Counselling Therapy PEI",
                 "College of Dental Hygienists of Prince Edward Island",
@@ -442,7 +480,7 @@ const onChangeProvincialSelect = (evt) => {
                 "College of Registered Nurses and Midwives of Prince Edward Island",
                 "Canadian Therapeutic Recreation Association",
                 "None of the above"];
-             professionsOptionsList = ["Chiropractor",
+            professionsOptionsList = ["Chiropractor",
                 "Dental Assistant",
                 "Dental Hygienist",
                 "Dentist",
@@ -470,7 +508,8 @@ const onChangeProvincialSelect = (evt) => {
                 "Social Worker",
                 "None of the above"];
             break;
-          case "SK": 
+
+        case "SK":
             licensingArrayProvinceSpecifiedList = ["Chiropractors' Association of Saskatchewan",
                 "College of Dental Surgeons of Saskatchewan",
                 "College of Physicians and Surgeons of Saskatchewan",
@@ -501,7 +540,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Saskatchewan Society of Occupational Therapists",
                 "Canadian Therapeutic Recreation Association",
                 "None of the above"];
-             professionsOptionsList = ["Audiologist",
+            professionsOptionsList = ["Audiologist",
                 "Chiropractor",
                 "Dental Assistant",
                 "Dental Hygienist",
@@ -536,7 +575,8 @@ const onChangeProvincialSelect = (evt) => {
                 "Speech-Language Pathologist",
                 "None of the above"];
             break;
-          case "ON": 
+
+        case "ON":
             licensingArrayProvinceSpecifiedList = ["College of Audiologists and Speech-Language Pathologists of Ontario",
                 "College of Chiropodists of Ontario",
                 "College of Chiropractors of Ontario",
@@ -567,7 +607,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Royal College of Dental Surgeons of Ontario",
                 "Canadian Therapeutic Recreation Association",
                 "None of the above"];
-             professionsOptionsList = ["Acupuncturist",
+            professionsOptionsList = ["Acupuncturist",
                 "Audiologist",
                 "Behaviour Analyst",
                 "Chiropodist",
@@ -606,7 +646,8 @@ const onChangeProvincialSelect = (evt) => {
                 "Traditional Chinese Medicine Practitioner",
                 "None of the above"];
             break;
-        case "QC": 
+
+        case "QC":
             licensingArrayProvinceSpecifiedList = ["Association canadienne des loisirs thérapeutiques",
                 "Collège des médecins du Québec",
                 "Fédération des kinésiologues du Québec",
@@ -637,7 +678,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Ordre professionnel des sexologues du Québec",
                 "Ordre professionnel des technologistes médicaux du Québec",
                 "None of the above"];
-             professionsOptionsList = ["Acupuncturist",
+            professionsOptionsList = ["Acupuncturist",
                 "Audiologist",
                 "Chiropractor",
                 "Dental Hygienist",
@@ -676,13 +717,14 @@ const onChangeProvincialSelect = (evt) => {
                 "Speech-Language Pathologist",
                 "None of the above"];
             break;
-        case "YT" :
+
+        case "YT":
             licensingArrayProvinceSpecifiedList = ["Canadian Therapeutic Recreation Association",
                 "Government of Yukon, Professional Licensing",
                 "Yukon Medical Council",
                 "Yukon Registered Nurses Association",
                 "None of the above"];
-             professionsOptionsList = ["Chiropractor",
+            professionsOptionsList = ["Chiropractor",
                 "Dental Hygienist",
                 "Dental Therapist",
                 "Dentist",
@@ -700,14 +742,15 @@ const onChangeProvincialSelect = (evt) => {
                 "Registered Psychiatric Nurse",
                 "None of the above"];
             break;
-        case "NT" :
+
+        case "NT":
             licensingArrayProvinceSpecifiedList = ["Chiropractors' Association of Saskatchewan",
-                "College of Chiropractors of Alberta",  
+                "College of Chiropractors of Alberta",
                 "College of Chiropractors of Ontario",
                 "Canadian Therapeutic Recreation Association",
                 "College of Complementary Health Professionals of BC",
-                "College of Massage Therapy New Brunswick",                                   
-                "College of Massage Therapists Newfoundland",  
+                "College of Massage Therapy New Brunswick",
+                "College of Massage Therapists Newfoundland",
                 "College of Massage Therapists of Ontario",
                 "College of Massage Therapists of Prince Edward Island",
                 "Government of the Northwest Territories, Health and Social Services",
@@ -719,7 +762,7 @@ const onChangeProvincialSelect = (evt) => {
                 "Prince Edward Island Chiropractic Association",
                 "Registered Nurses Association of the Northwest Territories and Nunavut",
                 "None of the above"];
-             professionsOptionsList = ["Dental Hygienist",
+            professionsOptionsList = ["Dental Hygienist",
                 "Dental Therapist",
                 "Dentist",
                 "Denturist",
@@ -738,12 +781,13 @@ const onChangeProvincialSelect = (evt) => {
                 "Social Worker",
                 "None of the above"];
             break;
-        case "NU" :  
+
+        case "NU":
             licensingArrayProvinceSpecifiedList = ["Canadian Therapeutic Recreation Association",
                 "Government of Nunavut, Department of Health",
                 "Registered Nurses Association of the Northwest Territories and Nunavut",
                 "None of the above"];
-             professionsOptionsList = ["Dental Hygienist",
+            professionsOptionsList = ["Dental Hygienist",
                 "Dental Therapist",
                 "Dentist",
                 "Denturist",
@@ -758,18 +802,24 @@ const onChangeProvincialSelect = (evt) => {
                 "Registered Nurse",
                 "None of the above"];
             break;
-        case "":
-            alert("Please select the Canadian province of your practice to continue.")
+
         default:
             break;
     }
+
     addOptionsValueToProfessionsSelect(professionsOptionsList);
     addOptionsValueToLicensingBodySelect(licensingArrayProvinceSpecifiedList);
-}
+
+    const hasProvinceOptions = professionsOptionsList.length > 0 && licensingArrayProvinceSpecifiedList.length > 0;
+    setDependentFieldsDisabled(!hasProvinceOptions);
+
+    hideProvinceMessage();
+};
 
 const onChangeReferralSelect = (evt) => {
     var select = evt.target;
     var other = select.nextElementSibling;
+
     if (select.value == "Other") {
         other.value = "";
         other.classList.remove("w-hidden");
@@ -778,23 +828,110 @@ const onChangeReferralSelect = (evt) => {
         other.classList.add("w-hidden");
         other.value = "";
     }
-}
+};
 
 const onChangeDiscoveryPass = (evt) => {
     var discoveryPassAddress = document.getElementById("discoveryPassAddress");
+
+    if (!discoveryPassAddress) return;
+
     if (discoveryPassValue.checked) {
         discoveryPassAddress.classList.remove("w-hidden");
     }
     else {
         discoveryPassAddress.classList.add("w-hidden");
     }
-}
+};
+
+const validatePrescriberForm = (evt) => {
+    onChangeLicensingBodySelect();
+
+    if (!provinceSelect.value) {
+        evt.preventDefault();
+        provinceSelect.focus();
+        alert("Please select your province or territory before continuing.");
+        return;
+    }
+
+    if (!cityInput.value.trim()) {
+        evt.preventDefault();
+        cityInput.focus();
+        alert("Please enter your city.");
+        return;
+    }
+
+    if (!professionsSelect.value) {
+        evt.preventDefault();
+        professionsSelect.focus();
+        alert("Please select your profession.");
+        return;
+    }
+
+    if (!licensingBodySelect.value || !licensingBody.value.trim()) {
+        evt.preventDefault();
+        licensingBodySelect.focus();
+        alert("Please select your licensing body.");
+        return;
+    }
+
+    if (!licenceNumberInput.value.trim()) {
+        evt.preventDefault();
+        licenceNumberInput.focus();
+        alert("Please enter your licence number.");
+        return;
+    }
+};
+
+setDependentFieldsDisabled(true);
+
 Array.prototype.forEach.call(referralSelectors, referralSelection => {
     referralSelection.addEventListener("change", onChangeReferralSelect);
 });
 
 provinceSelect?.addEventListener("change", onChangeProvincialSelect);
-
 licensingBodySelect?.addEventListener("change", onChangeLicensingBodySelect);
-
 discoveryPassValue?.addEventListener("change", onChangeDiscoveryPass);
+prescriberForm?.addEventListener("submit", validatePrescriberForm);
+
+professionsSelect?.addEventListener("mousedown", function(e) {
+    if (!provinceSelect.value) {
+        e.preventDefault();
+        showProvinceMessage();
+    }
+});
+
+licensingBodySelect?.addEventListener("mousedown", function(e) {
+    if (!provinceSelect.value) {
+        e.preventDefault();
+        showProvinceMessage();
+    }
+});
+
+professionsSelect?.addEventListener("focus", function() {
+    if (!provinceSelect.value) {
+        showProvinceMessage();
+    }
+});
+
+licensingBodySelect?.addEventListener("focus", function() {
+    if (!provinceSelect.value) {
+        showProvinceMessage();
+    }
+});
+
+const blockDependentFieldUntilProvince = (evt) => {
+    if (!provinceSelect.value) {
+        evt.preventDefault();
+        showProvinceMessage();
+        provinceSelect.focus();
+    }
+};
+
+professionsSelect?.addEventListener("mousedown", blockDependentFieldUntilProvince);
+licensingBodySelect?.addEventListener("mousedown", blockDependentFieldUntilProvince);
+
+professionsSelect?.addEventListener("keydown", blockDependentFieldUntilProvince);
+licensingBodySelect?.addEventListener("keydown", blockDependentFieldUntilProvince);
+
+professionsSelect?.addEventListener("touchstart", blockDependentFieldUntilProvince);
+licensingBodySelect?.addEventListener("touchstart", blockDependentFieldUntilProvince);

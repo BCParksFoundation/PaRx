@@ -8823,3 +8823,18 @@ html {
   #discoveryPassAddress.w-hidden {
     display: none;
   }
+
+.province-required-message {
+  background: #f6f8f2;
+  border-left: 4px solid #6b8e23;
+  padding: 12px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.is-disabled-select {
+    background-color: #eee;
+    color: #777;
+    cursor: not-allowed;
+}

@@ -1,3 +1,34 @@
+var prescriberForm = document.querySelector(".prescriber-form");
+var cityInput = document.getElementById("00NJQ000000mnRS");
+var licenceNumberInput = document.getElementById("00NJQ000000mnRe");
+var provinceRequiredMessage = document.getElementById("provinceRequiredMessage");
+
+const showProvinceMessage = () => {
+    provinceRequiredMessage?.classList.remove("w-hidden");
+};
+
+const hideProvinceMessage = () => {
+    provinceRequiredMessage?.classList.add("w-hidden");
+};
+
+const setDependentFieldsDisabled = (isDisabled) => {
+    if (isDisabled) {
+        professionsSelect.classList.add("is-disabled-select");
+        licensingBodySelect.classList.add("is-disabled-select");
+
+        professionsSelect.setAttribute("aria-disabled", "true");
+        licensingBodySelect.setAttribute("aria-disabled", "true");
+    } else {
+        professionsSelect.classList.remove("is-disabled-select");
+        licensingBodySelect.classList.remove("is-disabled-select");
+
+        professionsSelect.removeAttribute("aria-disabled");
+        licensingBodySelect.removeAttribute("aria-disabled");
+
+        hideProvinceMessage();
+    }
+};
+
 var professionsSelect = document.getElementById("00NJQ000000mnRn");
 var provinceSelect = document.getElementById("00NJQ000000mnRo");
 var licensingBodySelect = document.getElementsByClassName("licensingBodySelect")[0];
@@ -208,6 +239,11 @@ const onChangeProvincialSelect = (evt) => {
 
     addOptionsValueToProfessionsSelect(professionsOptionsList);
     addOptionsValueToLicensingBodySelect(licensingArrayProvinceSpecifiedList);
+
+    const hasProvinceOptions = professionsOptionsList.length > 0 && licensingArrayProvinceSpecifiedList.length > 0;
+    setDependentFieldsDisabled(!hasProvinceOptions);
+
+    licensingBody.value = "";
 }
 
 const onChangeReferralSelect = (evt) => {
@@ -244,3 +280,64 @@ provinceSelect.addEventListener("change", onChangeProvincialSelect);
 licensingBodySelect.addEventListener("change", onChangeLicensingBodySelect);
 
 discoveryPassValue?.addEventListener("change", onChangeDiscoveryPass);
+
+const blockDependentFieldUntilProvince = (evt) => {
+    if (!provinceSelect.value) {
+        evt.preventDefault();
+        showProvinceMessage();
+        provinceSelect.focus();
+    }
+};
+
+const validatePrescriberForm = (evt) => {
+    onChangeLicensingBodySelect();
+
+    if (!provinceSelect.value) {
+        evt.preventDefault();
+        provinceSelect.focus();
+        showProvinceMessage();
+        alert("Veuillez sélectionner votre province ou territoire avant de continuer.");
+        return;
+    }
+
+    if (!cityInput.value.trim()) {
+        evt.preventDefault();
+        cityInput.focus();
+        alert("Veuillez entrer votre ville.");
+        return;
+    }
+
+    if (!professionsSelect.value) {
+        evt.preventDefault();
+        professionsSelect.focus();
+        alert("Veuillez sélectionner votre profession.");
+        return;
+    }
+
+    if (!licensingBodySelect.value || !licensingBody.value.trim()) {
+        evt.preventDefault();
+        licensingBodySelect.focus();
+        alert("Veuillez sélectionner votre organisme de réglementation.");
+        return;
+    }
+
+    if (!licenceNumberInput.value.trim()) {
+        evt.preventDefault();
+        licenceNumberInput.focus();
+        alert("Veuillez entrer votre numéro de licence.");
+        return;
+    }
+};
+
+setDependentFieldsDisabled(false);
+
+professionsSelect?.addEventListener("mousedown", blockDependentFieldUntilProvince);
+licensingBodySelect?.addEventListener("mousedown", blockDependentFieldUntilProvince);
+
+professionsSelect?.addEventListener("keydown", blockDependentFieldUntilProvince);
+licensingBodySelect?.addEventListener("keydown", blockDependentFieldUntilProvince);
+
+professionsSelect?.addEventListener("touchstart", blockDependentFieldUntilProvince);
+licensingBodySelect?.addEventListener("touchstart", blockDependentFieldUntilProvince);
+
+prescriberForm?.addEventListener("submit", validatePrescriberForm);
