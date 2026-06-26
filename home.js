@@ -3,11 +3,11 @@ var provinceSelect = document.getElementsByClassName("provinceSelect")[0];
 var licensingBodySelect = document.getElementsByClassName("licensingBodySelect")[0];
 var referralSelectors = document.getElementsByClassName("referralSelect");
 var discoveryPassValue = document.getElementsByClassName("discoveryPass")[0];
-var licensingBody = document.getElementById("00NJQ000000mnRf");
+var licensingBody = document.getElementById("00Nbm000001b212");
 
 var prescriberForm = document.querySelector(".prescriber-form");
-var cityInput = document.getElementById("00NJQ000000mnRS");
-var licenceNumberInput = document.getElementById("00NJQ000000mnRe");
+var cityInput = document.getElementById("00Nbm000001b20h");
+var licenceNumberInput = document.getElementById("00Nbm000001b210");
 
 var provinceRequiredMessage = document.getElementById("provinceRequiredMessage");
 
