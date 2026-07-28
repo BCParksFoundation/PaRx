@@ -830,17 +830,29 @@ const onChangeReferralSelect = (evt) => {
     }
 };
 
-const onChangeDiscoveryPass = (evt) => {
+const onChangeDiscoveryPass = () => {
     var discoveryPassAddress = document.getElementById("discoveryPassAddress");
+
+    var discoveryPassAddressFields = [
+        document.getElementById("00NJQ000000mnRp"), // Street Address
+        document.getElementById("00NJQ000000mnRS"), // City
+        document.getElementById("00NJQ000000mnRj"), // Postal Code
+        document.getElementById("00NJQ000000mnRo")  // Province
+    ];
 
     if (!discoveryPassAddress) return;
 
     if (discoveryPassValue.checked) {
         discoveryPassAddress.classList.remove("w-hidden");
-    }
-    else {
+    } else {
         discoveryPassAddress.classList.add("w-hidden");
     }
+
+    discoveryPassAddressFields.forEach(field => {
+        if (field) {
+            field.required = discoveryPassValue.checked;
+        }
+    });
 };
 
 const validatePrescriberForm = (evt) => {

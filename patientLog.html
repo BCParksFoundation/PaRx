@@ -5,6 +5,13 @@
 </script>
 
 <script>
+    function recaptchaCallbackPatient() {
+        var btnSubmit = document.getElementById("patientLogSubmit");
+        btnSubmit.removeAttribute("disabled");
+    }
+</script>
+
+<script>
     function formatDatePatient(input) {
         const date = new Date(input.value);
         if (isNaN(date.getTime())) return; // If the date is invalid, do nothing
@@ -16,21 +23,14 @@
     }
 </script>
 
-<script>
-    function recaptchaCallbackPatient() {
-        var btnSubmit = document.getElementById("patientLogSubmit");
-        btnSubmit.removeAttribute("disabled");
-    }
-</script>
-
 <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00D1U000000Da1s" method="POST">
-    <input type=hidden name='captcha_settings' value='{"keyname":"PaRx","fallback":"true","orgId":"00D1U000000Da1s","ts":""}'>
     <input type=hidden name="orgid" value="00D1U000000Da1s">
     <input type=hidden name="retURL" value="www.parkprescriptions.ca/en/patient-log-your-parx-success">
     
     <select  id="00NJQ000000mnRZ" name="00NJQ000000mnRZ" title="Form Type" hidden>
         <option value="PatientLog" selected>PatientLog</option>
     </select>
+
     <div class="name-boxes w-row">
         <div class="name-box left w-col w-col-6">
             <label class="field-label" for="00NJQ000000mnRX">First Name</label>
@@ -50,28 +50,24 @@
     <label class="field-label"> My PaRx prescription is:</label>
     <div class="w-row">
         <div class="form-column left w-col w-col-4">
-            <input id="00NJQ000000mnRq" name="00NJQ000000mnRq" class="text-field w-input" maxlength="8" placeholder="AA-AA123" type="text" required>
-            <div class="box-subtitle">Unique Provider Code</div>
+          <div class="box-subtitle">Unique Provider Code</div>
+          <input id="00NJQ000000mnRq" name="00NJQ000000mnRq" class="text-field w-input" maxlength="8" placeholder="AA-AA123" type="text" required>
         </div>
         <div class="form-column middle w-col w-col-4">
-            <input type="date" id="dateInput2" placeholder="YYYY-MM-DD" class="text-field w-input" onchange="formatDatePatient(this)" required>
-            <input id="00NJQ000000mnRl" name="00NJQ000000mnRl" placeholder="DD/MM/YYYY" class="text-field w-input dateinput2" type=hidden>
-            <div class="box-subtitle">Prescription Date</div>
+          <div class="box-subtitle">Prescription Date</div>
+          <input type="date" id="dateInput2" placeholder="YYYY-MM-DD" class="text-field w-input" onchange="formatDatePatient(this)" required>
+          <input id="00NJQ000000mnRl" name="00NJQ000000mnRl" placeholder="DD/MM/YYYY" class="text-field w-input dateinput2" type=hidden>
         </div>
         <div class="form-column right w-col w-col-4">
-            <input id="00NJQ000000mnRY" name="00NJQ000000mnRY" class="text-field w-input" maxlength="2" placeholder="AA" type="text" pattern="[a-zA-Z0-9]*" required>
-            <div class="box-subtitle">Patient's first and last initials </div>
+          <div class="box-subtitle">Patient's first and last initials </div>
+          <input id="00NJQ000000mnRY" name="00NJQ000000mnRY" class="text-field w-input" maxlength="2" placeholder="AA" type="text" pattern="[a-zA-Z0-9]*" required>
         </div>
     </div>
-    <h3 class="sub-heading"><strong>Don't have a PaRx prescription? Tell your health-care provider about PaRx to see if they'll consider registering in our program.</strong></h3>
     <br>
     <label class="w-checkbox checkbox-field" for="00NJQ000000mnRV">
         <input id="00NJQ000000mnRV" class="w-checkbox-input checkbox" name="00NJQ000000mnRV" type="checkbox" value="1" />For BC residents: I'd like free minutes with Evo.<br>
     </label>
     
-    <label class="w-checkbox checkbox-field" for="00NJQ000000p0ij">
-        <input id="00NJQ000000p0ij" class="w-checkbox-input checkbox" name="00NJQ000000p0ij" type="checkbox" value="1" />For patients in cities where Lime is located: I’d like discounted trips with Lime.<br>
-    </label>   
     <label class="w-checkbox checkbox-field" for="00NJQ000000mnRi">
         <input id="00NJQ000000mnRi" class="w-checkbox-input checkbox discoveryPass" name="00NJQ000000mnRi" type="checkbox" value="1" />I was prescribed a Parks Canada Discovery Pass.<br>
     </label>
@@ -80,7 +76,7 @@
         <label class="field-label" for="00NJQ000000iI6T">If you were prescribed a Parks Canada Discovery Pass, please provide your mailing address so we can send your Pass to you:</label>
         <div class="_3-boxes w-row">
             <div class="form-column left w-col w-col-3">
-                <input id="00NJQ000000mnRp" class="text-field w-input" maxlength="255" name="00NJQ000000mnRp" size="20" type="text" placeholder="Street Address" />
+                <input id="00NJQ000000mnRp" class="text-field w-input" maxlength="255" name="00NJQ000000mnRp" size="20" type="text" placeholder="Unit/Apt #, Street Address" />
             </div>
             <div class="form-column middle w-col w-col-3">
                 <input id="00NJQ000000mnRS" class="text-field w-input" maxlength="255" name="00NJQ000000mnRS" size="20" type="text" placeholder="City" />
@@ -113,9 +109,9 @@
     <select id="00NJQ000000mnRa" name='00NJQ000000mnRa' class="drop-down-field w-select referralSelect" title="How did you hear about us?"><option value="">--None--</option>
             <option value="Google/internet search">Google/internet search</option>
         <option value="Healthcare provider">Healthcare provider</option>
-    <option value="Media coverage (e.g. TV, radio, podcast, online article)">Media coverage (e.g. TV, radio, podcast, online article)</option>
+    <option value="Media coverage">Media coverage</option>
         <option value="Social media">Social media</option>
-        <option value="Word of mouth (e.g. Coworker, family, friend)">Word of mouth (e.g. Coworker, family, friend)</option>
+        <option value="Word of mouth">Word of mouth</option>
         <option value="Other">Other</option>
     </select>
     <input class="text-field w-input w-hidden" id="00NJQ000000mnRb" maxlength="255" name="00NJQ000000mnRb" size="20" type="text" placeholder="Other (please specify)"/>
@@ -128,10 +124,11 @@
     <select id="00NJQ000000mnRc" class="drop-down-field w-select" name="00NJQ000000mnRc" title="Language"><option value="English">English</option>
         <option value="French">French</option>
     </select>
-    <div class="g-recaptcha" data-sitekey="6LcDuVoqAAAAAA9zw-rLykkAWVhRSDI70aYg8VNg" data-callback="recaptchaCallbackPatient"></div>
 
-    <input class="navigation-button form w-button" type="submit" id="patientLogSubmit" value="Log my PaRx Prescription" disabled="disabled">
+    <input class="navigation-button form w-button" type="submit" id="patientLogSubmit" value="Log my PaRx Prescription">
 </form>
+
+<h3 class="sub-heading"><strong>Don't have a PaRx prescription? Tell your health-care provider about PaRx to see if they'll consider registering in our program.</strong></h3>
 
 <script src="./home.js"></script>
 <link rel="stylesheet" href="home.css">

@@ -1,10 +1,36 @@
 <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
 <script src="https://www.google.com/recaptcha/api.js"></script>
 <script>
-    function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500); 
-</script>
+    function recaptchaCallbackPrescriber() {
+        var btnSubmit = document.getElementById("prescriberLogSubmit");
+        btnSubmit.removeAttribute("disabled");
+    }
 
-<script>
+    function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500); 
+
+    document.addEventListener("DOMContentLoaded", function() {
+      document.querySelectorAll("label[for]").forEach(function(label) {
+        var targetId = label.getAttribute("for");
+        var matches = document.querySelectorAll("#" + CSS.escape(targetId));
+
+        if (matches.length > 1) {
+          label.addEventListener("click", function(e) {
+            // Only intercept if the click was not directly on the checkbox
+            if (e.target.tagName.toLowerCase() === "input") return;
+
+            e.preventDefault();
+            var form = label.closest("form");
+            if (!form) return;
+            var checkbox = form.querySelector("#" + CSS.escape(targetId));
+            if (checkbox) {
+              checkbox.checked = !checkbox.checked;
+              checkbox.dispatchEvent(new Event("change", { bubbles: true }));
+            }
+          });
+        }
+      });
+    });
+
     function formatDate(input) {
         const date = new Date(input.value);
         if (isNaN(date.getTime())) return; // If the date is invalid, do nothing
@@ -13,14 +39,6 @@
         const year = date.getFullYear();
         const newDate = new Date(year, month, day).toLocaleDateString("en-UK");
         document.getElementById('00NJQ000000mnRl').value = newDate;
-    }
-</script>
-
-
-<script>
-    function recaptchaCallbackPrescriber() {
-        var btnSubmit = document.getElementById("prescriberLogSubmit");
-        btnSubmit.removeAttribute("disabled");
     }
 </script>
     
@@ -40,22 +58,21 @@
     <label class="field-label">My patient's PaRx prescription is: </label>
     <div class="w-row">
         <div class="form-column left w-col w-col-4">
-            <input id="00NJQ000000mnRq" name="00NJQ000000mnRq" class="text-field w-input" maxlength="8" placeholder="AA-AA123" type="text" required>
             <div class="box-subtitle">Unique Provider Code</div>
+            <input id="00NJQ000000mnRq" name="00NJQ000000mnRq" class="text-field w-input" maxlength="8" placeholder="AA-AA123" type="text" required>
         </div>
         <div class="form-column middle w-col w-col-4">
         <span class="dateInput dateOnlyInput">
-           <input type="date" id="dateInput" class="text-field w-input" placeholder="YYYY-MM-DD" onchange="formatDate(this)" required>
-            <input id="00NJQ000000mnRl" name="00NJQ000000mnRl" placeholder="YYYY-MM-DD" class="text-field w-input" type=hidden>
-            <div class="box-subtitle">Prescription Date</div>
+          <div class="box-subtitle">Prescription Date</div>
+          <input type="date" id="dateInput" class="text-field w-input" placeholder="YYYY-MM-DD" onchange="formatDate(this)" required>
+          <input id="00NJQ000000mnRl" name="00NJQ000000mnRl" placeholder="YYYY-MM-DD" class="text-field w-input" type=hidden>
         </span>
         </div>
         <div class="form-column right w-col w-col-4">
-            <input id="00NJQ000000mnRY" name="00NJQ000000mnRY" class="text-field w-input" maxlength="2" placeholder="AA" type="text" pattern="[a-zA-Z0-9]*" required>
             <div class="box-subtitle">Patient's first and last initials </div>
+            <input id="00NJQ000000mnRY" name="00NJQ000000mnRY" class="text-field w-input" maxlength="2" placeholder="AA" type="text" pattern="[a-zA-Z0-9]*" required>
         </div>
     </div>
-    <h3 class="sub-heading"><strong>Don't have a unique provider code? Register to become a PaRx prescriber <a href="/en/get-started" target="_blank"><strong>here</strong></a>.</strong></h3>
 
     <label class="w-checkbox checkbox-field" for="00NJQ000000mnRi">
         <input id="00NJQ000000mnRi" class="w-checkbox-input checkbox" name="00NJQ000000mnRi" type="checkbox" value="1" />
@@ -70,4 +87,4 @@
     <input class="navigation-button form w-button" type="submit" id="prescriberLogSubmit" value="Log my Patient's PaRx Prescription" disabled="disabled">
 </form>
 
-<link rel="stylesheet" href="home.css">
+<h3 class="sub-heading"><strong>Don't have a unique provider code? Register to become a PaRx prescriber <a href="/en/get-started" target="_blank"><strong>here</strong></a>.</strong></h3>
