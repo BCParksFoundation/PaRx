@@ -8853,8 +8853,8 @@ button, input, optgroup, select, textarea {
       width: 100%;
   }
   
-	.w-input.w-hidden {
-  	display: none;
+	.w-input.w-hidden, .w-hidden {
+  	display: none !important;
 	}
   
   .checkbox {
