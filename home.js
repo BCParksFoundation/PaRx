@@ -831,26 +831,25 @@ const onChangeReferralSelect = (evt) => {
 };
 
 const onChangeDiscoveryPass = () => {
-    var discoveryPassAddress = document.getElementById("discoveryPassAddress");
+    var discoveryPassAddress =
+        document.getElementById("discoveryPassAddress");
 
     var discoveryPassAddressFields = [
-        document.getElementById("00NJQ000000mnRp"), // Street Address
-        document.getElementById("00NJQ000000mnRS"), // City
-        document.getElementById("00NJQ000000mnRj"), // Postal Code
-        document.getElementById("00NJQ000000mnRo")  // Province
+        document.getElementById("00NJQ000000mnRp"),
+        document.getElementById("00NJQ000000mnRS"),
+        document.getElementById("00NJQ000000mnRj"),
+        document.getElementById("00NJQ000000mnRo")
     ];
 
-    if (!discoveryPassAddress) return;
+    if (!discoveryPassValue || !discoveryPassAddress) return;
 
-    if (discoveryPassValue.checked) {
-        discoveryPassAddress.classList.remove("w-hidden");
-    } else {
-        discoveryPassAddress.classList.add("w-hidden");
-    }
+    var isChecked = discoveryPassValue.checked;
+
+    discoveryPassAddress.classList.toggle("w-hidden", !isChecked);
 
     discoveryPassAddressFields.forEach(field => {
         if (field) {
-            field.required = discoveryPassValue.checked;
+            field.required = isChecked;
         }
     });
 };
@@ -894,56 +893,82 @@ const validatePrescriberForm = (evt) => {
     }
 };
 
-setDependentFieldsDisabled(true);
+if (professionsSelect && licensingBodySelect) {
+    setDependentFieldsDisabled(true);
+}
 
+// Prescriber form functionality
+if (
+    professionsSelect &&
+    provinceSelect &&
+    licensingBodySelect &&
+    licensingBody
+) {
+    setDependentFieldsDisabled(true);
+
+    provinceSelect.addEventListener("change", onChangeProvincialSelect);
+    licensingBodySelect.addEventListener("change", onChangeLicensingBodySelect);
+
+    prescriberForm?.addEventListener("submit", validatePrescriberForm);
+
+    professionsSelect.addEventListener("focus", function () {
+        if (!provinceSelect.value) {
+            showProvinceMessage();
+        }
+    });
+
+    licensingBodySelect.addEventListener("focus", function () {
+        if (!provinceSelect.value) {
+            showProvinceMessage();
+        }
+    });
+
+    const blockDependentFieldUntilProvince = (evt) => {
+        if (!provinceSelect.value) {
+            evt.preventDefault();
+            showProvinceMessage();
+            provinceSelect.focus();
+        }
+    };
+
+    professionsSelect.addEventListener(
+        "mousedown",
+        blockDependentFieldUntilProvince
+    );
+
+    licensingBodySelect.addEventListener(
+        "mousedown",
+        blockDependentFieldUntilProvince
+    );
+
+    professionsSelect.addEventListener(
+        "keydown",
+        blockDependentFieldUntilProvince
+    );
+
+    licensingBodySelect.addEventListener(
+        "keydown",
+        blockDependentFieldUntilProvince
+    );
+
+    professionsSelect.addEventListener(
+        "touchstart",
+        blockDependentFieldUntilProvince
+    );
+
+    licensingBodySelect.addEventListener(
+        "touchstart",
+        blockDependentFieldUntilProvince
+    );
+}
+
+// Referral dropdown functionality
 Array.prototype.forEach.call(referralSelectors, referralSelection => {
     referralSelection.addEventListener("change", onChangeReferralSelect);
 });
 
-provinceSelect?.addEventListener("change", onChangeProvincialSelect);
-licensingBodySelect?.addEventListener("change", onChangeLicensingBodySelect);
-discoveryPassValue?.addEventListener("change", onChangeDiscoveryPass);
-prescriberForm?.addEventListener("submit", validatePrescriberForm);
-
-professionsSelect?.addEventListener("mousedown", function(e) {
-    if (!provinceSelect.value) {
-        e.preventDefault();
-        showProvinceMessage();
-    }
-});
-
-licensingBodySelect?.addEventListener("mousedown", function(e) {
-    if (!provinceSelect.value) {
-        e.preventDefault();
-        showProvinceMessage();
-    }
-});
-
-professionsSelect?.addEventListener("focus", function() {
-    if (!provinceSelect.value) {
-        showProvinceMessage();
-    }
-});
-
-licensingBodySelect?.addEventListener("focus", function() {
-    if (!provinceSelect.value) {
-        showProvinceMessage();
-    }
-});
-
-const blockDependentFieldUntilProvince = (evt) => {
-    if (!provinceSelect.value) {
-        evt.preventDefault();
-        showProvinceMessage();
-        provinceSelect.focus();
-    }
-};
-
-professionsSelect?.addEventListener("mousedown", blockDependentFieldUntilProvince);
-licensingBodySelect?.addEventListener("mousedown", blockDependentFieldUntilProvince);
-
-professionsSelect?.addEventListener("keydown", blockDependentFieldUntilProvince);
-licensingBodySelect?.addEventListener("keydown", blockDependentFieldUntilProvince);
-
-professionsSelect?.addEventListener("touchstart", blockDependentFieldUntilProvince);
-licensingBodySelect?.addEventListener("touchstart", blockDependentFieldUntilProvince);
+// Discovery Pass functionality
+if (discoveryPassValue) {
+    discoveryPassValue.addEventListener("change", onChangeDiscoveryPass);
+    onChangeDiscoveryPass();
+}
