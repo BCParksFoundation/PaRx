@@ -1,8 +1,38 @@
 (() => {
+const setRecaptchaFormState = (form, isComplete) => {
+    const submit = form?.querySelector('[type="submit"]');
+    if (submit) submit.disabled = !isComplete;
+};
+
+window.parxRecaptchaOnload = () => {
+    if (!window.grecaptcha?.render) return;
+    document.querySelectorAll(".g-recaptcha").forEach(widget => {
+        if (widget.dataset.parxRecaptchaRendered === "true") return;
+        const form = widget.closest("form[data-parx-form]");
+        if (!form || !widget.dataset.sitekey) return;
+        if (widget.querySelector("iframe")) {
+            widget.dataset.parxRecaptchaRendered = "true";
+            return;
+        }
+        window.grecaptcha.render(widget, {
+            sitekey: widget.dataset.sitekey,
+            callback: () => setRecaptchaFormState(form, true),
+            "expired-callback": () => setRecaptchaFormState(form, false),
+            "error-callback": () => setRecaptchaFormState(form, false)
+        });
+        widget.dataset.parxRecaptchaRendered = "true";
+    });
+};
+
 const loadRecaptchaOnce = () => {
-    if (document.querySelector('script[src^="https://www.google.com/recaptcha/api.js"]')) return;
+    const existing = document.querySelector('script[src^="https://www.google.com/recaptcha/api.js"]');
+    if (existing) {
+        if (window.grecaptcha?.ready) window.grecaptcha.ready(window.parxRecaptchaOnload);
+        else existing.addEventListener("load", window.parxRecaptchaOnload, { once: true });
+        return;
+    }
     const script = document.createElement("script");
-    script.src = "https://www.google.com/recaptcha/api.js";
+    script.src = "https://www.google.com/recaptcha/api.js?onload=parxRecaptchaOnload&render=explicit";
     script.async = true;
     script.defer = true;
     document.head.append(script);
@@ -13,6 +43,12 @@ window.recaptchaCallbackPrescriberEn = () => {
 };
 window.recaptchaCallbackPrescriberFr = () => {
     document.querySelector('.prescriber-form.show-fr [type="submit"]')?.removeAttribute("disabled");
+};
+window.parxRecaptchaCallback = () => {
+    document.querySelectorAll("form[data-parx-form]").forEach(form => {
+        const response = form.querySelector('[name="g-recaptcha-response"]');
+        if (response?.value.trim()) setRecaptchaFormState(form, true);
+    });
 };
 
 if (!window.__parxCaptchaTimestampInterval) window.__parxCaptchaTimestampInterval = setInterval(() => {
@@ -103,6 +139,30 @@ var cityInput = form.querySelector('[name="00NJQ000000mnRS"]');
 var licenceNumberInput = form.querySelector('[name="00NJQ000000mnRe"]');
 
 var provinceRequiredMessage = form.querySelector(".province-required-message");
+
+form.querySelectorAll("[data-parx-date-source]").forEach(dateInput => {
+    dateInput.addEventListener("change", () => {
+        const target = form.querySelector("[data-parx-date-target]");
+        const match = dateInput.value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+        if (target) target.value = match ? `${match[3]}/${match[2]}/${match[1]}` : "";
+    });
+});
+
+form.querySelectorAll("label[for]").forEach(label => {
+    const targetId = label.getAttribute("for");
+    if (!targetId || document.querySelectorAll(`#${CSS.escape(targetId)}`).length < 2) return;
+    label.addEventListener("click", event => {
+        if (event.target.matches("input, select, textarea, a")) return;
+        const target = form.querySelector(`#${CSS.escape(targetId)}`);
+        if (!target) return;
+        event.preventDefault();
+        if (target.matches('[type="checkbox"], [type="radio"]')) {
+            target.click();
+        } else {
+            target.focus();
+        }
+    });
+});
 
 const showProvinceMessage = () => {
     provinceRequiredMessage?.classList.remove("w-hidden");

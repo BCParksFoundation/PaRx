@@ -13,6 +13,10 @@ const cleanEmbed = html => html
 
 const english = cleanEmbed(await read("home.html"));
 const french = cleanEmbed(await read("home_FR.html"));
+const prescriberLogEnglish = cleanEmbed(await read("prescriberLog.html"));
+const prescriberLogFrench = cleanEmbed(await read("prescriberLog_FR.html"));
+const patientLogEnglish = cleanEmbed(await read("patientLog.html"));
+const patientLogFrench = cleanEmbed(await read("patientLog_FR.html"));
 const css = await read("home.css");
 const js = await read("home.js");
 
@@ -21,6 +25,10 @@ await mkdir(resolve(dist, "preview"), { recursive: true });
 
 await writeFile(resolve(dist, "webflow/register-en.html"), cleanGenerated(`${english}\n`));
 await writeFile(resolve(dist, "webflow/register-fr.html"), cleanGenerated(`${french}\n`));
+await writeFile(resolve(dist, "webflow/prescriber-log-en.html"), cleanGenerated(`${prescriberLogEnglish}\n`));
+await writeFile(resolve(dist, "webflow/prescriber-log-fr.html"), cleanGenerated(`${prescriberLogFrench}\n`));
+await writeFile(resolve(dist, "webflow/patient-log-en.html"), cleanGenerated(`${patientLogEnglish}\n`));
+await writeFile(resolve(dist, "webflow/patient-log-fr.html"), cleanGenerated(`${patientLogFrench}\n`));
 await writeFile(resolve(dist, "webflow/forms.js"), js);
 
 const preview = `<!doctype html>
@@ -28,7 +36,7 @@ const preview = `<!doctype html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PaRx registration forms preview</title>
+  <title>PaRx forms preview</title>
   <style>
 ${css}
 
@@ -43,8 +51,18 @@ ${css}
     <button type="button" data-show-locale="fr">Français</button>
   </nav>
   <main>
-    <section class="preview-language" data-preview-locale="en">${english}</section>
-    <section class="preview-language" data-preview-locale="fr" hidden>${french}</section>
+    <section class="preview-language" data-preview-locale="en">
+      <h1>English forms</h1>
+      <h2>Prescriber registration</h2>${english}
+      <h2>Prescriber log</h2>${prescriberLogEnglish}
+      <h2>Patient log</h2>${patientLogEnglish}
+    </section>
+    <section class="preview-language" data-preview-locale="fr" hidden>
+      <h1>Formulaires français</h1>
+      <h2>Inscription des prescripteurs</h2>${french}
+      <h2>Journal du prescripteur</h2>${prescriberLogFrench}
+      <h2>Journal du patient</h2>${patientLogFrench}
+    </section>
   </main>
   <script>
 ${js}
