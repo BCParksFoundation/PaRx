@@ -24,7 +24,7 @@ Address inputs opt in with `data-mapbox-autocomplete`. Configure the public Mapb
 <meta name="mapbox-token" content="pk…">
 ```
 
-The request waits until at least three characters have been entered, is debounced by 300 ms, cancels any stale in-flight request, is restricted to Canadian addresses, and fills the city, postal-code and province fields when those Salesforce fields exist in the same form.
+The request waits until at least three characters have been entered, is debounced by 300 ms, cancels any stale in-flight request, is restricted to Canadian addresses, and returns up to 10 results. Canadian unit prefixes such as `310-1635`, `Unit 310 1635`, and `#310 1635` are removed for the Mapbox building search and restored when a result is selected. The selected result also fills the city, postal-code and province fields when those Salesforce fields exist in the same form.
 
 The shared script also loads Google's reCAPTCHA API once per page, updates every Salesforce `captcha_settings` timestamp independently, and exposes separate English and French completion callbacks. Do not add duplicate reCAPTCHA API or timestamp scripts to individual Webflow embeds.
 

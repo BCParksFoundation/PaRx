@@ -946,15 +946,31 @@ const initializeMapboxAutocomplete = () => {
     let debounceTimer;
     let activeRequest;
 
+    const parseCanadianUnitAddress = value => {
+        const designatorMatch = value.match(/^\s*(?:unit|suite|apt\.?|apartment|#)\s*([a-z0-9-]+)[,\s]+(.+)$/i);
+        if (designatorMatch) {
+            return { unit: designatorMatch[1], address: designatorMatch[2].trim() };
+        }
+
+        const hyphenMatch = value.match(/^\s*([a-z0-9]+)\s*-\s*(\d{2,6}\s+.+)$/i);
+        if (hyphenMatch) {
+            return { unit: hyphenMatch[1], address: hyphenMatch[2].trim() };
+        }
+
+        return { unit: "", address: value };
+    };
+
     const applySuggestion = () => {
-        const feature = suggestions.get(addressInput.value);
-        if (!feature) return;
+        const suggestion = suggestions.get(addressInput.value);
+        if (!suggestion) return false;
+        const { feature, unit } = suggestion;
         const properties = feature.properties || {};
         const context = properties.context || {};
         const city = form.querySelector('[name="00NJQ000000mnRS"]');
         const province = form.querySelector('[name="00NJQ000000mnRo"]');
         const postcode = form.querySelector('[name="00NJQ000000mnRj"]');
-        addressInput.value = properties.name_preferred || properties.name || addressInput.value;
+        const streetAddress = properties.name_preferred || properties.name || addressInput.value;
+        addressInput.value = unit ? `${unit}-${streetAddress}` : streetAddress;
         if (city) city.value = context.place?.name || context.locality?.name || "";
         if (postcode) postcode.value = context.postcode?.name || properties.postcode || "";
         if (province) {
@@ -964,11 +980,13 @@ const initializeMapboxAutocomplete = () => {
                 province.dispatchEvent(new Event("change", { bubbles: true }));
             }
         }
+        return true;
     };
 
     addressInput.addEventListener("change", applySuggestion);
     addressInput.addEventListener("input", () => {
         clearTimeout(debounceTimer);
+        if (applySuggestion()) return;
         const query = addressInput.value.trim();
         if (query.length < 3) {
             activeRequest?.abort();
@@ -980,13 +998,14 @@ const initializeMapboxAutocomplete = () => {
         debounceTimer = setTimeout(async () => {
             activeRequest?.abort();
             activeRequest = new AbortController();
+            const parsedAddress = parseCanadianUnitAddress(query);
             const params = new URLSearchParams({
-                q: query,
+                q: parsedAddress.address,
                 access_token: token,
                 country: "ca",
                 autocomplete: "true",
                 types: "address",
-                limit: "5",
+                limit: "10",
                 language: locale
             });
             try {
@@ -998,9 +1017,11 @@ const initializeMapboxAutocomplete = () => {
                 suggestions = new Map();
                 list.replaceChildren();
                 (payload.features || []).forEach(feature => {
-                    const label = feature.properties?.full_address || feature.properties?.place_formatted;
-                    if (!label) return;
-                    suggestions.set(label, feature);
+                    const mapboxLabel = feature.properties?.full_address || feature.properties?.place_formatted;
+                    if (!mapboxLabel) return;
+                    const unitLabel = locale === "fr" ? "Unité" : "Unit";
+                    const label = parsedAddress.unit ? `${unitLabel} ${parsedAddress.unit} — ${mapboxLabel}` : mapboxLabel;
+                    suggestions.set(label, { feature, unit: parsedAddress.unit });
                     const option = document.createElement("option");
                     option.value = label;
                     list.append(option);
