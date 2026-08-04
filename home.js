@@ -937,10 +937,30 @@ const initializeMapboxAutocomplete = () => {
         return;
     }
 
-    const list = document.createElement("datalist");
+    const list = document.createElement("div");
     list.id = `${form.id || `parx-${locale}`}-mapbox-addresses`;
-    addressInput.setAttribute("list", list.id);
+    list.className = "parx-address-suggestions";
+    list.setAttribute("role", "listbox");
+    list.hidden = true;
+    addressInput.setAttribute("aria-controls", list.id);
+    addressInput.setAttribute("aria-autocomplete", "list");
+    addressInput.setAttribute("autocomplete", "off");
     addressInput.insertAdjacentElement("afterend", list);
+
+    if (!document.getElementById("parx-address-suggestion-styles")) {
+        const style = document.createElement("style");
+        style.id = "parx-address-suggestion-styles";
+        style.textContent = `
+            .parx-address-suggestions { position: absolute; z-index: 1000; left: 0; right: 0; max-height: 18rem; overflow-y: auto; background: #fff; border: 1px solid #767676; box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,.15); }
+            .parx-address-suggestion { display: block; width: 100%; padding: .65rem .75rem; border: 0; border-bottom: 1px solid #ddd; background: #fff; color: #222; text-align: left; cursor: pointer; }
+            .parx-address-suggestion:hover, .parx-address-suggestion[aria-selected="true"] { background: #eef5f0; }
+        `;
+        document.head.append(style);
+    }
+    const inputContainer = addressInput.parentElement;
+    if (inputContainer && getComputedStyle(inputContainer).position === "static") {
+        inputContainer.style.position = "relative";
+    }
 
     let suggestions = new Map();
     let debounceTimer;
@@ -960,8 +980,7 @@ const initializeMapboxAutocomplete = () => {
         return { unit: "", address: value };
     };
 
-    const applySuggestion = () => {
-        const suggestion = suggestions.get(addressInput.value);
+    const applySuggestion = suggestion => {
         if (!suggestion) return false;
         const { feature, unit } = suggestion;
         const properties = feature.properties || {};
@@ -980,17 +999,34 @@ const initializeMapboxAutocomplete = () => {
                 province.dispatchEvent(new Event("change", { bubbles: true }));
             }
         }
+        list.hidden = true;
+        addressInput.setAttribute("aria-expanded", "false");
         return true;
     };
 
-    addressInput.addEventListener("change", applySuggestion);
+    const renderSuggestions = () => {
+        list.replaceChildren();
+        suggestions.forEach(suggestion => {
+            const option = document.createElement("button");
+            option.type = "button";
+            option.className = "parx-address-suggestion";
+            option.setAttribute("role", "option");
+            option.textContent = suggestion.label;
+            option.addEventListener("mousedown", event => event.preventDefault());
+            option.addEventListener("click", () => applySuggestion(suggestion));
+            list.append(option);
+        });
+        list.hidden = suggestions.size === 0;
+        addressInput.setAttribute("aria-expanded", String(suggestions.size > 0));
+    };
+
     addressInput.addEventListener("input", () => {
         clearTimeout(debounceTimer);
-        if (applySuggestion()) return;
         const query = addressInput.value.trim();
         if (query.length < 3) {
             activeRequest?.abort();
             list.replaceChildren();
+            list.hidden = true;
             suggestions.clear();
             return;
         }
@@ -1015,25 +1051,26 @@ const initializeMapboxAutocomplete = () => {
                 if (!response.ok) throw new Error(`Mapbox request failed (${response.status})`);
                 const payload = await response.json();
                 suggestions = new Map();
-                list.replaceChildren();
                 (payload.features || []).forEach(feature => {
                     const mapboxLabel = feature.properties?.full_address || feature.properties?.place_formatted;
                     if (!mapboxLabel) return;
-                    // Native datalists filter options against the text still in the
-                    // input. Keep the exact query at the start so unit-prefixed
-                    // searches remain visible after Mapbox receives the stripped
-                    // building address.
-                    const label = parsedAddress.unit ? `${query} — ${mapboxLabel}` : mapboxLabel;
-                    suggestions.set(label, { feature, unit: parsedAddress.unit });
-                    const option = document.createElement("option");
-                    option.value = label;
-                    list.append(option);
+                    const unitLabel = locale === "fr" ? "Unité" : "Unit";
+                    const label = parsedAddress.unit ? `${unitLabel} ${parsedAddress.unit} — ${mapboxLabel}` : mapboxLabel;
+                    suggestions.set(label, { feature, unit: parsedAddress.unit, label });
                 });
+                renderSuggestions();
             } catch (error) {
                 if (error.name === "AbortError") return;
                 console.warn("Mapbox autocomplete unavailable", error);
             }
         }, 300);
+    });
+
+    document.addEventListener("click", event => {
+        if (event.target !== addressInput && !list.contains(event.target)) {
+            list.hidden = true;
+            addressInput.setAttribute("aria-expanded", "false");
+        }
     });
 };
 
