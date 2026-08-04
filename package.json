@@ -1,0 +1,10 @@
+{
+  "name": "parx-salesforce-forms",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node --check home.js && node scripts/check.mjs",
+    "dev": "npm run build && python3 -m http.server 4173 -d dist/preview"
+  }
+}

@@ -22,7 +22,7 @@
     }
 </script>
 
-<form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00D1U000000Da1s" method="POST">
+<form id="patient-log-fr" class="show-fr" data-parx-form data-locale="fr" action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00D1U000000Da1s" method="POST">
   <input type=hidden name='captcha_settings' value='{"keyname":"PaRx_FR","fallback":"true","orgId":"00D1U000000Da1s","ts":""}'>
   <input type=hidden name="orgid" value="00D1U000000Da1s">
   <input type=hidden name="retURL" value="http://www.prescri-nature.ca/patient-inscription-succes">
@@ -71,11 +71,11 @@
     <input id="00NJQ000000mnRi" class="w-checkbox-input checkbox discoveryPass" name="00NJQ000000mnRi" type="checkbox" value="1" />Une carte d’entrée Découverte m’a été prescrite.<br>
   </label>
 
-  <fieldset id="discoveryPassAddress" class="w-hidden">
+  <fieldset class="discovery-pass-address w-hidden">
     <label class="field-label" for="00NJQ000000mnRp">Si une carte d'entrée Découverte de Parcs Canada vous a été prescrite, veuillez indiquer votre adresse postale afin que nous puissions vous l'envoyer par la poste :</label>
     <div class="_3-boxes w-row">
       <div class="form-column left w-col w-col-3">
-        <input id="00NJQ000000mnRp" class="text-field w-input" maxlength="255" name="00NJQ000000mnRp" size="20" type="text" placeholder="Adresse postale" />
+        <input id="00NJQ000000mnRp" class="text-field w-input" maxlength="255" name="00NJQ000000mnRp" size="20" type="text" placeholder="Adresse postale" data-mapbox-autocomplete />
       </div>
       <div class="form-column middle w-col w-col-3">
         <input id="00NJQ000000mnRS" class="text-field w-input" maxlength="255" name="00NJQ000000mnRS" size="20" type="text" placeholder="Ville" />

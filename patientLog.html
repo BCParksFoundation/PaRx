@@ -23,7 +23,7 @@
     }
 </script>
 
-<form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00D1U000000Da1s" method="POST">
+<form id="patient-log-en" class="show-en" data-parx-form data-locale="en" action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00D1U000000Da1s" method="POST">
     <input type=hidden name="orgid" value="00D1U000000Da1s">
     <input type=hidden name="retURL" value="www.parkprescriptions.ca/en/patient-log-your-parx-success">
     
@@ -72,11 +72,11 @@
         <input id="00NJQ000000mnRi" class="w-checkbox-input checkbox discoveryPass" name="00NJQ000000mnRi" type="checkbox" value="1" />I was prescribed a Parks Canada Discovery Pass.<br>
     </label>
     <br>
-    <fieldset id="discoveryPassAddress" class="w-hidden">
+    <fieldset class="discovery-pass-address w-hidden">
         <label class="field-label" for="00NJQ000000iI6T">If you were prescribed a Parks Canada Discovery Pass, please provide your mailing address so we can send your Pass to you:</label>
         <div class="_3-boxes w-row">
             <div class="form-column left w-col w-col-3">
-                <input id="00NJQ000000mnRp" class="text-field w-input" maxlength="255" name="00NJQ000000mnRp" size="20" type="text" placeholder="Unit/Apt #, Street Address" />
+                <input id="00NJQ000000mnRp" class="text-field w-input" maxlength="255" name="00NJQ000000mnRp" size="20" type="text" placeholder="Unit/Apt #, Street Address" data-mapbox-autocomplete />
             </div>
             <div class="form-column middle w-col w-col-3">
                 <input id="00NJQ000000mnRS" class="text-field w-input" maxlength="255" name="00NJQ000000mnRS" size="20" type="text" placeholder="City" />
