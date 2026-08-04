@@ -1019,8 +1019,11 @@ const initializeMapboxAutocomplete = () => {
                 (payload.features || []).forEach(feature => {
                     const mapboxLabel = feature.properties?.full_address || feature.properties?.place_formatted;
                     if (!mapboxLabel) return;
-                    const unitLabel = locale === "fr" ? "Unité" : "Unit";
-                    const label = parsedAddress.unit ? `${unitLabel} ${parsedAddress.unit} — ${mapboxLabel}` : mapboxLabel;
+                    // Native datalists filter options against the text still in the
+                    // input. Keep the exact query at the start so unit-prefixed
+                    // searches remain visible after Mapbox receives the stripped
+                    // building address.
+                    const label = parsedAddress.unit ? `${query} — ${mapboxLabel}` : mapboxLabel;
                     suggestions.set(label, { feature, unit: parsedAddress.unit });
                     const option = document.createElement("option");
                     option.value = label;
