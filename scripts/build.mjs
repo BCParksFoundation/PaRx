@@ -6,15 +6,13 @@ const dist = resolve(root, "dist");
 
 const read = file => readFile(resolve(root, file), "utf8");
 const cleanGenerated = value => value.replace(/[ \t]+$/gm, "");
-const stripLocalAssets = html => html
-  .replace(/<script src="\.\/home(?:_FR)?\.js"><\/script>\s*/g, "")
-  .replace(/<link rel="stylesheet" href="home\.css"\s*\/?>(?:<\/link>)?\s*/g, "")
+const cleanEmbed = html => html
   .replace(/<script src="https:\/\/www\.google\.com\/recaptcha\/api\.js"><\/script>\s*/g, "")
   .replace(/<META[^>]+>\s*/gi, "")
   .trim();
 
-const english = stripLocalAssets(await read("home.html"));
-const french = stripLocalAssets(await read("home_FR.html"));
+const english = cleanEmbed(await read("home.html"));
+const french = cleanEmbed(await read("home_FR.html"));
 const css = await read("home.css");
 const js = await read("home.js");
 
@@ -31,8 +29,9 @@ const preview = `<!doctype html>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PaRx registration forms preview</title>
-  <link rel="stylesheet" href="./home.css">
   <style>
+${css}
+
     body { margin: 0 auto; max-width: 960px; padding: 2rem; }
     .preview-language[hidden] { display: none; }
     .preview-toolbar { display: flex; gap: .5rem; margin-bottom: 2rem; }
@@ -47,7 +46,9 @@ const preview = `<!doctype html>
     <section class="preview-language" data-preview-locale="en">${english}</section>
     <section class="preview-language" data-preview-locale="fr" hidden>${french}</section>
   </main>
-  <script src="./forms.js"></script>
+  <script>
+${js}
+  </script>
   <script>
     document.querySelectorAll('[data-show-locale]').forEach(button => {
       button.addEventListener('click', () => {
@@ -61,7 +62,5 @@ const preview = `<!doctype html>
 </html>`;
 
 await writeFile(resolve(dist, "preview/index.html"), cleanGenerated(preview));
-await writeFile(resolve(dist, "preview/home.css"), css);
-await writeFile(resolve(dist, "preview/forms.js"), js);
 
-console.log("Built Webflow fragments and bilingual local preview in dist/.");
+console.log("Built Webflow fragments and a self-contained bilingual preview in dist/.");

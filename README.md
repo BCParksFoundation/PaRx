@@ -14,7 +14,7 @@ npm run dev
 
 - `dist/webflow/register-en.html` and `register-fr.html`: CSS-free Webflow embed fragments.
 - `dist/webflow/forms.js`: the shared script for hosting as one versioned asset.
-- `dist/preview/index.html`: a bilingual local preview that exercises both forms on one page.
+- `dist/preview/index.html`: a self-contained bilingual local preview with its CSS and JavaScript inlined.
 
 ## Mapbox autocomplete
 
