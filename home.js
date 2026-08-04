@@ -38,23 +38,13 @@ const loadRecaptchaOnce = () => {
     document.head.append(script);
 };
 
-window.recaptchaCallbackPrescriberEn = () => {
-    document.querySelector('.prescriber-form.show-en [type="submit"]')?.removeAttribute("disabled");
-};
-window.recaptchaCallbackPrescriberFr = () => {
-    document.querySelector('.prescriber-form.show-fr [type="submit"]')?.removeAttribute("disabled");
-};
-window.parxRecaptchaCallback = () => {
-    document.querySelectorAll("form[data-parx-form]").forEach(form => {
-        const response = form.querySelector('[name="g-recaptcha-response"]');
-        if (response?.value.trim()) setRecaptchaFormState(form, true);
-    });
-};
-
 if (!window.__parxCaptchaTimestampInterval) window.__parxCaptchaTimestampInterval = setInterval(() => {
     document.querySelectorAll('input[name="captcha_settings"]').forEach(input => {
         const form = input.closest("form");
         const response = form?.querySelector('[name="g-recaptcha-response"]');
+        if (form?.querySelector(".g-recaptcha")) {
+            setRecaptchaFormState(form, Boolean(response?.value.trim()));
+        }
         if (response && response.value.trim()) return;
         try {
             const settings = JSON.parse(input.value);
