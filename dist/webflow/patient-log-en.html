@@ -1,3 +1,11 @@
+<script>
+    function formatPatientLogDateEn(input) {
+        const match = input.value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+        const target = input.form.querySelector('[name="00NJQ000000mnRl"]');
+        if (target) target.value = match ? `${match[3]}/${match[2]}/${match[1]}` : "";
+    }
+</script>
+
 <form id="patient-log-en" class="show-en" data-parx-form data-locale="en" action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00D1U000000Da1s" method="POST">
     <input type=hidden name="orgid" value="00D1U000000Da1s">
     <input type=hidden name="retURL" value="https://www.parkprescriptions.ca/en/patient-log-your-parx-success">
@@ -30,8 +38,8 @@
         </div>
         <div class="form-column middle w-col w-col-4">
           <div class="box-subtitle">Prescription Date</div>
-          <input type="date" id="dateInput-patient-en" placeholder="YYYY-MM-DD" class="text-field w-input" data-parx-date-source required>
-          <input id="00NJQ000000mnRl-patient-en" name="00NJQ000000mnRl" placeholder="DD/MM/YYYY" class="text-field w-input dateinput2" type="hidden" data-parx-date-target>
+          <input type="date" id="dateInput-patient-en" placeholder="YYYY-MM-DD" class="text-field w-input" onchange="formatPatientLogDateEn(this)" required>
+          <input id="00NJQ000000mnRl-patient-en" name="00NJQ000000mnRl" placeholder="DD/MM/YYYY" class="text-field w-input dateinput2" type="hidden">
         </div>
         <div class="form-column right w-col w-col-4">
           <div class="box-subtitle">Patient's first and last initials </div>
