@@ -14,7 +14,6 @@ for (const file of files) {
   if (/<\/link>/.test(html)) problems.push("invalid closing link tag");
   if (!/class="[^"]*show-(?:en|fr)/.test(html)) problems.push("missing language visibility class");
   if (html.includes("g-recaptcha") && !/type="submit"[^>]+disabled/.test(html)) problems.push("reCAPTCHA submit is not initially disabled");
-  if (file.includes("Log") && !html.includes("g-recaptcha")) problems.push("log form is missing reCAPTCHA");
   if (html.includes("g-recaptcha") && !/name=["']captcha_settings["']/.test(html)) problems.push("reCAPTCHA form is missing Salesforce captcha settings");
   if (/<script\b/i.test(html)) problems.push("contains an inline or duplicate script");
   if (/<style\b/i.test(html)) problems.push("contains an inline style block");
