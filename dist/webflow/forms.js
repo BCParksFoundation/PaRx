@@ -1270,6 +1270,30 @@ if (discoveryPassValue) {
 initializeMapboxAutocomplete();
 };
 
+const initializeForms = root => {
+    if (root.matches?.("form[data-parx-form]")) initializeForm(root);
+    root.querySelectorAll?.("form[data-parx-form]").forEach(initializeForm);
+    if (window.grecaptcha?.render) window.parxRecaptchaOnload();
+};
+
+const startForms = () => {
+    initializeForms(document);
+    if (!window.__parxFormObserver) {
+        window.__parxFormObserver = new MutationObserver(mutations => {
+            mutations.forEach(mutation => {
+                mutation.addedNodes.forEach(node => {
+                    if (node.nodeType === Node.ELEMENT_NODE) initializeForms(node);
+                });
+            });
+        });
+        window.__parxFormObserver.observe(document.documentElement, { childList: true, subtree: true });
+    }
+};
+
 loadRecaptchaOnce();
-document.querySelectorAll("form[data-parx-form]").forEach(initializeForm);
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", startForms, { once: true });
+} else {
+    startForms();
+}
 })();
