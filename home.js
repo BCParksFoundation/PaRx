@@ -64,7 +64,12 @@ const messagesByLocale = {
         cityRequired: "Please enter your city.",
         professionRequired: "Please select your profession.",
         licensingRequired: "Please select your licensing body.",
-        licenceRequired: "Please enter your licence number."
+        licenceRequired: "Please enter your licence number.",
+        providerCodeLength: "Enter all 8 characters of your provider code (for example, AA-AA123).",
+        providerCodeHyphen: "Add a hyphen after the first two letters (for example, AA-AA123).",
+        providerCodeLetters: "Use letters for the first four characters of the provider code.",
+        providerCodeNumbers: "The last three characters of the provider code must be numbers.",
+        providerCodeFormat: "Enter the provider code in the format AA-AA123."
     },
     fr: {
         professionPlaceholder: "Sélectionner une profession",
@@ -73,7 +78,12 @@ const messagesByLocale = {
         cityRequired: "Veuillez entrer votre ville.",
         professionRequired: "Veuillez sélectionner votre profession.",
         licensingRequired: "Veuillez sélectionner votre organisme de réglementation.",
-        licenceRequired: "Veuillez entrer votre numéro de licence."
+        licenceRequired: "Veuillez entrer votre numéro de licence.",
+        providerCodeLength: "Saisissez les 8 caractères de votre code de prestataire (par exemple, AA-AA123).",
+        providerCodeHyphen: "Ajoutez un trait d’union après les deux premières lettres (par exemple, AA-AA123).",
+        providerCodeLetters: "Utilisez des lettres pour les quatre premiers caractères du code de prestataire.",
+        providerCodeNumbers: "Les trois derniers caractères du code de prestataire doivent être des chiffres.",
+        providerCodeFormat: "Saisissez le code de prestataire au format AA-AA123."
     }
 };
 
@@ -112,6 +122,17 @@ const frenchProfessionLabels = {
     "None of the above": "Aucun de ces éléments"
 };
 
+const ensureProviderCodeStyles = () => {
+    if (document.getElementById("parx-provider-code-styles")) return;
+    const style = document.createElement("style");
+    style.id = "parx-provider-code-styles";
+    style.textContent = `
+        .provider-code-error { color: #b42318; font-size: .875rem; line-height: 1.35; margin-top: .375rem; }
+        [name="00NJQ000000mnRq"][aria-invalid="true"] { border-color: #b42318; }
+    `;
+    document.head.append(style);
+};
+
 const initializeForm = (form) => {
 if (form.dataset.parxInitialized === "true") return;
 form.dataset.parxInitialized = "true";
@@ -129,6 +150,51 @@ var cityInput = form.querySelector('[name="00NJQ000000mnRS"]');
 var licenceNumberInput = form.querySelector('[name="00NJQ000000mnRe"]');
 
 var provinceRequiredMessage = form.querySelector(".province-required-message");
+
+const providerCodeInput = form.querySelector('[name="00NJQ000000mnRq"]');
+if (providerCodeInput) {
+    ensureProviderCodeStyles();
+    const errorId = `${form.id || "parx-form"}-provider-code-error`;
+    const errorMessage = document.createElement("div");
+    errorMessage.id = errorId;
+    errorMessage.className = "provider-code-error";
+    errorMessage.setAttribute("role", "alert");
+    errorMessage.setAttribute("aria-live", "polite");
+    errorMessage.hidden = true;
+    providerCodeInput.setAttribute("aria-describedby", errorId);
+    providerCodeInput.setAttribute("aria-invalid", "false");
+    providerCodeInput.insertAdjacentElement("afterend", errorMessage);
+
+    const getProviderCodeError = value => {
+        if (!value) return "";
+        if (value.length !== 8) return messages.providerCodeLength;
+        if (value[2] !== "-") return messages.providerCodeHyphen;
+        if (!/^[A-Z]{2}-[A-Z]{2}/.test(value)) return messages.providerCodeLetters;
+        if (!/\d{3}$/.test(value)) return messages.providerCodeNumbers;
+        if (!/^[A-Z]{2}-[A-Z]{2}\d{3}$/.test(value)) return messages.providerCodeFormat;
+        return "";
+    };
+
+    const validateProviderCode = () => {
+        const normalizedValue = providerCodeInput.value.toUpperCase();
+        if (providerCodeInput.value !== normalizedValue) providerCodeInput.value = normalizedValue;
+        const message = getProviderCodeError(normalizedValue);
+        providerCodeInput.setCustomValidity(message);
+        providerCodeInput.setAttribute("aria-invalid", message ? "true" : "false");
+        errorMessage.textContent = message;
+        errorMessage.hidden = !message;
+        return !message;
+    };
+
+    providerCodeInput.addEventListener("input", validateProviderCode);
+    providerCodeInput.addEventListener("blur", validateProviderCode);
+    form.addEventListener("submit", event => {
+        if (validateProviderCode()) return;
+        event.preventDefault();
+        providerCodeInput.focus();
+        providerCodeInput.reportValidity();
+    });
+}
 
 form.querySelectorAll("[data-parx-date-source]").forEach(dateInput => {
     dateInput.addEventListener("change", () => {

@@ -1,7 +1,7 @@
 <form id="prescriber-log-fr" class="prescriber-log-form show-fr" data-parx-form data-locale="fr" action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00D1U000000Da1s" method="POST">
     <input type=hidden name='captcha_settings' value='{"keyname":"PaRx_FR","fallback":"true","orgId":"00D1U000000Da1s","ts":""}'>
     <input type=hidden name="orgid" value="00D1U000000Da1s">
-    <input type=hidden name="retURL" value="https://www.prescri-nature.ca/prescripteur-inscription-succes">
+    <input type=hidden name="retURL" value="https://www.parkprescriptions.ca/fr-ca/consignez-votre-prescription-succes-prescripteur">
     
     <select  id="00NJQ000000mnRZ" name="00NJQ000000mnRZ" title="Form Type" hidden>
         <option value="PrescriberLog" selected>PrescriberLog</option>
@@ -14,7 +14,7 @@
     <label class="field-label">La prescription Prescri-Nature de mon patient est : </label>
     <div class="w-row">
         <div class="form-column left w-col w-col-4">
-            <input id="00NJQ000000mnRq" name="00NJQ000000mnRq" class="text-field w-input" maxlength="8" placeholder="AA-AA123" type="text" required>
+            <input id="00NJQ000000mnRq" name="00NJQ000000mnRq" class="text-field w-input" minlength="8" maxlength="8" pattern="[A-Za-z]{2}-[A-Za-z]{2}[0-9]{3}" placeholder="AA-AA123" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" required>
             <div class="box-subtitle">Code unique de prestataire</div>
         </div>
         <div class="form-column middle w-col w-col-4">

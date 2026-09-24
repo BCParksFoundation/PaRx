@@ -19,6 +19,9 @@ for (const file of files) {
   if (/<style\b/i.test(html)) problems.push("contains an inline style block");
   if (!file.startsWith("patientLog") && /on(?:change|focus|blur)=/i.test(html)) problems.push("contains an inline event handler");
   if (/name="retURL" value="(?!https:\/\/)/.test(html)) problems.push("retURL is not an absolute HTTPS URL");
+  if ((file.startsWith("patientLog") || file.startsWith("prescriberLog")) && !/name="00NJQ000000mnRq"[^>]+minlength="8"[^>]+maxlength="8"[^>]+pattern="\[A-Za-z\]\{2\}-\[A-Za-z\]\{2\}\[0-9\]\{3\}"/.test(html)) {
+    problems.push("provider code is missing the AA-AA123 validation pattern");
+  }
   if (problems.length) {
     failed = true;
     console.error(`${file}: ${problems.join(", ")}`);

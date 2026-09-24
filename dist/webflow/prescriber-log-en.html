@@ -1,7 +1,7 @@
 <form id="prescriber-log-en" class="prescriber-log-form show-en" data-parx-form data-locale="en" action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00D1U000000Da1s" method="POST">
     <input type=hidden name='captcha_settings' value='{"keyname":"PaRx","fallback":"true","orgId":"00D1U000000Da1s","ts":""}'>
     <input type=hidden name="orgid" value="00D1U000000Da1s">
-    <input type=hidden name="retURL" value="https://www.parkprescriptions.ca/en/prescriber-log-your-parx-success">
+    <input type=hidden name="retURL" value="https://www.parkprescriptions.ca/prescriber-log-your-parx-success">
 
     <select  id="00NJQ000000mnRZ" name="00NJQ000000mnRZ" title="Form Type" hidden>
         <option value="PrescriberLog" selected>PrescriberLog</option>
@@ -15,7 +15,7 @@
     <div class="w-row">
         <div class="form-column left w-col w-col-4">
             <div class="box-subtitle">Unique Provider Code</div>
-            <input id="00NJQ000000mnRq" name="00NJQ000000mnRq" class="text-field w-input" maxlength="8" placeholder="AA-AA123" type="text" required>
+            <input id="00NJQ000000mnRq" name="00NJQ000000mnRq" class="text-field w-input" minlength="8" maxlength="8" pattern="[A-Za-z]{2}-[A-Za-z]{2}[0-9]{3}" placeholder="AA-AA123" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" required>
         </div>
         <div class="form-column middle w-col w-col-4">
         <span class="dateInput dateOnlyInput">
